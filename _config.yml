@@ -1,0 +1,76 @@
+# ============================================================
+# Hertie DSL Course Website — Configuration
+# ============================================================
+# Edit the fields below for your course.
+# Do NOT change anything below the "Do not change" line.
+
+# --- Course identity ---
+course_name: "Course Name (Code)"           # e.g. "Deep Learning (GRAD-E1394)"
+course_description: "One paragraph description of the course."
+course_semester: "Fall 2025"                # e.g. "Fall 2025" or "Spring 2026"
+course_code: "GRAD-E1394"                   # Hertie course code
+github_org: "Hertie-School-Deep-Learning-E1394"  # GitHub org for this course
+
+# --- Instructor / institution ---
+schoolname: "Hertie School"
+schoolurl: "https://hertie-school.org/en/datasciencelab"
+dsl_org_url: "https://github.com/hertie-data-science-lab"
+address: |
+    Data Science Lab
+    Hertie School
+    Friedrichstraße 180
+    10117 Berlin, Germany
+
+# --- Optional ---
+# twitter_username: hertie_dslab
+# google_analytics: UA-XXXXXXXX-X
+
+# --- Content repo (where course materials live) ---
+# content_repo: "https://github.com/Hertie-School-Deep-Learning-E1394/content-f2025"
+
+### Do not change the following unless you know what you are doing ###
+
+# Shared visual theme — layout, branding and styles come from dsl-jekyll-theme.
+# Restyling happens there and propagates to every DSL site (see that repo).
+remote_theme: hertie-data-science-lab/dsl-jekyll-theme
+plugins:
+  - jekyll-remote-theme
+  - jekyll-feed
+
+baseurl: ""
+url: ""
+
+markdown: kramdown
+permalink: blog/:year/:month/:title
+excerpt_separator: "<!--more-->"
+
+include: ['_images']
+exclude:
+  - develop
+  - hertie-config.yml
+  - vendor
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - .bundle
+  - SETUP-CHECKLIST.md
+
+dateformat: "%m/%d/%Y"
+future: true
+
+collections:
+    events:
+        output: true
+    lectures:
+        output: true
+    assignments:
+        output: true
+    announcements:
+        output: false
+
+defaults:
+  - scope:
+      path: ""
+      type: "assignments"
+    values:
+      layout: "assignment"

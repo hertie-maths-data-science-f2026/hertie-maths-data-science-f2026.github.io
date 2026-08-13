@@ -1,0 +1,56 @@
+name: Deploy course website
+
+on:
+  push:
+    branches: [main]
+  # Rebuild when the shared theme changes (dispatched by dsl-jekyll-theme).
+  repository_dispatch:
+    types: [theme-updated]
+  # Monthly backstop so theme changes propagate even if a dispatch is missed.
+  schedule:
+    - cron: "0 5 1 * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - id: pages
+        uses: actions/configure-pages@v4
+
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.2"
+          bundler-cache: true
+
+      - name: Build site
+        env:
+          JEKYLL_ENV: production
+          # jekyll-github-metadata needs this to resolve the repo
+          PAGES_REPO_NWO: ${{ github.repository }}
+          # jekyll-remote-theme needs a token to fetch the shared theme repo
+          JEKYLL_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path }}"
+
+      - uses: actions/upload-pages-artifact@v3
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

@@ -1,0 +1,17 @@
+# Edit this file to add your course instructors and TAs.
+# profile_pic: put a photo in _images/pp/ and reference it here.
+# webpage: optional personal/faculty page link.
+#
+# Both instructors and TAs are added to the instructors-{semester} team
+# in the course org (maintain access). GitHub Classroom handles
+# submission-level grader access separately.
+
+instructors:
+  - name: "Instructor Name"
+    profile_pic: /_images/pp/placeholder.jpg
+    webpage: "https://hertie-school.org/en/datasciencelab"
+
+teaching_assistants:
+  - name: "TA Name"
+    profile_pic: /_images/pp/placeholder.jpg
+    webpage: ""

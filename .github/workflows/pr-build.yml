@@ -1,0 +1,35 @@
+name: PR build check
+
+# Correctness gate: build the site (with the shared remote_theme) on every PR and
+# fail if it doesn't compile. Does NOT deploy — production Pages only updates on
+# merge to the default branch. Catches broken Liquid/SCSS or an unreachable theme
+# before merge.
+
+on:
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pr-build-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  pr-build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.2"
+          bundler-cache: true
+
+      - name: Build site with shared theme
+        env:
+          JEKYLL_ENV: production
+          PAGES_REPO_NWO: ${{ github.repository }}
+          # lets jekyll-remote-theme fetch the shared theme repo
+          JEKYLL_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: bundle exec jekyll build
