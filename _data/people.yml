@@ -7,11 +7,11 @@
 # submission-level grader access separately.
 
 instructors:
-  - name: "Instructor Name"
-    profile_pic: /_images/pp/placeholder.jpg
+  - name: "Jan Gieseler"
+    profile_pic: /_images/pp/2025_JG.png
     webpage: "https://hertie-school.org/en/datasciencelab"
 
 teaching_assistants:
-  - name: "TA Name"
+  - name: "Camilo Pedraza Jiménez"
     profile_pic: /_images/pp/placeholder.jpg
     webpage: ""

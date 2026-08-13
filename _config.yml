@@ -7,9 +7,9 @@
 # --- Course identity ---
 course_name: "Course Name (Code)"           # e.g. "Deep Learning (GRAD-E1394)"
 course_description: "One paragraph description of the course."
-course_semester: "Fall 2025"                # e.g. "Fall 2025" or "Spring 2026"
-course_code: "GRAD-E1394"                   # Hertie course code
-github_org: "Hertie-School-Deep-Learning-E1394"  # GitHub org for this course
+course_semester: "Fall 2026"                # e.g. "Fall 2025" or "Spring 2026"
+course_code: "GRAD-C23"                   # Hertie course code
+github_org: "Hertie-School-Maths-Data-Science-C23"  # GitHub org for this course
 
 # --- Instructor / institution ---
 schoolname: "Hertie School"
