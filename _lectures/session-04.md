@@ -1,0 +1,8 @@
+---
+type: lecture
+date: 2026-09-22T08:00:00
+title: "Session 4"
+unreleased: true
+links: []
+---
+Materials for session 4 are not released yet - they will appear in [`materials/lectures/04_lecture`](https://github.com/hertie-maths-data-science-f2026/materials) when released.

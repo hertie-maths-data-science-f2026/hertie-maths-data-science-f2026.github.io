@@ -5,11 +5,11 @@
 # Do NOT change anything below the "Do not change" line.
 
 # --- Course identity ---
-course_name: "Mathematics for Data Science (GRAD-C23)"           # e.g. "Deep Learning (GRAD-E1394)"
+course_name: "Maths for Data Science"
 course_description: "This course aims to deliver a compact and tailored introduction to the core mathematical concepts of data science: probability theory, calculus, linear algebra, and statistics. We will establish and reinforce the foundation that will support your further studies in machine learning, deep learning, and causal inference, and which will inform how you conceptualize and analyze data. By the end of the course, students will (re)acquaint themselves with the basic principles of probability theory that structure the process that generates data; with the behavior of functions that describe relationships in data; with the rules of linear algebra that govern how to manipulate data; and, finally, with the tools of statistical learning that we use to extract information from our datasets."
-course_semester: "Fall 2026"                # e.g. "Fall 2025" or "Spring 2026"
-course_code: "GRAD-C23"                   # Hertie course code
-github_org: "Hertie-School-Maths-Data-Science-C23"  # GitHub org for this course
+course_semester: "Fall 2026"
+course_code: "GRAD-C23"
+github_org: "hertie-maths-data-science-f2026"
 
 # --- Instructor / institution ---
 schoolname: "Hertie School"
@@ -38,7 +38,7 @@ plugins:
   - jekyll-feed
 
 baseurl: ""
-url: ""
+url: "https://hertie-maths-data-science-f2026.github.io"
 
 markdown: kramdown
 permalink: blog/:year/:month/:title
