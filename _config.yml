@@ -1,7 +1,9 @@
 # ============================================================
 # Hertie DSL Course Website — Configuration
 # ============================================================
-# Edit the fields below for your course.
+# Edit the fields below for your course - EXCEPT the course-identity keys the DSL
+# course sync owns and rewrites on every run: `course_code`, `course_name`, `course_semester`, `github_org`.
+# Change those in the course org's .github/dsl-course.yml instead.
 # Do NOT change anything below the "Do not change" line.
 
 # --- Course identity ---
