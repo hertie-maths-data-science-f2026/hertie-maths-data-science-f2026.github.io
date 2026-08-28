@@ -8,4 +8,4 @@ title: "Lab 7"
 unreleased: true
 links: []
 ---
-Materials for lab 7 are not released yet - they will appear in [`materials/labs/07_lab`](https://github.com/hertie-maths-data-science-f2026/materials) when released.
+_**Materials for lab 7 are not yet released** - they will appear in [`materials/labs/07_lab`](https://github.com/hertie-maths-data-science-f2026/materials) when they are._

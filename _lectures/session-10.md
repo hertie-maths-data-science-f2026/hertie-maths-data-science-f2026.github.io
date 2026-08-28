@@ -8,4 +8,4 @@ title: "Session 10"
 unreleased: true
 links: []
 ---
-Materials for session 10 are not released yet - they will appear in [`materials/lectures/10_lecture`](https://github.com/hertie-maths-data-science-f2026/materials) when released.
+_**Materials for session 10 are not yet released** - they will appear in [`materials/lectures/10_lecture`](https://github.com/hertie-maths-data-science-f2026/materials) when they are._

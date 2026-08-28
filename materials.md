@@ -4,4 +4,4 @@ title: All Materials
 permalink: /materials/
 ---
 
-Every course material released to this cohort, session or not. Course materials are only accessible to enrolled students.
+All released course material so far; only accessible to enrolled students/auditors.
