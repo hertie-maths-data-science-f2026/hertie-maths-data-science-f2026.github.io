@@ -7,6 +7,7 @@ date: 2026-09-08T08:00:00
 title: "Session 2"
 subtitle: "Random Variables and Their Distributions"
 unreleased: true
+readings_pending: true
 links: []
 ---
-_**Materials for session 2 are not yet released** - they will appear in [`materials/lectures/02_lecture`](https://github.com/hertie-maths-data-science-f2026/materials) when they are._
+_**Materials for session 2 are not yet released** - they will appear in [`materials/lectures/02_lecture`](https://github.com/hertie-maths-data-science-f2026/materials), [`materials/readings/02_session-2`](https://github.com/hertie-maths-data-science-f2026/materials/tree/main/readings) when they are._

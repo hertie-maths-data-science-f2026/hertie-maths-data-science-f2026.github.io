@@ -7,6 +7,7 @@ date: 2026-09-22T08:00:00
 title: "Session 4"
 subtitle: "Calculus for Data Science"
 unreleased: true
+readings_pending: true
 links: []
 ---
-_**Materials for session 4 are not yet released** - they will appear in [`materials/lectures/04_lecture`](https://github.com/hertie-maths-data-science-f2026/materials) when they are._
+_**Materials for session 4 are not yet released** - they will appear in [`materials/lectures/04_lecture`](https://github.com/hertie-maths-data-science-f2026/materials), [`materials/readings/04_session-4`](https://github.com/hertie-maths-data-science-f2026/materials/tree/main/readings) when they are._
