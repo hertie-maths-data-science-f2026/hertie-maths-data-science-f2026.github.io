@@ -5,6 +5,7 @@
 type: lecture
 date: 2026-09-08T08:00:00
 title: "Session 2"
+subtitle: "Random Variables and Their Distributions"
 unreleased: true
 links: []
 ---

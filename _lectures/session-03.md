@@ -5,6 +5,7 @@
 type: lecture
 date: 2026-09-15T08:00:00
 title: "Session 3"
+subtitle: "Expectation and Joint Distributions"
 unreleased: true
 links: []
 ---

@@ -5,6 +5,7 @@
 type: lecture
 date: 2026-09-22T08:00:00
 title: "Session 4"
+subtitle: "Calculus for Data Science"
 unreleased: true
 links: []
 ---

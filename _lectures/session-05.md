@@ -5,6 +5,7 @@
 type: lecture
 date: 2026-09-29T08:00:00
 title: "Session 5"
+subtitle: "Continuous Random Variables and Limit Theorems"
 unreleased: true
 links: []
 ---

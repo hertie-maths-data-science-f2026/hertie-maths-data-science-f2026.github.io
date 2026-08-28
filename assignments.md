@@ -4,4 +4,4 @@ title: Assignments
 permalink: /assignments/
 ---
 
-Assignments are only accessible to enrolled students.
+Assignments repos are only accessible to enrolled students.

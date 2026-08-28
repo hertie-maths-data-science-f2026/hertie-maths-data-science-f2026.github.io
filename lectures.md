@@ -4,4 +4,4 @@ title: Lectures
 permalink: /lectures/
 ---
 
-Lecture slides are accessible to enrolled students.
+Lecture slides are only accessible to enrolled students & auditors.
