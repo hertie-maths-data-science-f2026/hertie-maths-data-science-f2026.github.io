@@ -1,0 +1,9 @@
+{%- comment -%}
+SYSTEM-OWNED - do not edit. Written by the DSL course sync from templates/site/ in the
+toolkit; every sync rewrites it.
+{%- endcomment -%}
+<ul>
+    {% for p in site.data.late_policy.policies%}
+    <li>{{ p }}</li>
+    {% endfor %}
+</ul>

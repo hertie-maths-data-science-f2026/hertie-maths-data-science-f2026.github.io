@@ -1,0 +1,20 @@
+{%- comment -%}
+SYSTEM-OWNED - do not edit. Written by the DSL course sync from templates/site/ in the
+toolkit; every sync rewrites it.
+{%- endcomment -%}
+{%- comment -%}
+One bracketed download link per entry, rendered inline on a single line - external
+URLs are used as given, site-relative ones get the baseurl. Whitespace control is
+load-bearing here: this renders inside a sentence in the Updates box.
+{%- endcomment -%}
+{%- if include.lecture.links -%}
+{%- for link in include.lecture.links -%}
+{%- if link.url contains '://' -%}
+{%- assign href = link.url -%}
+{%- else -%}
+{%- assign href = link.url | prepend: site.baseurl -%}
+{%- endif -%}
+{%- unless forloop.first %}{{ " " }}{%- endunless -%}
+[<a title="Download {{ link.name }}" href="{{ href }}">{{ link.name }}</a>]
+{%- endfor -%}
+{%- endif -%}

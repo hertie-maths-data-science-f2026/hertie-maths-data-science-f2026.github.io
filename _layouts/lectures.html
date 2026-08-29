@@ -1,0 +1,21 @@
+---
+# SYSTEM-OWNED - do not edit. Written by the DSL course sync from templates/site/ in the
+# toolkit; every sync rewrites it.
+layout: page
+---
+
+{{ content }}
+
+{% comment %}
+The _lectures collection holds both lecture and lab sessions (`type: lab`), so select the
+lecture ones - otherwise every lab renders an empty container here. Every entry is the
+shared session block (session_entry.html), so this page, Labs and Readings read alike.
+{% endcomment %}
+{% assign entries = site.lectures | where: "type", "lecture" | sort: 'date' %}
+{% for entry in entries %}
+<section class="session">
+{% include session_entry.html entry=entry section="lecture" %}
+</section>
+{% unless forloop.last %}<hr class="session-rule"/>{% endunless %}
+{% endfor %}
+{% if entries.size == 0 %}<p>No lecture materials released yet.</p>{% endif %}

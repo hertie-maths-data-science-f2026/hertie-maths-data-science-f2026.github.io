@@ -1,0 +1,24 @@
+{%- comment -%}
+SYSTEM-OWNED - do not edit. Written by the DSL course sync from templates/site/ in the
+toolkit; every sync rewrites it.
+{%- endcomment -%}
+{%- comment -%}
+The KIND, not the name. This printed `name` - the entry's own title - so a guest lecture put
+its whole name where "Lecture" / "Lab" / "Exam" print a row's kind, and left its Title cell
+empty. site.py now writes the name to `description`, which is the Title column below.
+{%- endcomment -%}
+<div class="col col-1" style="color: #7d6230 ;font-weight: bold;" data-label="Event">Event</div>
+<div class="col col-1-2" data-label="Date">
+    {% if include.event.dateless %}
+    <b>TBC</b>
+    {% else %}
+    {{ include.event.date | date: site.dateformat }}
+    {% unless include.event.hide_time %}
+    {{ include.event.date | date: "%H:%M" }}
+    {% endunless %}
+    {% if include.event.tbc %}<b>(TBC)</b>{% endif %}
+    <br class="date-spliter" />{{ include.event.date | date: "%A" }}
+    {% endif %}
+</div>
+<div class="col col-2" data-label="Title"><b>{{ include.event.description }}</b></div>
+<div class="col col-4 markdown-content" data-label="Details">{{ include.event.content }}</div>

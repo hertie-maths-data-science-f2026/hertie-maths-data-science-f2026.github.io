@@ -1,0 +1,12 @@
+{%- comment -%}
+SYSTEM-OWNED - do not edit. Written by the DSL course sync from templates/site/ in the
+toolkit; every sync rewrites it.
+{%- endcomment -%}
+{%- comment -%}
+A session's display name, wherever one is shown: the ordinal ("Session 3") and, when the
+cohort's schedule.yml declared one, the name of the session after it. Written once because
+the Lectures, Materials and Labs pages all show the same heading, and the schedule table
+shows the same two halves stacked - three copies of the rule is how they come to disagree.
+{%- endcomment -%}
+{{- include.lecture.title -}}
+{%- if include.lecture.subtitle %} - {{ include.lecture.subtitle }}{% endif -%}

@@ -1,0 +1,44 @@
+{%- comment -%}
+SYSTEM-OWNED - do not edit. Written by the DSL course sync from templates/site/ in the
+toolkit; every sync rewrites it.
+{%- endcomment -%}
+{%- comment -%}
+One session's block, shared by the Lectures, Labs and Readings pages so the three read
+identically. The order is the same everywhere and is the point of this file existing:
+
+  1. heading  - the ordinal ("Session 3") and, when the schedule declares one, the name
+  2. body     - the learning objectives, then whatever the page passes as `extra`
+                (Readings passes the citation list)
+  3. links    - the files, last. They used to sit up beside the heading, where they
+                crowded the title and made the description read as an afterthought.
+
+`include.section` is the singular section noun ("lecture", "lab", "reading") that selects
+which of the entry's links belong to this page, matching the `<section> - <file>` names
+site.py writes. Passed bare rather than as the full `"lecture - "` prefix so the include tag
+carries no quoted spaces.
+{%- endcomment -%}
+{%- assign entry = include.entry -%}
+{%- assign label = include.section | append: " - " -%}
+<h2 class="session-title">{% include session_title.html lecture=entry %}</h2>
+
+{%- if entry.description %}
+<div class="session-description">{{ entry.description | markdownify }}</div>
+{%- endif %}
+
+{{ include.extra }}
+
+{%- capture links -%}
+{%- for link in entry.links -%}
+{%- if link.name contains label -%}
+<li><a href="{% if link.url contains '://' %}{{ link.url }}{% else %}{{ link.url | prepend: site.baseurl }}{% endif %}">{{ link.name | remove_first: label }}</a></li>
+{%- endif -%}
+{%- endfor -%}
+{%- endcapture -%}
+{%- if links != "" %}
+<p class="session-files-label" style="margin-bottom: 2px;"><strong>Files</strong></p>
+<ul class="session-files">{{ links }}</ul>
+{%- endif %}
+
+{%- if entry.content != '' %}
+<div class="markdown-content session-note">{{ entry.content }}</div>
+{%- endif %}

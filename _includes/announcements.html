@@ -1,0 +1,38 @@
+{%- comment -%}
+SYSTEM-OWNED - do not edit. Written by the DSL course sync from templates/site/ in the
+toolkit; every sync rewrites it.
+{%- endcomment -%}
+{%- comment -%}
+The Updates box announces new CONTENT only: released lecture and lab sessions,
+released assignments, and hand-written entries in _announcements. Display-only
+schedule rows (exams, special events, term dates) live in site.events and are
+deliberately left out - they are not news, and several carry no text to show.
+{%- endcomment -%}
+{%- assign all_events = site.lectures | concat: site.assignments -%}
+{%- assign all_events = all_events | concat: site.announcements -%}
+{%- assign all_events_sorted = all_events | sort: 'date' | reverse -%}
+
+{%- if all_events_sorted.size > 0 %}
+<div class="announcement-box" style="margin-top:30px">
+<h2>Updates</h2>
+<ul>
+    {%- for n in all_events_sorted limit:7 -%}
+    {%- capture bullet -%}
+        {%- if n.type == 'lecture' -%}
+            New Lecture is up: {{ n.title }} {% include lecture_links.html lecture=n %}
+        {%- elsif n.type == 'lab' -%}
+            New Lab is up: {{ n.title }} {% include lecture_links.html lecture=n %}
+        {%- elsif n.type == 'assignment' -%}
+            New Assignment released: [<a href="{{ n.url | prepend: site.baseurl }}">{{ n.title }}</a>]
+        {%- else -%}
+            {{- n.content -}}
+        {%- endif -%}
+    {%- endcapture -%}
+    {%- assign bullet = bullet | strip -%}
+    {%- if bullet != "" %}
+    <li class="no-p-margin">{{ bullet }}</li>
+    {%- endif -%}
+    {%- endfor %}
+</ul>
+</div>
+{%- endif -%}

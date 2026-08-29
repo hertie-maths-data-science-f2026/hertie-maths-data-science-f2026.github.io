@@ -1,0 +1,51 @@
+---
+# SYSTEM-OWNED - do not edit. Written by the DSL course sync from templates/site/ in the
+# toolkit; every sync rewrites it.
+layout: page
+---
+
+{{ content }}
+
+{% comment %}
+Readings, session by session - the same block as Lectures and Labs, with the citation list
+passed in as `extra` so it sits where a session's description does.
+
+Three things can be true of a session here, and the page shows whichever apply:
+
+  reading_list      the citation text the teaching team wrote, inlined verbatim from the
+                    released `readings/NN_.../` folder. Its own headings arrive already
+                    demoted (site.py), so `## Required Readings` nests under the session
+                    heading instead of outranking it.
+  "reading -" links the reading files themselves. On a COHORT site they point into the
+                    private materials repo, so only enrolled members can open one; on the
+                    public open-courseware site they are hosted deliberately. Which of the
+                    two it is decides the page's own intro line, so this layout claims
+                    neither.
+  readings_pending  the plan ships readings for this session but they have not landed.
+                    Only worth its own sentence when the session has NO body of its own:
+                    an entirely unreleased session already carries "Materials for session
+                    N are not yet released - they will appear in .../readings/... when they
+                    are", which names the readings path among the rest, so saying it again
+                    here said it twice. What is left is the case that sentence does not
+                    cover - lecture materials released, readings still to come. Keyed on
+                    `unreleased`, the flag site.py sets for precisely "nothing has shipped
+                    for this session", rather than on the body being empty - which is the
+                    same thing only by coincidence.
+
+A session with none of the three does not appear - a lecture-only week would otherwise sit
+here reading "not released yet" for the whole term.
+{% endcomment %}
+{% assign entries = site.lectures | sort: 'date' %}
+{% assign shown = 0 %}
+{% for entry in entries %}
+{% capture has_files %}{% for link in entry.links %}{% if link.name contains "reading - " %}x{% endif %}{% endfor %}{% endcapture %}
+{% if entry.reading_list or has_files != "" or entry.readings_pending %}
+{% if shown > 0 %}<hr class="session-rule"/>{% endif %}
+{% assign shown = shown | plus: 1 %}
+<section class="session">
+{% capture citations %}{% if entry.reading_list %}<div class="reading-list markdown-content">{{ entry.reading_list | markdownify }}</div>{% endif %}{% if entry.readings_pending and entry.unreleased != true %}<p class="session-note"><em>Readings for this session are not yet released.</em></p>{% endif %}{% endcapture %}
+{% include session_entry.html entry=entry section="reading" extra=citations %}
+</section>
+{% endif %}
+{% endfor %}
+{% if shown == 0 %}<p>No readings released yet.</p>{% endif %}

@@ -1,0 +1,20 @@
+---
+# SYSTEM-OWNED - do not edit. Written by the DSL course sync from templates/site/ in the
+# toolkit; every sync rewrites it.
+layout: page
+---
+
+{{ content }}
+
+{% comment %}
+Labs are their own entries in the _lectures collection (`type: lab`), each carrying its
+"lab - ..." links. Same block as Lectures and Readings.
+{% endcomment %}
+{% assign entries = site.lectures | where: "type", "lab" | sort: 'date' %}
+{% for entry in entries %}
+<section class="session">
+{% include session_entry.html entry=entry section="lab" %}
+</section>
+{% unless forloop.last %}<hr class="session-rule"/>{% endunless %}
+{% endfor %}
+{% if entries.size == 0 %}<p>No lab materials released yet.</p>{% endif %}

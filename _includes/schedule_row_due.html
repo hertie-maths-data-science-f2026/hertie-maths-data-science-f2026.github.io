@@ -1,0 +1,37 @@
+{%- comment -%}
+SYSTEM-OWNED - do not edit. Written by the DSL course sync from templates/site/ in the
+toolkit; every sync rewrites it.
+{%- endcomment -%}
+<div class="col col-1" style="color: #31708f ;font-weight: bold;" data-label="Event">Assignment due</div>
+<div class="col col-1-2" data-label="Date">
+    {{ include.event.date | date: site.dateformat }}
+    {{ include.event.date | date: "%H:%M" }}
+    <br class="date-spliter" />{{ include.event.date | date: "%A" }}
+</div>
+{%- comment -%}
+`title` is the row's IDENTIFIER - a session's ordinal, an assignment's slug name - and
+`subtitle` its NAME. The identifier stays and the name sits under it rather than replacing
+it, because the identifier is what ties the row to its material and must read the same
+before and after that material ships.
+{%- endcomment -%}
+<div class="col col-2" data-label="Title">
+    <b>{{ include.event.description }}</b>
+    {%- if include.event.subtitle %}<br/>{{ include.event.subtitle }}{%- endif -%}
+</div>
+{%- comment -%}
+Where to submit. `repo_url`/`repo_name` are written onto the `due_event` sub-hash itself
+(site.py), not just onto the parent entry: the schedule reaches this row through
+`map: "due_event"`, so it cannot see the parent's fields - and the row that tells a student
+WHEN to submit is the one that should say WHERE. `repo_name` is always there (the shape is
+the plan's); the link only once the assignment has handed out and there is something at the
+other end of it. `escape`, because the shape's `<your-handle>` would otherwise read as a
+tag and vanish.
+{%- endcomment -%}
+<div class="col col-4 markdown-content" data-label="Details">
+    {%- if include.event.repo_name -%}
+    Submit via
+    {%- if include.event.repo_url %} <a href="{{ include.event.repo_url }}"><code>{{ include.event.repo_name | escape }}</code></a>
+    {%- else %} <code>{{ include.event.repo_name | escape }}</code>
+    {%- endif -%}
+    {%- endif -%}
+</div>

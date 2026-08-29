@@ -1,0 +1,39 @@
+{%- comment -%}
+SYSTEM-OWNED - do not edit. Written by the DSL course sync from templates/site/ in the
+toolkit; every sync rewrites it.
+{%- endcomment -%}
+<div class="col col-1" style="color: #31708f ;font-weight: bold;" data-label="Event">Assignment out</div>
+<div class="col col-1-2" data-label="Date">
+    {{ include.event.date | date: site.dateformat }}
+    {{ include.event.date | date: "%H:%M" }}
+    <br class="date-spliter" />{{ include.event.date | date: "%A" }}
+</div>
+{%- comment -%}
+`title` is the row's IDENTIFIER - a session's ordinal, an assignment's slug name - and
+`subtitle` its NAME. The identifier stays and the name sits under it rather than replacing
+it, because the identifier is what ties the row to its material and must read the same
+before and after that material ships.
+{%- endcomment -%}
+<div class="col col-2" data-label="Title">
+    <b>{{ include.event.title }}</b>
+    {%- if include.event.subtitle %}<br/>{{ include.event.subtitle }}{%- endif -%}
+</div>
+{%- comment -%}
+`handout_pending` (site.py) is an assignment whose dates are in the plan but which has not
+been handed out. The row is the plan's and belongs on the schedule from the day it is
+written - it is the assignment's CONTENT that waits, so the title above is the plan-side
+name and there is nothing here to link to yet. Exactly the shape of an unreleased session
+row (schedule_row_lecture.html): the generated body sentence in place of the links. The
+sentence itself is site.py's, not this file's - written in one place, it cannot drift from
+the one the Assignments tab shows for the same state.
+{%- endcomment -%}
+<div class="col col-4 markdown-content" data-label="Details">
+    {%- if include.event.handout_pending -%}
+    {{ include.event.content }}
+    {%- else -%}
+    [<a href="{{ include.event.url | prepend: site.baseurl}}">{{ include.event.title }}</a>]
+    {% if include.event.solutions %}
+    [<a href="{{ include.event.solutions | prepend: site.baseurl}}">Solutions</a>]
+    {% endif %}
+    {%- endif -%}
+</div>

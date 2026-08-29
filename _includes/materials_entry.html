@@ -1,0 +1,33 @@
+{%- comment -%}
+SYSTEM-OWNED - do not edit. Written by the DSL course sync from templates/site/ in the
+toolkit; every sync rewrites it.
+{%- endcomment -%}
+{% comment %}
+One node of the All Materials tree - a file (a plain GitHub link) or a directory (its name
+links straight to its GitHub tree, and the arrow beside it opens its children in the page,
+closed by default). Includes ITSELF for a directory's children.
+
+The one rule, learned by breaking every cohort site that had a nested release: read the node
+as `include.entry` throughout, and never copy it into a local name with an assign or capture
+tag. Both write to Liquid's OUTERMOST scope, so a recursive call overwrites its own caller's
+node, never reaches a leaf, and Liquid aborts the whole page with "Nesting too deep" on data
+three levels deep. `include.entry` is scoped per invocation, which is why this works. That
+also means the file-count span below stays duplicated rather than captured.
+{% endcomment %}
+<li>
+  {% if include.entry.entries.size > 0 %}
+  <details>
+    <summary style="cursor: pointer;">
+      <a href="{{ include.entry.url }}">{{ include.entry.name }}</a>
+      <span style="opacity: 0.7;"> ({{ include.entry.files }} file{% unless include.entry.files == 1 %}s{% endunless %})</span>
+    </summary>
+    <ul>
+      {% for child in include.entry.entries %}
+        {% include materials_entry.html entry=child %}
+      {% endfor %}
+    </ul>
+  </details>
+  {% else %}
+  <a href="{{ include.entry.url }}">{{ include.entry.name }}</a>{% if include.entry.files %} <span style="opacity: 0.7;">({{ include.entry.files }} file{% unless include.entry.files == 1 %}s{% endunless %})</span>{% endif %}
+  {% endif %}
+</li>

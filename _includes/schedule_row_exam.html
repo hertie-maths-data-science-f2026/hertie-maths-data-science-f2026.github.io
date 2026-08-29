@@ -1,0 +1,19 @@
+{%- comment -%}
+SYSTEM-OWNED - do not edit. Written by the DSL course sync from templates/site/ in the
+toolkit; every sync rewrites it.
+{%- endcomment -%}
+<div class="col col-1" style="color: #5a5f66 ;font-weight: bold;" data-label="Event">Exam</div>
+<div class="col col-1-2" data-label="Date">
+    {% if include.event.dateless %}
+    TBC
+    {% else %}
+    {{ include.event.date | date: site.dateformat }}
+    {{ include.event.date | date: "%H:%M" }}
+    {% if include.event.tbc %}(TBC){% endif %}
+    <br class="date-spliter"/>{{ include.event.date | date: "%A" }}
+    {% endif %}
+</div>
+<div class="col col-2" data-label="Title"><b>{{ include.event.description }}</b></div>
+<div class="col col-4 markdown-content" data-label="Details">
+    {{ include.event.content}}
+</div>

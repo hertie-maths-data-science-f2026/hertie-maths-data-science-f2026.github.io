@@ -1,0 +1,36 @@
+{%- comment -%}
+SYSTEM-OWNED - do not edit. Written by the DSL course sync from templates/site/ in the
+toolkit; every sync rewrites it.
+{%- endcomment -%}
+{%- comment -%}
+Also THE lab row: `schedule_row_lab.html` includes this file with its own `kind`/`colour`,
+because the two differ in nothing else. Both defaults spell the lecture row, so the
+schedule layout's own include of this file - which passes `event` only - is unchanged.
+{%- endcomment -%}
+<div class="col col-1" style="color: {{ include.colour | default: '#a94442' }} ;font-weight: bold;" data-label="Event">{{ include.kind | default: 'Lecture' }}</div>
+<div class="col col-1-2" data-label="Date">
+    {{ include.event.date | date: site.dateformat }}
+    {{ include.event.date | date: "%H:%M" }}
+    <br class="date-spliter"/>{{ include.event.date | date: "%A" }}
+</div>
+{%- comment -%}
+`title` is the ordinal ("Session 3"); `subtitle` is the name the schedule.yml entry
+declared for it. The ordinal is what ties the row to `materials/lectures/03_...`, so it
+stays and the name sits under it rather than replacing it.
+{%- endcomment -%}
+<div class="col col-2" data-label="Title">
+    <b>{{ include.event.title }}</b>
+    {%- if include.event.subtitle %}<br/>{{ include.event.subtitle }}{%- endif -%}
+</div>
+{%- comment -%}
+The materials themselves once they exist, and the "not released yet" sentence until then.
+The body used to render here either way, which told a reader of the SCHEDULE to "open the
+links above" - links that live on the Lectures tab, not this page.
+{%- endcomment -%}
+<div class="col col-4 markdown-content" data-label="Details">
+    {%- if include.event.links and include.event.links.size > 0 -%}
+    {% include lecture_links.html lecture=include.event %}
+    {%- else -%}
+    {{ include.event.content }}
+    {%- endif -%}
+</div>

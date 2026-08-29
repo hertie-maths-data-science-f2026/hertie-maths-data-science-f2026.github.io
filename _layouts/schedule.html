@@ -1,0 +1,57 @@
+---
+# SYSTEM-OWNED - do not edit. Written by the DSL course sync from templates/site/ in the
+# toolkit; every sync rewrites it.
+layout: default
+---
+
+<header class="post-header">
+    <h1 class="post-title">Schedule</h1>
+</header>
+
+{{ content }}
+
+<div class="home" style="font-size: 0.8em;">
+    <ul class="responsive-table" style="margin-left: 0;">
+        <li class="table-header">
+            <div class="col col-1">Event</div>
+            <div class="col col-1-2">Date</div>
+            <div class="col col-2">Title</div>
+            <div class="col col-4">Details</div>
+        </li>
+        
+        {% assign all_assignment_dues = site.assignments | map: "due_event" %}
+
+        {% assign all_events = site.events | concat: site.lectures %}
+        {% assign all_events = all_events | concat: site.assignments %}
+        {% assign all_events = all_events | concat: all_assignment_dues %}
+        {% assign all_events_sorted = all_events | sort: 'date' %}
+
+        {%- comment -%}
+        A branch per row type site.py emits, rather than an include filename built out of
+        `event.type`. A dynamic name means an unrecognised type - a schedule.yml typo, a row
+        kind added on the toolkit side before its template ships - asks Jekyll for a file
+        that does not exist, which fails the WHOLE build and takes the live site down with
+        it. Here an unknown type falls through to a neutral row instead: the schedule keeps
+        rendering and the odd row is visibly plain.
+        {%- endcomment -%}
+        {% for event in all_events_sorted %}
+        <li class="table-row table-row-{{ event.type}}">
+            {% case event.type %}
+            {% when "lecture" %}{% include schedule_row_lecture.html event=event %}
+            {% when "lab" %}{% include schedule_row_lab.html event=event %}
+            {% when "assignment" %}{% include schedule_row_assignment.html event=event %}
+            {% when "due" %}{% include schedule_row_due.html event=event %}
+            {% when "exam" %}{% include schedule_row_exam.html event=event %}
+            {% when "special_event" %}{% include schedule_row_special_event.html event=event %}
+            {% when "term_date" %}{% include schedule_row_term_date.html event=event %}
+            {% else %}
+            <div class="col col-1" data-label="Event">{{ event.type | default: "Event" }}</div>
+            <div class="col col-1-2" data-label="Date">{{ event.date | date: site.dateformat }}</div>
+            <div class="col col-2" data-label="Title"><b>{{ event.title | default: event.description }}</b></div>
+            <div class="col col-4 markdown-content" data-label="Details">{{ event.content }}</div>
+            {% endcase %}
+        </li>
+        {% endfor %}
+
+    </ul>
+</div>

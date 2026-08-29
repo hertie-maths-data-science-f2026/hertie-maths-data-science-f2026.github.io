@@ -1,0 +1,54 @@
+---
+# SYSTEM-OWNED - do not edit. Written by the DSL course sync from templates/site/ in the
+# toolkit; every sync rewrites it.
+layout: page
+---
+
+{{ content }}
+
+{% comment %}
+All Materials - the catch-all index, generated into `_data/materials.yml` by the toolkit's
+site.py. Every OTHER page is curated: a row exists because the schedule named a session,
+and its links are that session's files. This one is complete, so it answers the two
+questions the curated pages cannot - a student's "what do I actually have?" and a teaching
+team's "did my file ship?" - including material no session ordinal covers, which until this
+existed was released and then invisible.
+
+Nodes render via `_includes/materials_entry.html`, nested as deep as the release is - read
+its header before editing. Sections are open by default when there are few enough to scan.
+{% endcomment %}
+{%- comment -%}
+Course-level documents first, unheaded: the syllabus and the README are not a section, and
+keying them by the repo they sit in listed each of them once per content repo.
+{%- endcomment -%}
+{% assign docs = site.data.materials.documents %}
+{% if docs and docs.size > 0 %}
+<ul class="course-documents">
+{% for doc in docs %}
+  <li><a href="{{ doc.url }}">{{ doc.name }}</a></li>
+{% endfor %}
+</ul>
+{% endif %}
+
+{% assign sections = site.data.materials.sections %}
+{% if sections and sections.size > 0 %}
+<ul id="archive">
+{% for section in sections %}
+<li class="archiveposturl" style="background: transparent">
+  <details {% if sections.size <= 4 %}open{% endif %}>
+    <summary style="cursor: pointer;">
+      <span style="font-weight: bold;">{{ section.name }}</span>
+      <span style="opacity: 0.7;"> &mdash; {{ section.files }} file{% unless section.files == 1 %}s{% endunless %}</span>
+    </summary>
+    <ul>
+      {% for entry in section.entries %}
+        {% include materials_entry.html entry=entry %}
+      {% endfor %}
+    </ul>
+  </details>
+</li>
+{% endfor %}
+</ul>
+{% elsif docs == nil or docs.size == 0 %}
+<p>Nothing has been released to this cohort yet.</p>
+{% endif %}
