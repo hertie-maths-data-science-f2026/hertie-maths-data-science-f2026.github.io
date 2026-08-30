@@ -6,8 +6,9 @@
 name: Deploy course website
 
 on:
+  # A site repo has one branch, whichever it was born with: older sites are on `master`.
   push:
-    branches: [main]
+    branches: [main, master]
   # Dispatched by dsl-jekyll-theme when the shared theme changes, with a monthly backstop
   # in case a dispatch is missed.
   repository_dispatch:
