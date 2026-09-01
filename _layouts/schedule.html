@@ -44,6 +44,14 @@ layout: default
             {% when "exam" %}{% include schedule_row_exam.html event=event %}
             {% when "special_event" %}{% include schedule_row_special_event.html event=event %}
             {% when "term_date" %}{% include schedule_row_term_date.html event=event %}
+            {%- comment -%}
+            enrolment reuses the term-date row: same violet, same four cells, and the
+            two things it wanted of its own the include already parameterises - the
+            Event label (`event.name`) and whether to print a time (`event.hide_time`).
+            The ROW CLASS is built from `event.type` above, so `.table-row-enrolment`
+            still styles it independently of which include draws it.
+            {%- endcomment -%}
+            {% when "enrolment" %}{% include schedule_row_term_date.html event=event %}
             {% else %}
             <div class="col col-1" data-label="Event">{{ event.type | default: "Event" }}</div>
             <div class="col col-1-2" data-label="Date">{{ event.date | date: site.dateformat }}</div>
