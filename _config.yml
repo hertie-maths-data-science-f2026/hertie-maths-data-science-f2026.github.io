@@ -59,7 +59,7 @@ exclude:
   - SETUP-CHECKLIST.md
 
 # managed by the DSL course sync - rewritten on every run
-dateformat: "%m/%d/%Y"
+dateformat: "%d/%m/%Y"
 future: true
 
 # managed by the DSL course sync - rewritten on every run
