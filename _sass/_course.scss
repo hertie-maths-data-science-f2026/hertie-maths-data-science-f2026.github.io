@@ -46,9 +46,6 @@
     //   exam           #f0f1f2  label #5a5f66   grey
     //   special_event  #fbf2d5  label #7d6230   amber
     //   term_date      #e5dcf0  label #59468f   violet
-    //   enrolment      #e5dcf0  label #59468f   violet (term admin, like the term
-    //                                           boundaries - told apart by the
-    //                                           "Enrolment" label)
     //
     // All backgrounds sit at the same pale tonal level, so body text (#111) and
     // links keep >5:1 contrast on every row; each label clears 4.5:1 on its own
@@ -80,10 +77,6 @@
     }
 
     .table-row-term_date {
-        background-color: #e5dcf0;
-    }
-
-    .table-row-enrolment {
         background-color: #e5dcf0;
     }
 
