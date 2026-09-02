@@ -8,4 +8,4 @@ title: "Lab 5"
 unreleased: true
 links: []
 ---
-_**Materials for lab 5 are not yet released** - they will appear in [`materials/labs/05_lab`](https://github.com/hertie-maths-data-science-f2026/materials) when they are._
+_**Materials for lab 5 are not yet released** - they will appear in [`materials/labs/05_lab`](https://github.com/hertie-maths-data-science-f2026/materials/tree/main/labs) when they are._

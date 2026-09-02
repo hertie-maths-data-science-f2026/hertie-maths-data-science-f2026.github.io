@@ -16,6 +16,12 @@ reading_list: |2
   - Chapter 1 (p. 1-28)
   - Chapter 2 (p. 45-66)
   - Example 2.7.1, The Monty Hall Problem
-links: []
+links:
+    - url: https://github.com/hertie-maths-data-science-f2026/materials/blob/main/lectures/01_lecture/01_probability_theory.html
+      name: "lecture - 01_probability_theory.html"
+    - url: https://github.com/hertie-maths-data-science-f2026/materials/tree/main/lectures/01_lecture/01_probability_theory_files
+      name: "lecture - 01_probability_theory_files/ (141 files)"
+    - url: https://github.com/hertie-maths-data-science-f2026/materials/tree/main/lectures/01_lecture/media
+      name: "lecture - media/ (14 files)"
 ---
 
