@@ -3,12 +3,23 @@ SYSTEM-OWNED - do not edit. Written by the DSL course sync from templates/site/ 
 toolkit; every sync rewrites it.
 {%- endcomment -%}
 {%- comment -%}
-The Updates box announces new CONTENT only: released lecture and lab sessions,
-released assignments, and hand-written entries in _announcements. Display-only
-schedule rows (exams, special events, term dates) live in site.events and are
-deliberately left out - they are not news, and several carry no text to show.
+The Updates box announces content that has actually REACHED students: lecture and lab
+sessions whose materials shipped, assignments whose repos are handed out, and hand-written
+entries in _announcements. Display-only schedule rows (exams, special events, term dates)
+live in site.events and are deliberately left out - they are not news, and several carry
+no text to show.
+
+The release flags are what make that true. A session the plan names but whose files have
+not shipped is written with `unreleased: true`, and an assignment whose repos are not
+handed out with `handout_pending: true` (dsl_course/site.py) - and the WHOLE term is on
+the schedule from the day the plan is written. So an unfiltered box, sorted newest-first,
+announced the last week of term as "New Lab is up" before week one had happened. Filtered
+BEFORE the limit, not inside the loop: dropping a placeholder's bullet after the fact
+would leave the box showing one real update out of seven, or none at all.
 {%- endcomment -%}
-{%- assign all_events = site.lectures | concat: site.assignments -%}
+{%- assign released_sessions = site.lectures | where_exp: "entry", "entry.unreleased != true" -%}
+{%- assign released_assignments = site.assignments | where_exp: "entry", "entry.handout_pending != true" -%}
+{%- assign all_events = released_sessions | concat: released_assignments -%}
 {%- assign all_events = all_events | concat: site.announcements -%}
 {%- assign all_events_sorted = all_events | sort: 'date' | reverse -%}
 
