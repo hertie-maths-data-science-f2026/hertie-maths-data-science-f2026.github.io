@@ -2,7 +2,7 @@
 # as its repo has it. Edit nothing here; it is rewritten on every sync.
 sections:
   - name: "labs"
-    files: 2
+    files: 4
     entries:
       - name: "01_lab/"
         url: https://github.com/hertie-maths-data-science-f2026/materials/tree/main/labs/01_lab
@@ -12,6 +12,14 @@ sections:
             url: https://github.com/hertie-maths-data-science-f2026/materials/blob/main/labs/01_lab/lab1_handout.pdf
           - name: "lab1_student.ipynb"
             url: https://github.com/hertie-maths-data-science-f2026/materials/blob/main/labs/01_lab/lab1_student.ipynb
+      - name: "02_lab/"
+        url: https://github.com/hertie-maths-data-science-f2026/materials/tree/main/labs/02_lab
+        files: 2
+        entries:
+          - name: "lab2_handout.pdf"
+            url: https://github.com/hertie-maths-data-science-f2026/materials/blob/main/labs/02_lab/lab2_handout.pdf
+          - name: "lab2_student.ipynb"
+            url: https://github.com/hertie-maths-data-science-f2026/materials/blob/main/labs/02_lab/lab2_student.ipynb
   - name: "lectures"
     files: 156
     entries:
