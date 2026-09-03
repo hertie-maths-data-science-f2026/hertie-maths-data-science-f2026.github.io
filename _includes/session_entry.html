@@ -13,12 +13,13 @@ identically. The order is the same everywhere and is the point of this file exis
                 crowded the title and made the description read as an afterthought.
 
 `include.section` is the singular section noun ("lecture", "lab", "reading") that selects
-which of the entry's links belong to this page, matching the `<section> - <file>` names
-site.py writes. Passed bare rather than as the full `"lecture - "` prefix so the include tag
-carries no quoted spaces.
+which of the entry's links belong to this page, matched against each link's own `section`
+field. A row carries the links of every section that released into it, so the filter is
+what keeps a reading off the Lectures page. It used to be a prefix on the link NAME, which
+had to be stripped again here for display and was showing raw wherever something rendered
+a name without stripping it.
 {%- endcomment -%}
 {%- assign entry = include.entry -%}
-{%- assign label = include.section | append: " - " -%}
 <h2 class="session-title">{% include session_title.html lecture=entry %}</h2>
 
 {%- if entry.description %}
@@ -29,8 +30,8 @@ carries no quoted spaces.
 
 {%- capture links -%}
 {%- for link in entry.links -%}
-{%- if link.name contains label -%}
-<li><a href="{% if link.url contains '://' %}{{ link.url }}{% else %}{{ link.url | prepend: site.baseurl }}{% endif %}">{{ link.name | remove_first: label }}</a></li>
+{%- if link.section == include.section -%}
+<li><a href="{% if link.url contains '://' %}{{ link.url }}{% else %}{{ link.url | prepend: site.baseurl }}{% endif %}">{{ link.name }}</a></li>
 {%- endif -%}
 {%- endfor -%}
 {%- endcapture -%}

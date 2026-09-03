@@ -8,7 +8,7 @@ layout: page
 
 {% comment %}
 Labs are their own entries in the _lectures collection (`type: lab`), each carrying its
-"lab - ..." links. Same block as Lectures and Readings.
+links whose `section` is "lab". Same block as Lectures and Readings.
 {% endcomment %}
 {% assign entries = site.lectures | where: "type", "lab" | sort: 'date' %}
 {% for entry in entries %}
