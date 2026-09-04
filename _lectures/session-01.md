@@ -16,16 +16,6 @@ reading_list: |2
   - Chapter 1 (p. 1-28)
   - Chapter 2 (p. 45-66)
   - Example 2.7.1, The Monty Hall Problem
-
-  ### Session 1 readings
-
-  #### Required Readings
-
-  [Blitzstein and Hwang](http://probabilitybook.net/)
-
-  - Chapter 1 (p. 1-28)
-  - Chapter 2 (p. 45-66)
-  - Example 2.7.1, The Monty Hall Problem
 links:
     - url: https://github.com/hertie-maths-data-science-f2026/materials/blob/main/lectures/01_lecture/01_probability_theory.html
       name: "01_probability_theory.html"
