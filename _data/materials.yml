@@ -460,7 +460,7 @@ sections:
           - name: "01_probability_theory.html"
             url: https://github.com/hertie-maths-data-science-f2026/materials/blob/main/lectures/01_lecture/01_probability_theory.html
   - name: "readings"
-    files: 1
+    files: 3
     entries:
       - name: "01_session-1/"
         url: https://github.com/hertie-maths-data-science-f2026/materials/tree/main/readings/01_session-1
@@ -468,3 +468,15 @@ sections:
         entries:
           - name: "READINGS.md"
             url: https://github.com/hertie-maths-data-science-f2026/materials/blob/main/readings/01_session-1/READINGS.md
+      - name: "01_week-1/"
+        url: https://github.com/hertie-maths-data-science-f2026/materials/tree/main/readings/01_week-1
+        files: 1
+        entries:
+          - name: "READINGS.md"
+            url: https://github.com/hertie-maths-data-science-f2026/materials/blob/main/readings/01_week-1/READINGS.md
+      - name: "02_week-2/"
+        url: https://github.com/hertie-maths-data-science-f2026/materials/tree/main/readings/02_week-2
+        files: 1
+        entries:
+          - name: "READINGS.md"
+            url: https://github.com/hertie-maths-data-science-f2026/materials/blob/main/readings/02_week-2/READINGS.md

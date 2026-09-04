@@ -6,8 +6,23 @@ type: lecture
 date: 2026-09-08T08:00:00
 title: "Session 2"
 subtitle: "Random Variables and Their Distributions"
-unreleased: true
-readings_pending: true
+reading_list: |2
+  ### Session 2 readings
+
+  #### Required Readings
+
+  [Blitzstein and Hwang](http://probabilitybook.net/)
+
+  - Chapter 3 (p. 103-133)
+
+  #### Additional Readings
+
+  Will Kurt Bayesian Statistics the Fun Way
+
+  - Chapter 3 (p. 21 - 31)
+  - Chapter 4 (p. 33 - 43)
+  - Chapter 5 (p. 45 - 55)
+  - Chapter 6 (p. 59 - 65)
 links: []
 ---
-_**Materials for session 2 are not yet released** - they will appear in [`materials/lectures/02_lecture`](https://github.com/hertie-maths-data-science-f2026/materials/tree/main/lectures), [`materials/readings/02_week-2`](https://github.com/hertie-maths-data-science-f2026/materials/tree/main/readings) when they are._
+
