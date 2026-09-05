@@ -6,8 +6,19 @@ type: lecture
 date: 2026-09-29T08:00:00
 title: "Session 5"
 subtitle: "Continuous Random Variables and Limit Theorems"
-unreleased: true
-readings_pending: true
+reading_list: |2
+  ### Session 5 readings
+
+  #### Required Readings
+
+  [Blitzstein and Hwang](http://probabilitybook.net/)
+
+  - Chapter 5.1 - 5.2 (p. 213 - 223)
+  - Chapter 5.4 - 5.5 (p. 231 - 244)
+  - Chapter 7 (p. 312 - 320, stop before Example 7.1.25)
+  - Chapter 7.2 - 7.3 (p. 324 - 332)
+  - Chapter 7.5 (p. 337 - 343)
+  - Chapter 10.2 - 10.3 (p. 467 - 476)
 links: []
 ---
-_**Materials for session 5 are not yet released** - they will appear in [`materials/lectures/05_lecture`](https://github.com/hertie-maths-data-science-f2026/materials/tree/main/lectures), [`materials/readings/05_week-5`](https://github.com/hertie-maths-data-science-f2026/materials/tree/main/readings) when they are._
+

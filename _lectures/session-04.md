@@ -6,8 +6,24 @@ type: lecture
 date: 2026-09-22T08:00:00
 title: "Session 4"
 subtitle: "Calculus for Data Science"
-unreleased: true
-readings_pending: true
+reading_list: |2
+  ### Session 4 readings
+
+  #### Required Readings
+
+  Herman and Strang, Calculus Volume 1
+
+  - Chapter 3.3 (p. 247 - 260)
+  - Chapter 3.4 (p. 270 - 272)
+  - Chapter 3.6 (p. 287 - 289)
+  - Chapter 3.9 (p. 323 - 327)
+  - Chapter 4.3 (p. 366 - 375)
+  - Chapter 4.5 (p. 390 - 402)
+
+  Herman and Strang, Calculus Volume 2
+
+  - Chapter 6.1 (p. 470 - 477)
+  - Chapter 6.3 (p. 497 - 511)
 links: []
 ---
-_**Materials for session 4 are not yet released** - they will appear in [`materials/lectures/04_lecture`](https://github.com/hertie-maths-data-science-f2026/materials/tree/main/lectures), [`materials/readings/04_week-4`](https://github.com/hertie-maths-data-science-f2026/materials/tree/main/readings) when they are._
+

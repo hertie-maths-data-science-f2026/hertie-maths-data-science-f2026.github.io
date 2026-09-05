@@ -6,8 +6,17 @@ type: lecture
 date: 2026-09-15T08:00:00
 title: "Session 3"
 subtitle: "Expectation and Joint Distributions"
-unreleased: true
-readings_pending: true
+reading_list: |2
+  ### Session 3 readings
+
+  #### Required Readings
+
+  [Blitzstein and Hwang](http://probabilitybook.net/)
+
+  - Chapter 4.1 - 4.3 (p. 149 - 163)
+  - Chapter 4.5 - 4.7 (p. 170 - 181)
+  - Chapter 7.1 (p. 303 - 312)
+  - Chapter 7.4 (p. 332 - 337)
 links: []
 ---
-_**Materials for session 3 are not yet released** - they will appear in [`materials/lectures/03_lecture`](https://github.com/hertie-maths-data-science-f2026/materials/tree/main/lectures), [`materials/readings/03_week-3`](https://github.com/hertie-maths-data-science-f2026/materials/tree/main/readings) when they are._
+
