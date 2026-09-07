@@ -20,6 +20,9 @@ links:
     - url: https://github.com/hertie-maths-data-science-f2026/materials/blob/main/lectures/01_lecture/01_probability_theory.html
       name: "01_probability_theory.html"
       section: "lecture"
+    - url: https://github.com/hertie-maths-data-science-f2026/materials/blob/main/lectures/01_lecture/01_probability_theory.pdf
+      name: "01_probability_theory.pdf"
+      section: "lecture"
     - url: https://github.com/hertie-maths-data-science-f2026/materials/tree/main/lectures/01_lecture/01_probability_theory_files
       name: "01_probability_theory_files/ (141 files)"
       section: "lecture"

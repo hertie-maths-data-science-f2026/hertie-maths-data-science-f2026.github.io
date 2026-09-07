@@ -13,11 +13,11 @@ sections:
           - name: "lab1_student.ipynb"
             url: https://github.com/hertie-maths-data-science-f2026/materials/blob/main/labs/01_lab/lab1_student.ipynb
   - name: "lectures"
-    files: 156
+    files: 157
     entries:
       - name: "01_lecture/"
         url: https://github.com/hertie-maths-data-science-f2026/materials/tree/main/lectures/01_lecture
-        files: 156
+        files: 157
         entries:
           - name: "01_probability_theory_files/"
             url: https://github.com/hertie-maths-data-science-f2026/materials/tree/main/lectures/01_lecture/01_probability_theory_files
@@ -459,6 +459,8 @@ sections:
                             url: https://github.com/hertie-maths-data-science-f2026/materials/blob/main/lectures/01_lecture/media/videos/garden_to_peeble2/720p30/GardenToPeeble2.mp4
           - name: "01_probability_theory.html"
             url: https://github.com/hertie-maths-data-science-f2026/materials/blob/main/lectures/01_lecture/01_probability_theory.html
+          - name: "01_probability_theory.pdf"
+            url: https://github.com/hertie-maths-data-science-f2026/materials/blob/main/lectures/01_lecture/01_probability_theory.pdf
   - name: "readings"
     files: 5
     entries:
