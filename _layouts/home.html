@@ -51,6 +51,7 @@ layout: default
                     <p>{{ins.name}}</p>
                     {% endif %}
                     {% if ins.title %}<p class="profile-title">{{ ins.title }}</p>{% endif %}
+                    {% if ins.email %}<p><a href="mailto:{{ ins.email }}">{{ ins.email }}</a></p>{% endif %}
                 </div>
                 {% endfor %}
             </div>
@@ -68,6 +69,7 @@ layout: default
                     <p>{{ta.name}}</p>
                     {% endif %}
                     {% if ta.title %}<p class="profile-title">{{ ta.title }}</p>{% endif %}
+                    {% if ta.email %}<p><a href="mailto:{{ ta.email }}">{{ ta.email }}</a></p>{% endif %}
                 </div>
                 {% endfor %}
             </div>
