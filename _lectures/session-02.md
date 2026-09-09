@@ -23,6 +23,9 @@ reading_list: |2
   - Chapter 4 (p. 33 - 43)
   - Chapter 5 (p. 45 - 55)
   - Chapter 6 (p. 59 - 65)
-links: []
+links:
+    - url: https://github.com/hertie-maths-data-science-f2026/materials/blob/main/lectures/02_lecture/02_random_variables_and_their_distributions.pdf
+      name: "02_random_variables_and_their_distributions.pdf"
+      section: "lecture"
 ---
 

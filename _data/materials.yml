@@ -26,7 +26,7 @@ sections:
           - name: "lab2_student.ipynb"
             url: https://github.com/hertie-maths-data-science-f2026/materials/blob/main/labs/02_lab/lab2_student.ipynb
   - name: "lectures"
-    files: 157
+    files: 158
     entries:
       - name: "01_lecture/"
         url: https://github.com/hertie-maths-data-science-f2026/materials/tree/main/lectures/01_lecture
@@ -474,6 +474,12 @@ sections:
             url: https://github.com/hertie-maths-data-science-f2026/materials/blob/main/lectures/01_lecture/01_probability_theory.html
           - name: "01_probability_theory.pdf"
             url: https://github.com/hertie-maths-data-science-f2026/materials/blob/main/lectures/01_lecture/01_probability_theory.pdf
+      - name: "02_lecture/"
+        url: https://github.com/hertie-maths-data-science-f2026/materials/tree/main/lectures/02_lecture
+        files: 1
+        entries:
+          - name: "02_random_variables_and_their_distributions.pdf"
+            url: https://github.com/hertie-maths-data-science-f2026/materials/blob/main/lectures/02_lecture/02_random_variables_and_their_distributions.pdf
   - name: "readings"
     files: 5
     entries:
