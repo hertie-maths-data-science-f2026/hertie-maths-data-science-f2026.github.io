@@ -26,10 +26,18 @@ WHEN to submit is the one that should say WHERE. `repo_name` is always there (th
 the plan's); the link only once the assignment has handed out and there is something at the
 other end of it. `escape`, because the shape's `<your-handle>` would otherwise read as a
 tag and vanish.
+
+`submit_external` (site.py, off the assignment's own grading_config.yml) is an assignment
+handed in off GitHub - Moodle, Kaggle, in class - whose repo carries the brief and nothing
+else. This row said "Submit via" for those too, which is the one thing the repo is not for.
 {%- endcomment -%}
 <div class="col col-4 markdown-content" data-label="Details">
     {%- if include.event.repo_name -%}
+    {%- if include.event.submit_external -%}
+    Handed in outside GitHub - the brief is in
+    {%- else -%}
     Submit via
+    {%- endif -%}
     {%- if include.event.repo_url %} <a href="{{ include.event.repo_url }}"><code>{{ include.event.repo_name | escape }}</code></a>
     {%- else %} <code>{{ include.event.repo_name | escape }}</code>
     {%- endif -%}

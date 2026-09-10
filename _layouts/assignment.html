@@ -47,14 +47,25 @@ title: page.title
     {%- endcomment -%}
     {% if page.repo_url %}
     <div class="callout">
-      <p><a class="btn" href="{{ page.repo_url }}">Open your private submission repo on GitHub</a></p>
+      <p><a class="btn" href="{{ page.repo_url }}">Open your private {% unless page.submit_external %}submission {% endunless %}repo on GitHub</a></p>
       {%- comment -%}
       `escape`: `repo_name` is a SHAPE, `<slug>-<your-handle>`, and those angle brackets
       make `<your-handle>` an unknown HTML tag that the browser silently drops - so the
       name rendered as `assignment-1-` with the useful half missing.
+
+      `submit_external` (site.py, off the assignment's own grading_config.yml): the work is
+      handed in off GitHub - Moodle, Kaggle, in class - and the repo carries the brief and
+      nothing else. The sentence below used to print off `repo_url` alone, so a Moodle
+      assignment told the whole cohort that a push to `main` was its submission. Where the
+      work actually goes is the brief's to say: the toolkit is never told.
       {%- endcomment -%}
+      {% if page.submit_external %}
+      <p>Handed in outside GitHub - <code>{{ page.repo_name | escape }}</code> carries the brief.
+      See it for where to submit.</p>
+      {% else %}
       <p>Your work goes in <code>{{ page.repo_name | escape }}</code>. Clone it, commit as you go, and
       push to <code>main</code> - that push is your submission.</p>
+      {% endif %}
     </div>
     {% endif %}
 
@@ -95,8 +106,13 @@ title: page.title
   {%- endcomment -%}
   {% if page.repo_url %}
   <p class="post-meta">
+    {% if page.submit_external %}
+    Handed in outside GitHub - see
+    <a href="{{ page.repo_url }}"><code>{{ page.repo_name | escape }}</code></a> for where to submit.
+    {% else %}
     Submit by pushing to <code>main</code> in
     <a href="{{ page.repo_url }}"><code>{{ page.repo_name | escape }}</code></a>.
+    {% endif %}
   </p>
   {% endif %}
 

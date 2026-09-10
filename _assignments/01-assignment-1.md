@@ -8,6 +8,7 @@ title: "Assignment 1"
 subtitle: "Introduce Yourself"
 repo_url: "https://github.com/orgs/hertie-maths-data-science-f2026/repositories?q=assignment-1-"
 repo_name: "assignment-1-<your-handle>"
+submit_external: true
 due_event:
     type: due
     date: 2026-09-20T23:59:00
@@ -15,6 +16,7 @@ due_event:
     subtitle: "Introduce Yourself"
     repo_url: "https://github.com/orgs/hertie-maths-data-science-f2026/repositories?q=assignment-1-"
     repo_name: "assignment-1-<your-handle>"
+    submit_external: true
 ---
 {% raw %}
 *Math for Data Science · Fall 2026*

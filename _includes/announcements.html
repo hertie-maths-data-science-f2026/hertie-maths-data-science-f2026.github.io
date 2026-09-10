@@ -9,6 +9,12 @@ entries in _announcements. Display-only schedule rows (exams, special events, te
 live in site.events and are deliberately left out - they are not news, and several carry
 no text to show.
 
+The one exception is a row the generator has flagged `announce: true` - currently the
+"Cohort archived" row, for the fortnight before the whole cohort goes read-only. That IS
+news, and it is the only warning a student gets. The flag is written by dsl_course/site.py
+only inside its window and the collection is rewritten on every sync, so the bullet
+disappears on its own.
+
 The release flags are what make that true. A session the plan names but whose files have
 not shipped is written with `unreleased: true`, and an assignment whose repos are not
 handed out with `handout_pending: true` (dsl_course/site.py) - and the WHOLE term is on
@@ -20,6 +26,8 @@ would leave the box showing one real update out of seven, or none at all.
 {%- assign released_sessions = site.lectures | where_exp: "entry", "entry.unreleased != true" -%}
 {%- assign released_assignments = site.assignments | where_exp: "entry", "entry.handout_pending != true" -%}
 {%- assign all_events = released_sessions | concat: released_assignments -%}
+{%- assign archiving = site.events | where_exp: "entry", "entry.announce == true" -%}
+{%- assign all_events = all_events | concat: archiving -%}
 {%- assign all_events = all_events | concat: site.announcements -%}
 {%- assign all_events_sorted = all_events | sort: 'date' | reverse -%}
 
