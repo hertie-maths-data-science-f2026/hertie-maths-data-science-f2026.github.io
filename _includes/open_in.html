@@ -1,0 +1,295 @@
+{%- comment -%}
+SYSTEM-OWNED - do not edit. Written by the DSL course sync from templates/site/ in the
+toolkit; every sync rewrites it.
+{%- endcomment -%}
+{% comment %}
+The quiet set-up line, and the one script on this site: the `online` and `local` buttons
+that finish the row of controls beside a file link, opening the same file in the student's
+own fork or their own clone.
+
+Half of that row is written in Liquid, by `file_link.html`, which knows the URLs without
+being told: `source` (the file's home on GitHub) and, where the site hosts a rendered copy,
+`render`. The other half cannot be: it depends on WHO is reading, and the settings that say
+so live in the reader's own browser (/profile/ writes them), because the site is one public
+page for the whole cohort. No profile, no `online` and no `local`.
+
+`_layouts/default.html` belongs to the shared theme, so there is no <head> to put this in:
+a body-inline script is the only place it can go, which is why it is small and loads
+nothing, and why it is included once per page rather than once per list.
+
+It parses the SOURCE GitHub URL off the rendered page - the shape dsl_course/site.py
+`_gh_url` writes, so the two change together - rather than being handed a parallel set of
+fields to keep true. The one thing no URL carries is an assignment's repo SHAPE, which
+arrives as a data attribute: reading it off the sentence that prints it would break the
+day that sentence is reworded.
+{% endcomment %}
+<div id="dsl-open-in" class="open-in-setup"
+     data-org="{{ site.github_org }}"
+     data-repo-name="{{ page.repo_name | escape }}">
+{%- unless page.url == '/profile/' -%}
+<p class="open-in-line">Open files in your local copy &mdash; <a href="{{ '/profile/' | prepend: site.baseurl }}">set up &rarr;</a></p>
+{%- endunless -%}
+</div>
+<script>
+(function () {
+  if (window.dslOpenIn) { return; }
+
+  var KEYS = {
+    handle: "dsl.handle",
+    materials: "dsl.folder.materials",
+    assignments: "dsl.folder.assignments",
+    editor: "dsl.editor",
+    /* Not a setting - a fact about this browser: /profile/ step 2 has been taken, so its
+       step 3 may offer to clone a fork that now exists. */
+    forked: "dsl.forked"
+  };
+  /* The one editor whose file scheme is worth presetting - see /profile/. */
+  var VSCODE = "vscode://file/{path}";
+  /* The shape _gh_url writes: github.com/<org>/<repo>/(blob|tree)/<branch>/<path>. */
+  var SOURCE = /^https?:\/\/github\.com\/([^\/?#]+)\/([^\/?#]+)\/(blob|tree)\/([^\/?#]+)\/([^?#]*)$/;
+  /* Formats no editor and no browser IDE opens usefully: `online` and `local` would be two
+     dead buttons beside them. They still get `source`, and a pdf still gets `render` -
+     those are Liquid's, and a pdf is exactly the thing worth reading rendered. */
+  var SKIP = /\.(pdf|pptx|docx|xlsx|zip)$/i;
+  /* Only lists of released FILES, and never a button already in the row - those point at
+     the very URL this reads, not at a second file. Deliberately not the Updates box (a
+     sentence, not a list) nor the schedule table (a timetable), where a row of extra
+     buttons per line would bury the line itself. */
+  var SCOPE = ".session-files a[href]:not(.file-btns a), " +
+              "#archive a[href]:not(.file-btns a), " +
+              ".course-documents a[href]:not(.file-btns a)";
+
+  function read(name) {
+    /* Private windows and blocked site data throw on access, not on use. */
+    try { return (window.localStorage.getItem(KEYS[name]) || "").trim(); } catch (e) { return ""; }
+  }
+
+  function save(name, value) {
+    try {
+      if (value) { window.localStorage.setItem(KEYS[name], value); }
+      else { window.localStorage.removeItem(KEYS[name]); }
+    } catch (e) { /* Nothing persists this visit; the page still works. */ }
+  }
+
+  function profile() {
+    return {
+      handle: read("handle"),
+      materials: read("materials"),
+      /* The two defaults, once and here: a blank assignments folder means the same
+         folder, and a blank editor means the preset. */
+      assignments: read("assignments") || read("materials"),
+      editor: read("editor") || VSCODE
+    };
+  }
+
+  /* A new tab for anything the BROWSER can open, and never for a custom scheme: a
+     `vscode://` link with target="_blank" hands the URL to the handler and leaves an empty
+     tab sitting there for the reader to close. */
+  function newTab(a, href) {
+    if (/^https?:/i.test(href)) {
+      a.setAttribute("target", "_blank");
+      a.setAttribute("rel", "noopener");
+    } else {
+      a.removeAttribute("target");
+      a.removeAttribute("rel");
+    }
+  }
+
+  /* --------------------------------------------------------------------------------
+     Where a copy of a file lives. ONE block, because this is the whole of what the
+     control knows; everything below it is DOM. With handle "jane", org "hertie-x",
+     materials folder "/Users/jane/hertie" and the VS Code preset:
+
+       source   https://github.com/hertie-x/materials/blob/main/labs/01/lab.ipynb
+       online   https://github.dev/jane/materials/blob/main/labs/01/lab.ipynb
+       local    vscode://file/Users/jane/hertie/materials/labs/01/lab.ipynb
+
+       folder "/Users/jane/hertie/materials"  same local URL - a folder already naming
+                                              the repo does not get it twice
+       folder "C:\Users\jane\hertie"          vscode://file/C:/Users/jane/hertie/...
+       source .../tree/main/labs/01           both segments open the FOLDER
+       assignment repo "assignment-1-jane"    https://github.dev/hertie-x/assignment-1-jane
+                                              vscode://file/Users/jane/hw/assignment-1-jane
+
+     `{path}` is the full path WITHOUT its leading slash, because the template supplies
+     the separator - which is the only spelling that works for a Windows drive letter as
+     well. An editor template that does not end `/{path}` or `:{path}` therefore cannot
+     produce a path at all, and gets no "local" button.
+     -------------------------------------------------------------------------------- */
+
+  function encodeSegment(s) {
+    /* A drive letter's colon is legal in a URI path and encodeURIComponent escapes it. */
+    return encodeURIComponent(s).replace(/%3A/gi, ":");
+  }
+
+  function decodeSegment(s) {
+    try { return decodeURIComponent(s); } catch (e) { return s; }
+  }
+
+  function localUrl(editor, folder, repo, path) {
+    if (!folder) { return ""; }
+    if (editor.indexOf("/{path}") < 0 && editor.indexOf(":{path}") < 0) { return ""; }
+    var parts = folder.replace(/\\/g, "/").split("/");
+    var i;
+    for (i = parts.length - 1; i >= 0; i--) {
+      if (!parts[i]) { parts.splice(i, 1); }
+    }
+    if (repo && parts[parts.length - 1] !== repo) { parts.push(repo); }
+    var tail = (path || "").split("/");
+    for (i = 0; i < tail.length; i++) {
+      if (tail[i]) { parts.push(decodeSegment(tail[i])); }
+    }
+    var out = [];
+    for (i = 0; i < parts.length; i++) { out.push(encodeSegment(parts[i])); }
+    return editor.replace("{path}", out.join("/"));
+  }
+
+  function onlineUrl(owner, repo, tail) {
+    /* github.dev is VS Code in the browser, on whatever repo the path names - so the
+       owner is the student (their fork) or the cohort org (their submission repo). */
+    return "https://github.dev/" + encodeSegment(owner) + "/" + encodeSegment(repo) + tail;
+  }
+
+  /* -------------------------------------------------------------------------------- */
+
+  function button(href, label, title, cls) {
+    var a = document.createElement("a");
+    a.className = cls;
+    a.setAttribute("href", href);
+    a.setAttribute("title", title);
+    newTab(a, href);
+    a.appendChild(document.createTextNode(label));
+    return a;
+  }
+
+  function decorateFiles(root, me) {
+    var org = root.getAttribute("data-org");
+    var links = document.querySelectorAll(SCOPE);
+    for (var i = 0; i < links.length; i++) {
+      var a = links[i];
+      if (a.getAttribute("data-dsl-open-in")) { continue; }
+      /* A published file's NAME opens the site's own hosted copy, so the GitHub URL is
+         the `source` button that file_link.html puts immediately after it. A directory in
+         the All Materials tree has no button row at all - its name IS the GitHub URL. */
+      var after = a.nextElementSibling;
+      var row = (after && after.matches(".file-btns")) ? after : null;
+      var source = row ? row.querySelector("a[href]") : null;
+      var m = SOURCE.exec((source || a).getAttribute("href") || "");
+      if (!m || m[1].toLowerCase() !== org.toLowerCase()) { continue; }
+      var what = a.textContent.trim() || "this file";
+      var online = (me.handle && !SKIP.test(m[5]))
+        ? onlineUrl(me.handle, m[2], "/" + m[3] + "/" + m[4] + "/" + m[5])
+        : "";
+      var local = SKIP.test(m[5]) ? "" : localUrl(me.editor, me.materials, m[2], m[5]);
+      if (!online && !local) { continue; }
+      a.setAttribute("data-dsl-open-in", "1");
+      if (!row) {
+        row = document.createElement("span");
+        row.className = "file-btns";
+        a.parentNode.insertBefore(row, a.nextSibling);
+      }
+      if (online) {
+        row.appendChild(button(online, "online",
+          "Edit " + what + " in your fork, in the browser", "file-btn"));
+      }
+      if (local) {
+        row.appendChild(button(local, "local",
+          "Open " + what + " in your editor", "file-btn"));
+      }
+    }
+  }
+
+  /* The student's own repo for an assignment, out of the SHAPE the page carries. A GROUP
+     assignment is named for the team (`<slug>-<your-team>`), which no browser can know, so
+     it gets nothing back and the page keeps what it rendered. */
+  function ownRepo(shape, handle) {
+    if (!handle || !shape || shape.indexOf("<your-handle>") < 0) { return ""; }
+    return shape.replace("<your-handle>", handle);
+  }
+
+  /* Everything on the page that names the repo by its SHAPE, or points at the org's
+     filtered repo list because the page could not know which repo was the reader's. Once
+     it can, the shape becomes the name and the list becomes the repo itself. Both are
+     marked in the layout rather than matched on the prose around them, which is reworded.
+     */
+  function resolveRepo(org, repo) {
+    var i;
+    var named = document.querySelectorAll("[data-dsl-repo]");
+    for (i = 0; i < named.length; i++) {
+      named[i].textContent = repo;
+    }
+    var href = "https://github.com/" + encodeSegment(org) + "/" + encodeSegment(repo);
+    var linked = document.querySelectorAll("[data-dsl-repo-url]");
+    for (i = 0; i < linked.length; i++) {
+      linked[i].setAttribute("href", href);
+      newTab(linked[i], href);
+    }
+  }
+
+  function decorateAssignment(root, me) {
+    /* ONE assignment's page, and the resolve below takes the whole document: the callout
+       and the closing line are far apart and both name the repo. Only an assignment page
+       carries `data-repo-name`, so everywhere else there is no repo to resolve and this
+       returns at once. */
+    var org = root.getAttribute("data-org");
+    var repo = ownRepo(root.getAttribute("data-repo-name"), me.handle);
+    if (!repo) { return; }
+    var btn = document.querySelector(".callout a.btn");
+    if (!btn) { return; }
+    resolveRepo(org, repo);
+    /* Outlined, beside the solid one: the same destinations a file row offers, but full
+       size here because this page has one repo rather than a list of files - and
+       secondary, because the repo on GitHub is still the thing to open first. Clone leads
+       them: this is the repo a student is least likely to have yet. */
+    var url = "https://github.com/" + encodeSegment(org) + "/" + encodeSegment(repo);
+    var offers = [
+      [me.editor === VSCODE ? "vscode://vscode.git/clone?url=" + encodeURIComponent(url) : "",
+       "Clone", "Clone " + repo + " in VS Code"],
+      [onlineUrl(org, repo, ""), "Edit online", "Edit " + repo + " in the browser"],
+      [localUrl(me.editor, me.assignments, repo, ""), "Open locally",
+       "Open " + repo + " in your editor"]
+    ];
+    var at = btn;
+    for (var i = 0; i < offers.length; i++) {
+      if (!offers[i][0]) { continue; }
+      var el = button(offers[i][0], offers[i][1], offers[i][2], "btn btn--ghost");
+      btn.parentNode.insertBefore(el, at.nextSibling);
+      at = el;
+    }
+  }
+
+  function ready(fn) {
+    if (document.readyState === "loading") { document.addEventListener("DOMContentLoaded", fn); }
+    else { fn(); }
+  }
+
+  var root = document.getElementById("dsl-open-in");
+  var me = profile();
+  try {
+    /* Synchronously, while the rest of the page is still parsing: the line sits directly
+       above this script, and localStorage answers at once, so a reader with a profile
+       never sees it flash up and go. */
+    var line = root && root.querySelector(".open-in-line");
+    if (line && (me.handle || me.materials)) { line.parentNode.removeChild(line); }
+  } catch (e) { /* The line is a link to a page that works: leaving it costs nothing. */ }
+
+  window.dslOpenIn = {
+    profile: profile,
+    stored: read,
+    save: save,
+    localUrl: localUrl,
+    newTab: newTab,
+    VSCODE: VSCODE,
+    ready: ready
+  };
+
+  if (root && (me.handle || me.materials)) {
+    ready(function () {
+      try {
+        decorateFiles(root, me);
+        decorateAssignment(root, me);
+      } catch (e) { /* Only ever ADDS nodes: a failure leaves the page as it was. */ }
+    });
+  }
+})();
+</script>

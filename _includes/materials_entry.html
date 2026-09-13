@@ -3,16 +3,20 @@ SYSTEM-OWNED - do not edit. Written by the DSL course sync from templates/site/ 
 toolkit; every sync rewrites it.
 {%- endcomment -%}
 {% comment %}
-One node of the All Materials tree - a file (a plain GitHub link) or a directory (its name
-links straight to its GitHub tree, and the arrow beside it opens its children in the page,
-closed by default). Includes ITSELF for a directory's children.
+One node of the All Materials tree - a file (through `file_link.html`, so it carries the
+same row of buttons as every other file on the site) or a directory (its name links straight
+to its GitHub tree, and the arrow beside it opens its children in the page, closed by
+default). Includes ITSELF for a directory's children.
 
 The one rule, learned by breaking every cohort site that had a nested release: read the node
 as `include.entry` throughout, and never copy it into a local name with an assign or capture
 tag. Both write to Liquid's OUTERMOST scope, so a recursive call overwrites its own caller's
 node, never reaches a leaf, and Liquid aborts the whole page with "Nesting too deep" on data
 three levels deep. `include.entry` is scoped per invocation, which is why this works. That
-also means the file-count span below stays duplicated rather than captured.
+also means the file-count span below stays duplicated rather than captured, and that a
+leaf's fields are passed to `file_link.html` inline. That include carries the same rule -
+no assign, no capture - for exactly this reason. A directory is not sent through it: what
+its name opens is a GitHub listing, which never has a hosted copy.
 {% endcomment %}
 <li>
   {% if include.entry.entries.size > 0 %}
@@ -28,6 +32,6 @@ also means the file-count span below stays duplicated rather than captured.
     </ul>
   </details>
   {% else %}
-  <a href="{{ include.entry.url }}">{{ include.entry.name }}</a>{% if include.entry.files %} <span style="opacity: 0.7;">({{ include.entry.files }} file{% unless include.entry.files == 1 %}s{% endunless %})</span>{% endif %}
+  {% include file_link.html name=include.entry.name url=include.entry.url view_url=include.entry.view_url %}{% if include.entry.files %} <span style="opacity: 0.7;">({{ include.entry.files }} file{% unless include.entry.files == 1 %}s{% endunless %})</span>{% endif %}
   {% endif %}
 </li>

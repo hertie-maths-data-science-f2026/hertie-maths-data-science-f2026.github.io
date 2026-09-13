@@ -28,6 +28,8 @@ title: page.title
   </header>
 
   <div>
+    {% include open_in.html %}
+
     {% if page.due_event %}
     {%- comment -%}
     The date lives on `due_event`, which is where site.py writes it and what the schedule's
@@ -47,7 +49,7 @@ title: page.title
     {%- endcomment -%}
     {% if page.repo_url %}
     <div class="callout">
-      <p><a class="btn" href="{{ page.repo_url }}">Open your private {% unless page.submit_external %}submission {% endunless %}repo on GitHub</a></p>
+      <p><a class="btn" data-dsl-repo-url target="_blank" rel="noopener" href="{{ page.repo_url }}">Open your private {% unless page.submit_external %}submission {% endunless %}repo on GitHub</a></p>
       {%- comment -%}
       `escape`: `repo_name` is a SHAPE, `<slug>-<your-handle>`, and those angle brackets
       make `<your-handle>` an unknown HTML tag that the browser silently drops - so the
@@ -59,11 +61,18 @@ title: page.title
       assignment told the whole cohort that a push to `main` was its submission. Where the
       work actually goes is the brief's to say: the toolkit is never told.
       {%- endcomment -%}
+      {%- comment -%}
+      `data-dsl-repo`: the repo SHAPE, and the one thing on the page that a reader with a
+      profile can be told exactly. open_in.html rewrites every one of these to the real
+      name (`assignment-1-jane`) and repoints every `data-dsl-repo-url` beside them at that
+      repo, so a student stops reading `<your-handle>` and substituting themselves. Marked
+      rather than matched on the prose, because the sentences around them are reworded.
+      {%- endcomment -%}
       {% if page.submit_external %}
-      <p>Handed in outside GitHub - <code>{{ page.repo_name | escape }}</code> carries the brief.
+      <p>Handed in outside GitHub - <code data-dsl-repo>{{ page.repo_name | escape }}</code> carries the brief.
       See it for where to submit.</p>
       {% else %}
-      <p>Your work goes in <code>{{ page.repo_name | escape }}</code>. Clone it, commit as you go, and
+      <p>Your work goes in <code data-dsl-repo>{{ page.repo_name | escape }}</code>. Clone it, commit as you go, and
       push to <code>main</code> - that push is your submission.</p>
       {% endif %}
     </div>
@@ -108,10 +117,10 @@ title: page.title
   <p class="post-meta">
     {% if page.submit_external %}
     Handed in outside GitHub - see
-    <a href="{{ page.repo_url }}"><code>{{ page.repo_name | escape }}</code></a> for where to submit.
+    <a data-dsl-repo-url target="_blank" rel="noopener" href="{{ page.repo_url }}"><code data-dsl-repo>{{ page.repo_name | escape }}</code></a> for where to submit.
     {% else %}
     Submit by pushing to <code>main</code> in
-    <a href="{{ page.repo_url }}"><code>{{ page.repo_name | escape }}</code></a>.
+    <a data-dsl-repo-url target="_blank" rel="noopener" href="{{ page.repo_url }}"><code data-dsl-repo>{{ page.repo_name | escape }}</code></a>.
     {% endif %}
   </p>
   {% endif %}

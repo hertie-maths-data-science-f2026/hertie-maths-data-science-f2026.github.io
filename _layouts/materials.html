@@ -6,6 +6,8 @@ layout: page
 
 {{ content }}
 
+{% include open_in.html %}
+
 {% comment %}
 All Materials - the catch-all index, generated into `_data/materials.yml` by the toolkit's
 site.py. Every OTHER page is curated: a row exists because the schedule named a session,
@@ -20,12 +22,16 @@ its header before editing. Sections are open by default when there are few enoug
 {%- comment -%}
 Course-level documents first, unheaded: the syllabus and the README are not a section, and
 keying them by the repo they sit in listed each of them once per content repo.
+
+Through `file_link.html`, like every other file on the site: these are index entries with
+the same three fields as any leaf of the tree below, and rendering them by hand is how the
+syllabus came to be the one document with no `render` button beside it.
 {%- endcomment -%}
 {% assign docs = site.data.materials.documents %}
 {% if docs and docs.size > 0 %}
 <ul class="course-documents">
 {% for doc in docs %}
-  <li><a href="{{ doc.url }}">{{ doc.name }}</a></li>
+  <li>{% include file_link.html name=doc.name url=doc.url view_url=doc.view_url %}</li>
 {% endfor %}
 </ul>
 {% endif %}

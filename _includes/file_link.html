@@ -1,0 +1,37 @@
+{%- comment -%}
+SYSTEM-OWNED - do not edit. Written by the DSL course sync from templates/site/ in the
+toolkit; every sync rewrites it.
+{%- endcomment -%}
+{%- comment -%}
+ONE file link, wherever a page shows one: a session row, the Updates box, the All Materials
+tree. Params: `name`, `url`, optional `view_url`, `title` and `inline`.
+
+The name is the quiet link it has always been - what a reader clicks - and after it comes
+the row of buttons: `source`, always, and `render` where the site hosts a copy a browser
+draws. `online` and `local` finish the row, appended by `_includes/open_in.html` once the
+reader has a profile; they are not here because they depend on WHO is reading, which a
+public page cannot know. The row is one span (`.file-btns`) so that all four sit together
+however many of them there are.
+
+`inline` is for a caller that already brackets the link: the Updates box renders each file
+as `[name]`, and a row of buttons inside a sentence would swamp it. Set it and the file gets
+what it always had there - a middle dot and the word `source`, and only where there is a
+hosted copy to tell apart from the name.
+
+`url` is the file on GitHub. `view_url` is the cohort site's own hosted copy, written by the
+sync only for a file the course published (publish.yml) that a browser renders - so the NAME
+opens the copy that renders, and `source` beside it keeps the file's own home one click
+away.
+
+Every button opens a new tab: they all leave the page the reader is working through, and
+`render` in particular is a deck or a pdf they will want beside the list, not instead of it.
+
+No `assign` and no `capture`: materials_entry.html includes this from inside its own
+recursion, and both write to Liquid's outermost scope. Hence the three-way `if` inside the
+href rather than one computed variable - and hence the site-relative case spelt out, since
+the public course site links `/public-materials/...`, which needs the baseurl.
+
+The file ends without a newline, and the comments either side trim their own: this renders
+inside a sentence in the Updates box, where a stray space is visible.
+{%- endcomment -%}
+<a{% if include.title %} title="{{ include.title }}"{% endif %} href="{% if include.view_url %}{{ include.view_url }}{% elsif include.url contains '://' %}{{ include.url }}{% else %}{{ include.url | prepend: site.baseurl }}{% endif %}">{{ include.name }}</a>{% if include.inline %}{% if include.view_url %} <span class="file-actions">· <a href="{{ include.url }}">source</a></span>{% endif %}{% else %} <span class="file-btns"><a class="file-btn" target="_blank" rel="noopener" title="{{ include.name | escape }} on GitHub" href="{{ include.url }}">source</a>{% if include.view_url %}<a class="file-btn" target="_blank" rel="noopener" title="{{ include.name | escape }} rendered on this site" href="{{ include.view_url }}">render</a>{% endif %}</span>{% endif %}

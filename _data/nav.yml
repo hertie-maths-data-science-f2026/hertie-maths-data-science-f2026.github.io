@@ -28,3 +28,7 @@ items:
 - url: /materials/
   name: All Materials
   icon_class: fas fa-folder-open
+
+- url: /profile/
+  name: Your Profile
+  icon_class: fas fa-user-cog

@@ -12,6 +12,10 @@ identically. The order is the same everywhere and is the point of this file exis
   3. links    - the files, last. They used to sit up beside the heading, where they
                 crowded the title and made the description read as an afterthought.
 
+How a file link renders - the name to the hosted copy where there is one, and the row of
+`source | render | online | local` buttons after it - is `file_link.html`, shared with the
+Updates box and the All Materials tree.
+
 `include.section` is the singular section noun ("lecture", "lab", "reading") that selects
 which of the entry's links belong to this page, matched against each link's own `section`
 field. A row carries the links of every section that released into it, so the filter is
@@ -31,7 +35,7 @@ a name without stripping it.
 {%- capture links -%}
 {%- for link in entry.links -%}
 {%- if link.section == include.section -%}
-<li><a href="{% if link.url contains '://' %}{{ link.url }}{% else %}{{ link.url | prepend: site.baseurl }}{% endif %}">{{ link.name }}</a></li>
+<li>{% include file_link.html name=link.name url=link.url view_url=link.view_url %}</li>
 {%- endif -%}
 {%- endfor -%}
 {%- endcapture -%}

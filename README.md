@@ -16,7 +16,7 @@ Its content comes from the cohort's `classroom-config/` files (`schedule.yml`, `
 | `_data/people.yml` | the staff cards |
 | `_data/nav.yml` | the nav bar |
 | `_data/materials.yml` | the All Materials index |
-| the tab pages - `lectures.md`, `labs.md`, `readings.md`, `assignments.md`, `materials.md` | the wrappers the tabs point at |
+| the tab pages - `lectures.md`, `labs.md`, `readings.md`, `assignments.md`, `materials.md`, `profile.md` | the wrappers the tabs point at |
 | `_layouts/`, `_includes/`, `_sass/_course.scss` | how every page renders |
 | `.github/workflows/deploy.yml` | the Pages build |
 | `_config.yml` | the course identity keys, the pinned theme, and the `collections:`/`defaults:` the layouts need |

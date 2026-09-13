@@ -1,0 +1,307 @@
+---
+# SYSTEM-OWNED - do not edit. Written by the DSL course sync from templates/site/ in the
+# toolkit; every sync rewrites it.
+layout: page
+---
+
+{{ content }}
+
+{% comment %}
+Your Profile - the settings that let every other page offer a file in the student's own
+copy (see _includes/open_in.html, which owns the URL rules and is included below so that
+this page's own buttons derive a path exactly the way a file row does).
+
+One static page, no back end: the site is public and identical for everybody, so what it
+learns here it keeps in the reader's own browser (localStorage) and sends nowhere. Nothing
+is stored until a Save is pressed, and every button below step 1 reads the SAVED values,
+not what is currently in a box - a half-typed path that enabled a button would open the
+wrong folder and look like the page's fault.
+
+One Save per field, beside its own box, with what it stored on the line underneath. On a
+save the box empties and the value it stored becomes the box's placeholder, so the field
+shows its setting the way an unfilled field shows its example. That is also why an empty
+box plus Save is a no-op rather than a delete: the box is empty after every save, and the
+second press must not wipe what the first one stored. `clear` on the saved line is how a
+setting is actually removed.
+
+Four numbered steps, in the order they have to happen: details, fork, clone, open. Step 3
+stays greyed until step 2 has been taken, because cloning a fork that does not exist yet is
+the one failure mode with no useful error at the other end - the editor just reports a
+repository it cannot find. "Mark this step done" is the way out for a student who forked
+last term, or on another machine: the flag is this browser's, not GitHub's, and the page
+cannot ask GitHub without sending the reader's handle somewhere.
+
+The materials repo is named once here, as the default a cohort release deploys into
+(`cohort_dest_repo`, dsl_course/deploy.py). Nothing else on this page depends on it: the
+per-file control reads the repo out of each file's own GitHub URL, so a course that renamed
+its materials repo still gets working file links and only these buttons point at the
+default name.
+{% endcomment %}
+<div class="profile-steps" id="dsl-profile"
+     data-org="{{ site.github_org }}"
+     data-materials-repo="materials">
+
+  <section class="profile-step">
+    <h2 class="profile-step-title"><span class="profile-step-num">1</span> Your details</h2>
+
+    <div class="profile-field">
+      <label for="dsl-handle">GitHub handle</label>
+      <span class="profile-entry">
+        <input type="text" id="dsl-handle" autocomplete="off" autocapitalize="off"
+               spellcheck="false" placeholder="j.doe">
+        <button type="button" class="btn btn--field" data-save="handle">Save</button>
+      </span>
+      <p class="profile-hint">Your GitHub username - the last part of your profile address.</p>
+      <p class="profile-hint profile-saved" id="dsl-saved-handle"></p>
+    </div>
+
+    <div class="profile-field">
+      <label for="dsl-materials">Materials folder (local path)</label>
+      <span class="profile-entry">
+        <input type="text" id="dsl-materials" autocomplete="off" spellcheck="false"
+               placeholder="/Users/j.doe/Documents/repositories/materials">
+        <button type="button" class="btn btn--field" data-save="materials">Save</button>
+      </span>
+      <p class="profile-hint">Where your clone of <code>materials</code> is, or the folder
+        you are about to clone it into.</p>
+      <p class="profile-hint profile-saved" id="dsl-saved-materials"></p>
+    </div>
+
+    <div class="profile-field">
+      <label for="dsl-assignments">Assignment folder (local path)</label>
+      <span class="profile-entry">
+        <input type="text" id="dsl-assignments" autocomplete="off" spellcheck="false"
+               placeholder="/Users/j.doe/Documents/repositories/assignments">
+        <button type="button" class="btn btn--field" data-save="assignments">Save</button>
+      </span>
+      <p class="profile-hint">Where your assignment repos sit. Blank means the same folder
+        as above.</p>
+      <p class="profile-hint profile-saved" id="dsl-saved-assignments"></p>
+    </div>
+
+    <div class="profile-field">
+      <span class="profile-label">Editor</span>
+      <label class="profile-choice"><input type="radio" name="dsl-editor" id="dsl-editor-vscode" value="vscode"> VS Code</label>
+      <label class="profile-choice"><input type="radio" name="dsl-editor" id="dsl-editor-other" value="other"> Other:
+        <input type="text" id="dsl-editor-template" autocomplete="off" spellcheck="false"
+               placeholder="myeditor://open/{path}"></label>
+      <span class="profile-entry">
+        <button type="button" class="btn btn--field" data-save="editor">Save</button>
+      </span>
+      <p class="profile-hint">Your editor's link scheme, ending in <code>{path}</code>
+        where the file goes. The separator before it belongs to the scheme, as in the VS Code
+        one (<code>vscode://file/{path}</code>).</p>
+      <p class="profile-hint profile-saved" id="dsl-saved-editor"></p>
+    </div>
+  </section>
+
+  <section class="profile-step">
+    <h2 class="profile-step-title"><span class="profile-step-num">2</span> Fork the materials repo</h2>
+    <p class="profile-hint">Your own copy on GitHub, where your notes and your edits are
+      yours to keep.</p>
+    <p class="profile-buttons">
+      <a class="btn" id="dsl-fork" target="_blank" rel="noopener"
+         href="https://github.com/{{ site.github_org }}/materials/fork">Fork materials</a>
+      <span class="profile-hint" id="dsl-fork-todo">Already forked it, or forked it on
+        another machine? <a href="#" id="dsl-forked">Mark this step done</a>.</span>
+      <span class="profile-hint" id="dsl-fork-done" hidden>Forked - step 3 is unlocked.</span>
+    </p>
+  </section>
+
+  <section class="profile-step">
+    <h2 class="profile-step-title"><span class="profile-step-num">3</span> Clone your fork</h2>
+    <p class="profile-hint">Brings the whole repo down into your materials folder.</p>
+    <p class="profile-buttons">
+      <a class="btn" id="dsl-clone">Clone your fork</a>
+      <span class="profile-hint" id="dsl-clone-handle" hidden>Save a GitHub handle in step 1
+        to enable this.</span>
+      <span class="profile-hint" id="dsl-clone-fork" hidden>Fork the repo in step 2 to
+        enable this.</span>
+    </p>
+  </section>
+
+  <section class="profile-step">
+    <h2 class="profile-step-title"><span class="profile-step-num">4</span> Open it in your editor</h2>
+    <p class="profile-buttons">
+      <a class="btn" id="dsl-open">Open your cloned fork locally</a>
+      <span class="profile-hint" id="dsl-open-hint" hidden>Save a materials folder in step 1,
+        and an editor link ending <code>/{path}</code>, to enable this.</span>
+    </p>
+  </section>
+</div>
+
+{% include open_in.html %}
+
+<script>
+(function () {
+  var api = window.dslOpenIn;
+  var root = document.getElementById("dsl-profile");
+  if (!api || !root) { return; }
+  var org = root.getAttribute("data-org");
+  var repo = root.getAttribute("data-materials-repo");
+
+  function el(id) { return document.getElementById(id); }
+
+  function show(id, on) { el(id).hidden = !on; }
+
+  function link(a, href) {
+    /* No href IS the disabled state: the anchor stops being a link, stops taking focus,
+       and the stylesheet greys it off the same attribute. */
+    if (href) {
+      a.setAttribute("href", href);
+      a.removeAttribute("aria-disabled");
+      api.newTab(a, href);
+    } else {
+      a.removeAttribute("href");
+      a.removeAttribute("target");
+      a.removeAttribute("rel");
+      a.setAttribute("aria-disabled", "true");
+    }
+  }
+
+  /* The three fields that ARE a box, and the one that is a box plus a pair of radios. */
+  var BOXES = { handle: "dsl-handle", materials: "dsl-materials", assignments: "dsl-assignments" };
+  var FIELDS = ["handle", "materials", "assignments", "editor"];
+  var LABELS = {
+    handle: "GitHub handle",
+    materials: "materials folder",
+    assignments: "assignment folder",
+    editor: "editor"
+  };
+  /* The placeholder each box shipped with - its EXAMPLE. A saved value takes the
+     placeholder's place, so the example has to be kept somewhere to come back to. */
+  var examples = {};
+
+  function box(name) { return BOXES[name] ? el(BOXES[name]) : null; }
+
+  function typedIn(name) {
+    var b = box(name);
+    return b ? b.value.trim() : "";
+  }
+
+  function editorValue() {
+    return el("dsl-editor-vscode").checked
+      ? api.VSCODE
+      : el("dsl-editor-template").value.trim();
+  }
+
+  function savedLine(name) {
+    var out = el("dsl-saved-" + name);
+    while (out.firstChild) { out.removeChild(out.firstChild); }
+    var value = api.stored(name);
+    if (value) {
+      out.appendChild(document.createTextNode("Saved " + LABELS[name] + ": "));
+      var c = document.createElement("code");
+      c.appendChild(document.createTextNode(value));
+      out.appendChild(c);
+      /* The only way back to unset, and it has to exist: an empty box plus Save is a
+         no-op, because the box is empty after every save. */
+      out.appendChild(document.createTextNode(" · "));
+      var a = document.createElement("a");
+      a.setAttribute("href", "#");
+      a.appendChild(document.createTextNode("clear"));
+      a.addEventListener("click", function (e) {
+        e.preventDefault();
+        api.save(name, "");
+        if (name === "editor") { el("dsl-editor-template").value = ""; }
+        refresh();
+      });
+      out.appendChild(a);
+    }
+    if (typedIn(name)) {
+      if (value) { out.appendChild(document.createElement("br")); }
+      out.appendChild(document.createTextNode("Not saved yet - press Save."));
+    }
+  }
+
+  function refresh() {
+    /* Typing a scheme IS choosing "Other" - leaving the radio behind would save a
+       template the page then ignores. */
+    if (el("dsl-editor-template").value.trim()) { el("dsl-editor-other").checked = true; }
+    var me = api.profile();
+    var forked = api.stored("forked");
+
+    for (var i = 0; i < FIELDS.length; i++) {
+      var name = FIELDS[i];
+      var b = box(name);
+      if (b) { b.setAttribute("placeholder", api.stored(name) || examples[name]); }
+      savedLine(name);
+    }
+
+    show("dsl-fork-todo", !forked);
+    show("dsl-fork-done", !!forked);
+    el("dsl-fork").setAttribute("href", "https://github.com/" + org + "/" + repo + "/fork");
+
+    /* VS Code is the only editor with a clone scheme worth offering; for any other, the
+       fork's own page is where the Code menu lives. */
+    var fork = "https://github.com/" + encodeURIComponent(me.handle) + "/" + repo;
+    link(el("dsl-clone"), (me.handle && forked)
+      ? (me.editor === api.VSCODE
+          ? "vscode://vscode.git/clone?url=" + encodeURIComponent(fork)
+          : fork)
+      : "");
+    show("dsl-clone-handle", !me.handle);
+    show("dsl-clone-fork", !!me.handle && !forked);
+
+    var open = api.localUrl(me.editor, me.materials, repo, "");
+    link(el("dsl-open"), open);
+    show("dsl-open-hint", !open);
+  }
+
+  function save(name) {
+    if (name === "editor") {
+      api.save("editor", editorValue());
+    } else {
+      var value = typedIn(name);
+      /* An empty box is "nothing new to store", never "forget what you stored" - see the
+         comment at the top of this page. */
+      if (!value) { return; }
+      api.save(name, value);
+      box(name).value = "";
+    }
+    refresh();
+  }
+
+  api.ready(function () {
+    try {
+      var i;
+      for (i = 0; i < FIELDS.length; i++) {
+        var b = box(FIELDS[i]);
+        examples[FIELDS[i]] = b ? b.getAttribute("placeholder") : "";
+      }
+      /* The editor box is the one that is not cleared on save: it pairs with a radio, so
+         an empty box would leave the choice ambiguous. */
+      var stored = api.stored("editor");
+      var preset = !stored || stored === api.VSCODE;
+      el("dsl-editor-vscode").checked = preset;
+      el("dsl-editor-other").checked = !preset;
+      el("dsl-editor-template").value = preset ? "" : stored;
+
+      var fields = root.querySelectorAll("input");
+      for (i = 0; i < fields.length; i++) {
+        fields[i].addEventListener("input", refresh);
+        fields[i].addEventListener("change", refresh);
+      }
+      var buttons = root.querySelectorAll("button[data-save]");
+      for (i = 0; i < buttons.length; i++) {
+        buttons[i].addEventListener("click", function () {
+          save(this.getAttribute("data-save"));
+        });
+      }
+      /* Opening the fork page and recording that it happened are the same click: the page
+         has no way to ask GitHub, and asking would mean sending the reader's handle
+         somewhere. Marking it by hand is the same promise, made by the student. */
+      el("dsl-fork").addEventListener("click", function () {
+        api.save("forked", "1");
+        refresh();
+      });
+      el("dsl-forked").addEventListener("click", function (e) {
+        e.preventDefault();
+        api.save("forked", "1");
+        refresh();
+      });
+      refresh();
+    } catch (e) { /* Leaves the page as rendered: boxes empty, buttons greyed. */ }
+  });
+})();
+</script>

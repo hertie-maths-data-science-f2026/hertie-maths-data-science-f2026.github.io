@@ -219,6 +219,241 @@
     }
 }
 
+/* `· source` after a file the site hosts its own rendered copy of - the file's home on
+   GitHub, inside a sentence. The UPDATES box only: everywhere else a file link carries the
+   full `.file-btns` row below, but a row of buttons inside a bullet of prose would swamp
+   the bullet. Quieter than the name it follows, because the name is what a student opens.
+   */
+.file-actions {
+    font-size: 0.85em;
+    opacity: 0.7;
+
+    a {
+        white-space: nowrap;
+    }
+}
+
+/* The site's quiet aside - a line that explains rather than instructs, and steps back
+   from the text it sits with. */
+%quiet-note {
+    font-size: 0.85em;
+    color: $grey-color-dark;
+}
+
+/* The row of buttons beside a file link - `source | render | online | local`, the same
+   file wherever it can be had. `source` and `render` are written in Liquid
+   (_includes/file_link.html); `online` and `local` are appended by script once the browser
+   holds the profile they need (_includes/open_in.html), so a first visit shows the first
+   two alone.
+
+   Outlined rather than filled, and small: this is the SAME button as the ones on
+   /profile/, but a session page carries a dozen file rows and the All Materials tree
+   carries hundreds, and a wall of solid red would leave the file names - the thing a
+   reader is scanning for - as the quietest part of the page. Filling on hover is what
+   says they are one family. */
+.file-btns {
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    margin-left: 0.5em;
+    vertical-align: baseline;
+}
+
+.file-btn {
+    display: inline-block;
+    padding: 0 8px;
+    border: 1px solid $brand-color;
+    border-radius: 999px;
+    background: transparent;
+    color: $brand-color !important;
+    font-family: $display-font;
+    font-weight: 600;
+    font-size: 0.72em;
+    line-height: 1.65;
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+    text-decoration: none !important;
+
+    &:hover {
+        background: $brand-color;
+        color: #fff !important;
+    }
+}
+
+/* An assignment page has ONE repo rather than a list of files, so its `online` and `local`
+   are full-size buttons beside the GitHub one (added by the same script) - outlined,
+   because the repo itself is still what a student opens first. */
+.callout .btn + .btn {
+    margin-left: 8px;
+}
+
+/* The one line a student sees before they have a profile: what the buttons would do, and
+   where to switch them on. An offer, not an instruction, above pages whose subject is the
+   material rather than this. */
+.open-in-line {
+    @extend %quiet-note;
+    margin: 0 0 0.8em 0;
+}
+
+/* Your Profile (_layouts/profile.html). Four numbered steps, each a heading, a control and
+   the hint that says why it is not available yet - a form, not a page of prose.
+
+   No width on the block itself: the boxes are capped below, but a saved path is long and
+   a column narrow enough to suit a text field wrapped every one of them. */
+.profile-steps {
+
+    /* `[hidden]` is a rule in the BROWSER's stylesheet, which every author rule below
+       outranks - so a hidden hint would show anyway. */
+    [hidden] {
+        display: none !important;
+    }
+
+    .profile-step {
+        margin: 0 0 1.6em 0;
+    }
+    /* One hairline between steps, and none above the first: the numbers already say this
+       is a sequence, so the rule only has to keep one step's hints off the next one's
+       heading. */
+    .profile-step + .profile-step {
+        border-top: 1px solid #e3e3e3;
+        padding-top: 1.4em;
+    }
+    .profile-step-title {
+        margin: 0 0 0.6em 0;
+        font-size: 1.15em;
+        line-height: 1.3;
+    }
+    .profile-step-num {
+        display: inline-block;
+        width: 1.6em;
+        height: 1.6em;
+        margin-right: 0.45em;
+        border-radius: 50%;
+        background: $brand-color;
+        color: #fff;
+        font-size: 0.8em;
+        line-height: 1.6em;
+        text-align: center;
+        vertical-align: 0.08em;
+    }
+    .profile-field {
+        margin: 0 0 1.4em 0;
+    }
+    /* One field: its box and its own Save, side by side and capped together, so the
+       button sits at the end of the box rather than out at the page edge. */
+    .profile-entry {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        max-width: 34em;
+    }
+    /* Sized for a text field rather than for a step: a full-size pill beside a 1.6em box
+       is taller than the thing it saves. */
+    .btn--field {
+        flex: none;
+        padding: 3px 14px;
+        font-size: 0.8em;
+    }
+    /* What that Save stored, directly under the field it belongs to - and full width,
+       because these are absolute paths. */
+    .profile-saved {
+        max-width: none;
+    }
+    label,
+    .profile-label {
+        display: block;
+        font-weight: bold;
+        margin-bottom: 0.2em;
+    }
+    .profile-choice {
+        display: block;
+        font-weight: normal;
+        margin: 0.1em 0;
+    }
+    input[type="text"] {
+        width: 100%;
+        max-width: 26em;
+        min-width: 0;
+        padding: 0.3em 0.4em;
+        border: 1px solid #d8d8d8;
+        border-radius: 3px;
+        font-family: inherit;
+        font-size: 0.95em;
+    }
+    .profile-choice input[type="text"] {
+        max-width: 18em;
+    }
+    .profile-hint {
+        @extend %quiet-note;
+        margin: 0.25em 0 0 0;
+
+        code {
+            word-break: break-all;
+        }
+    }
+    .profile-buttons {
+        margin: 0 0 0.4em 0;
+
+        .profile-hint {
+            display: block;
+        }
+    }
+    /* Save is the only <button> here; every other control is an anchor the theme styles. */
+    button.btn {
+        cursor: pointer;
+    }
+    /* A button whose inputs are not SAVED yet carries no href at all - it is not a link and
+       cannot be focused. This rule is only how that looks: greyed, with the hint under it
+       naming the step to go back to. */
+    .btn:not([href]) {
+        opacity: 0.45;
+        cursor: default;
+    }
+}
+
+/* Your Profile is the reader's own settings, not a part of the course - so it sits apart
+   from the tab bar, top right and level with the school name, rather than reading as one
+   more section of content.
+
+   The header belongs to the shared theme (dsl-jekyll-theme `_includes/header.html`), which
+   a site repo cannot edit, so the tab the toolkit already writes into `_data/nav.yml` is
+   lifted out of the row from here. Matched on the permalink, never on position: the day a
+   tab is added after it, a `:last-child` rule would decorate that one instead. A browser
+   with no `:has()` leaves it in the row, which is where it was before. */
+.site-header .wrapper .site-nav .menu li:has(> a[href$="/profile/"]) {
+    position: absolute;
+    top: 22px;
+    right: 0;
+    height: auto;
+    margin: 0;
+    padding: 0;
+    border-bottom: 0;
+
+    > a {
+        padding: 4px 14px;
+        border: 2px solid rgba(255, 255, 255, 0.8);
+        border-radius: 999px;
+        background: transparent;
+
+        &:hover {
+            background: #fff;
+            color: $brand-color;
+        }
+    }
+
+    /* Below $on-palm the whole nav collapses into a panel behind the burger, and an
+       absolutely positioned item would sit on top of the page instead of in it. */
+    @include media-query($on-palm) {
+        position: static;
+
+        > a {
+            padding: 4px 10px;
+            border: 0;
+            border-radius: 0;
+        }
+    }
+}
+
 /* An assignment page's name, under its identifier in the h1 (see _layouts/assignment.html).
    Sized between the title and the body: it is the assignment's real name, not metadata. */
 .post-subtitle {

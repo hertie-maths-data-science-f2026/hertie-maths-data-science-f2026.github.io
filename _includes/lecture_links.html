@@ -3,18 +3,16 @@ SYSTEM-OWNED - do not edit. Written by the DSL course sync from templates/site/ 
 toolkit; every sync rewrites it.
 {%- endcomment -%}
 {%- comment -%}
-One bracketed download link per entry, rendered inline on a single line - external
-URLs are used as given, site-relative ones get the baseurl. Whitespace control is
-load-bearing here: this renders inside a sentence in the Updates box.
+One bracketed download link per entry, rendered inline on a single line, each through the
+shared `file_link.html` - in its `inline` shape, because the brackets here are this file's
+own and a bracketed `[source]` inside them reads `[slides.html [source]]`. Whitespace
+control is load-bearing too: this renders inside a sentence in the Updates box, so the
+include emits none of its own either.
 {%- endcomment -%}
 {%- if include.lecture.links -%}
 {%- for link in include.lecture.links -%}
-{%- if link.url contains '://' -%}
-{%- assign href = link.url -%}
-{%- else -%}
-{%- assign href = link.url | prepend: site.baseurl -%}
-{%- endif -%}
+{%- assign title = link.name | prepend: "Download " -%}
 {%- unless forloop.first %}{{ " " }}{%- endunless -%}
-[<a title="Download {{ link.name }}" href="{{ href }}">{{ link.name }}</a>]
+[{% include file_link.html name=link.name url=link.url view_url=link.view_url title=title inline=true %}]
 {%- endfor -%}
 {%- endif -%}
