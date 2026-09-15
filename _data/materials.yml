@@ -3,6 +3,8 @@
 documents:
   - name: "pyproject.toml"
     url: https://github.com/hertie-maths-data-science-f2026/materials/blob/main/pyproject.toml
+  - name: "README.md"
+    url: https://github.com/hertie-maths-data-science-f2026/materials/blob/main/README.md
   - name: "uv.lock"
     url: https://github.com/hertie-maths-data-science-f2026/materials/blob/main/uv.lock
 sections:
@@ -486,6 +488,21 @@ sections:
         entries:
           - name: "03_expectation_and_joint_distributions.pdf"
             url: https://github.com/hertie-maths-data-science-f2026/materials/blob/main/lectures/03_lecture/03_expectation_and_joint_distributions.pdf
+  - name: "m4ds"
+    files: 4
+    entries:
+      - name: "images/"
+        url: https://github.com/hertie-maths-data-science-f2026/materials/tree/main/m4ds/images
+        files: 3
+        entries:
+          - name: "__init__.py"
+            url: https://github.com/hertie-maths-data-science-f2026/materials/blob/main/m4ds/images/__init__.py
+          - name: "figure.py"
+            url: https://github.com/hertie-maths-data-science-f2026/materials/blob/main/m4ds/images/figure.py
+          - name: "joint_pmf.py"
+            url: https://github.com/hertie-maths-data-science-f2026/materials/blob/main/m4ds/images/joint_pmf.py
+      - name: "__init__.py"
+        url: https://github.com/hertie-maths-data-science-f2026/materials/blob/main/m4ds/__init__.py
   - name: "readings"
     files: 5
     entries:
