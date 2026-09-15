@@ -17,6 +17,9 @@ reading_list: |2
   - Chapter 4.5 - 4.7 (p. 170 - 181)
   - Chapter 7.1 (p. 303 - 312)
   - Chapter 7.4 (p. 332 - 337)
-links: []
+links:
+    - url: https://github.com/hertie-maths-data-science-f2026/materials/blob/main/lectures/03_lecture/03_expectation_and_joint_distributions.pdf
+      name: "03_expectation_and_joint_distributions.pdf"
+      section: "lecture"
 ---
 
