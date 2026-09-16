@@ -9,7 +9,7 @@ documents:
     url: https://github.com/hertie-maths-data-science-f2026/materials/blob/main/uv.lock
 sections:
   - name: "labs"
-    files: 4
+    files: 7
     entries:
       - name: "01_lab/"
         url: https://github.com/hertie-maths-data-science-f2026/materials/tree/main/labs/01_lab
@@ -27,6 +27,16 @@ sections:
             url: https://github.com/hertie-maths-data-science-f2026/materials/blob/main/labs/02_lab/lab2_handout.pdf
           - name: "lab2_student.ipynb"
             url: https://github.com/hertie-maths-data-science-f2026/materials/blob/main/labs/02_lab/lab2_student.ipynb
+      - name: "03_lab/"
+        url: https://github.com/hertie-maths-data-science-f2026/materials/tree/main/labs/03_lab
+        files: 3
+        entries:
+          - name: "lab3_handout.pdf"
+            url: https://github.com/hertie-maths-data-science-f2026/materials/blob/main/labs/03_lab/lab3_handout.pdf
+          - name: "lab3_student.ipynb"
+            url: https://github.com/hertie-maths-data-science-f2026/materials/blob/main/labs/03_lab/lab3_student.ipynb
+          - name: "lab3_student.py"
+            url: https://github.com/hertie-maths-data-science-f2026/materials/blob/main/labs/03_lab/lab3_student.py
   - name: "lectures"
     files: 159
     entries:

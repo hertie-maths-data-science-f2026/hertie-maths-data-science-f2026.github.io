@@ -5,7 +5,15 @@
 type: lab
 date: 2026-09-16T09:00:00
 title: "Lab 3"
-unreleased: true
-links: []
+links:
+    - url: https://github.com/hertie-maths-data-science-f2026/materials/blob/main/labs/03_lab/lab3_handout.pdf
+      name: "lab3_handout.pdf"
+      section: "lab"
+    - url: https://github.com/hertie-maths-data-science-f2026/materials/blob/main/labs/03_lab/lab3_student.ipynb
+      name: "lab3_student.ipynb"
+      section: "lab"
+    - url: https://github.com/hertie-maths-data-science-f2026/materials/blob/main/labs/03_lab/lab3_student.py
+      name: "lab3_student.py"
+      section: "lab"
 ---
-_**Materials for lab 3 are not yet released** - they will appear in [`materials/labs/03_lab`](https://github.com/hertie-maths-data-science-f2026/materials/tree/main/labs) when they are._
+
