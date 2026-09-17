@@ -339,13 +339,13 @@
     .profile-field {
         margin: 0 0 1.4em 0;
     }
-    /* One field: its box and its own Save, side by side and capped together, so the
-       button sits at the end of the box rather than out at the page edge. */
+    /* One field: its box and its own Save, side by side. The two folder boxes hold an
+       absolute path with the cohort org in it, so they run the width of the page; the
+       handle box is capped to the size of the thing it holds. */
     .profile-entry {
         display: flex;
         align-items: center;
         gap: 8px;
-        max-width: 34em;
     }
     /* Sized for a text field rather than for a step: a full-size pill beside a 1.6em box
        is taller than the thing it saves. */
@@ -372,7 +372,6 @@
     }
     input[type="text"] {
         width: 100%;
-        max-width: 26em;
         min-width: 0;
         padding: 0.3em 0.4em;
         border: 1px solid #d8d8d8;
@@ -380,6 +379,7 @@
         font-family: inherit;
         font-size: 0.95em;
     }
+    #dsl-handle,
     .profile-choice input[type="text"] {
         max-width: 18em;
     }
@@ -394,6 +394,13 @@
     .profile-buttons {
         margin: 0 0 0.4em 0;
 
+        /* A little air around the step button: off the hint above it and off the one
+           beneath, so it reads as the step's one action rather than a word in a run of
+           text. */
+        .btn {
+            display: inline-block;
+            margin: 0.5em 0 0.6em 0;
+        }
         .profile-hint {
             display: block;
         }

@@ -17,12 +17,13 @@ is stored until a Save is pressed, and every button below step 1 reads the SAVED
 not what is currently in a box - a half-typed path that enabled a button would open the
 wrong folder and look like the page's fault.
 
-One Save per field, beside its own box, with what it stored on the line underneath. On a
-save the box empties and the value it stored becomes the box's placeholder, so the field
-shows its setting the way an unfilled field shows its example. That is also why an empty
-box plus Save is a no-op rather than a delete: the box is empty after every save, and the
-second press must not wipe what the first one stored. `clear` on the saved line is how a
-setting is actually removed.
+One Save per field, beside its own box, with what it stored on the line underneath. The
+box always holds something editable: the saved value, or until there is one the field's
+example (its placeholder, respelt for the reader's platform below) - so a student edits
+`j.doe` into their own name rather than retyping a whole path over a grey hint that goes
+at the first keystroke. Save stores what is in the box and leaves it there. An empty box,
+or the untouched example, plus Save is a no-op rather than a delete or a saved example;
+`clear` on the saved line is how a setting is removed, and it puts the example back.
 
 Four numbered steps, in the order they have to happen: details, fork, clone, open. Step 3
 stays greyed until step 2 has been taken, because cloning a fork that does not exist yet is
@@ -36,6 +37,12 @@ The materials repo is named once here, as the default a cohort release deploys i
 per-file control reads the repo out of each file's own GitHub URL, so a course that renamed
 its materials repo still gets working file links and only these buttons point at the
 default name.
+
+The two folder examples put the clone under a folder named for THIS cohort org, so a
+student on two courses is not steered into cloning two `materials` repos into one place.
+They ship spelt as macOS spells a home folder, and the script below respells the home
+part for the reader's own platform where the browser can tell (Windows, Linux) - a Windows
+student shown `/Users/j.doe/...` typed it in verbatim and got a path no editor could open.
 {% endcomment %}
 <div class="profile-steps" id="dsl-profile"
      data-org="{{ site.github_org }}"
@@ -51,7 +58,7 @@ default name.
                spellcheck="false" placeholder="j.doe">
         <button type="button" class="btn btn--field" data-save="handle">Save</button>
       </span>
-      <p class="profile-hint">Your GitHub username - the last part of your profile address.</p>
+      <p class="profile-hint">Your GitHub username.</p>
       <p class="profile-hint profile-saved" id="dsl-saved-handle"></p>
     </div>
 
@@ -59,11 +66,10 @@ default name.
       <label for="dsl-materials">Materials folder (local path)</label>
       <span class="profile-entry">
         <input type="text" id="dsl-materials" autocomplete="off" spellcheck="false"
-               placeholder="/Users/j.doe/Documents/repositories/materials">
+               placeholder="/Users/j.doe/Documents/repositories/{{ site.github_org }}/materials">
         <button type="button" class="btn btn--field" data-save="materials">Save</button>
       </span>
-      <p class="profile-hint">Where your clone of <code>materials</code> is, or the folder
-        you are about to clone it into.</p>
+      <p class="profile-hint">Where your clone of <code>materials</code> is (or will go).</p>
       <p class="profile-hint profile-saved" id="dsl-saved-materials"></p>
     </div>
 
@@ -71,11 +77,10 @@ default name.
       <label for="dsl-assignments">Assignment folder (local path)</label>
       <span class="profile-entry">
         <input type="text" id="dsl-assignments" autocomplete="off" spellcheck="false"
-               placeholder="/Users/j.doe/Documents/repositories/assignments">
+               placeholder="/Users/j.doe/Documents/repositories/{{ site.github_org }}/assignments">
         <button type="button" class="btn btn--field" data-save="assignments">Save</button>
       </span>
-      <p class="profile-hint">Where your assignment repos sit. Blank means the same folder
-        as above.</p>
+      <p class="profile-hint">Where your assignment repos (will) sit.</p>
       <p class="profile-hint profile-saved" id="dsl-saved-assignments"></p>
     </div>
 
@@ -89,16 +94,14 @@ default name.
         <button type="button" class="btn btn--field" data-save="editor">Save</button>
       </span>
       <p class="profile-hint">Your editor's link scheme, ending in <code>{path}</code>
-        where the file goes. The separator before it belongs to the scheme, as in the VS Code
-        one (<code>vscode://file/{path}</code>).</p>
+        where the file goes. As in the VS Code one (<code>vscode://file/{path}</code>).</p>
       <p class="profile-hint profile-saved" id="dsl-saved-editor"></p>
     </div>
   </section>
 
   <section class="profile-step">
     <h2 class="profile-step-title"><span class="profile-step-num">2</span> Fork the materials repo</h2>
-    <p class="profile-hint">Your own copy on GitHub, where your notes and your edits are
-      yours to keep.</p>
+    <p class="profile-hint">Your own editable repo copy on GitHub.</p>
     <p class="profile-buttons">
       <a class="btn" id="dsl-fork" target="_blank" rel="noopener"
          href="https://github.com/{{ site.github_org }}/materials/fork">Fork materials</a>
@@ -110,7 +113,6 @@ default name.
 
   <section class="profile-step">
     <h2 class="profile-step-title"><span class="profile-step-num">3</span> Clone your fork</h2>
-    <p class="profile-hint">Brings the whole repo down into your materials folder.</p>
     <p class="profile-buttons">
       <a class="btn" id="dsl-clone">Clone your fork</a>
       <span class="profile-hint" id="dsl-clone-handle" hidden>Save a GitHub handle in step 1
@@ -168,9 +170,27 @@ default name.
     assignments: "assignment folder",
     editor: "editor"
   };
-  /* The placeholder each box shipped with - its EXAMPLE. A saved value takes the
-     placeholder's place, so the example has to be kept somewhere to come back to. */
+  /* The placeholder each box shipped with - its EXAMPLE. The box is seeded with it until
+     a value is saved, and `clear` puts it back, so it has to be kept somewhere. */
   var examples = {};
+  /* The home-folder spelling the two folder examples ship with, and the one for each
+     platform the browser can name. Unknown stays as shipped. */
+  var MAC_HOME = "/Users/j.doe/Documents";
+  var HOMES = { win: "C:\\Users\\j.doe\\Documents", linux: "/home/j.doe" };
+
+  function platform() {
+    var p = (navigator.userAgentData && navigator.userAgentData.platform) || navigator.platform || "";
+    if (/^win/i.test(p)) { return "win"; }
+    if (/^(linux|x11|.*bsd|cros)/i.test(p)) { return "linux"; }
+    return "";
+  }
+
+  function localExample(shipped) {
+    var os = platform();
+    if (!os || shipped.indexOf(MAC_HOME) !== 0) { return shipped; }
+    var path = HOMES[os] + shipped.slice(MAC_HOME.length);
+    return os === "win" ? path.replace(/\//g, "\\") : path;
+  }
 
   function box(name) { return BOXES[name] ? el(BOXES[name]) : null; }
 
@@ -204,11 +224,14 @@ default name.
         e.preventDefault();
         api.save(name, "");
         if (name === "editor") { el("dsl-editor-template").value = ""; }
+        if (box(name)) { box(name).value = examples[name]; }
         refresh();
       });
       out.appendChild(a);
     }
-    if (typedIn(name)) {
+    /* The box differs from what is stored - and the untouched example is not a change. */
+    var typed = typedIn(name);
+    if (typed && typed !== value && (value || typed !== examples[name])) {
       if (value) { out.appendChild(document.createElement("br")); }
       out.appendChild(document.createTextNode("Not saved yet - press Save."));
     }
@@ -221,12 +244,7 @@ default name.
     var me = api.profile();
     var forked = api.stored("forked");
 
-    for (var i = 0; i < FIELDS.length; i++) {
-      var name = FIELDS[i];
-      var b = box(name);
-      if (b) { b.setAttribute("placeholder", api.stored(name) || examples[name]); }
-      savedLine(name);
-    }
+    for (var i = 0; i < FIELDS.length; i++) { savedLine(FIELDS[i]); }
 
     show("dsl-fork-todo", !forked);
     show("dsl-fork-done", !!forked);
@@ -253,11 +271,10 @@ default name.
       api.save("editor", editorValue());
     } else {
       var value = typedIn(name);
-      /* An empty box is "nothing new to store", never "forget what you stored" - see the
-         comment at the top of this page. */
-      if (!value) { return; }
+      /* An empty box is "nothing new to store", never "forget what you stored", and the
+         untouched example is not a setting - see the comment at the top of this page. */
+      if (!value || (value === examples[name] && !api.stored(name))) { return; }
       api.save(name, value);
-      box(name).value = "";
     }
     refresh();
   }
@@ -268,6 +285,12 @@ default name.
       for (i = 0; i < FIELDS.length; i++) {
         var b = box(FIELDS[i]);
         examples[FIELDS[i]] = b ? b.getAttribute("placeholder") : "";
+      }
+      examples.materials = localExample(examples.materials);
+      examples.assignments = localExample(examples.assignments);
+      /* Seed every box with its setting, or its example until there is one. */
+      for (i = 0; i < FIELDS.length; i++) {
+        if (box(FIELDS[i])) { box(FIELDS[i]).value = api.stored(FIELDS[i]) || examples[FIELDS[i]]; }
       }
       /* The editor box is the one that is not cleared on save: it pairs with a radio, so
          an empty box would leave the choice ambiguous. */

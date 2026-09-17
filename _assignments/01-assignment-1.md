@@ -23,23 +23,26 @@ due_event:
 
 **Due date:** 2026-09-20 · **Total: 10 points**
 
-**Submission:** one short video per person, **1–2 minutes**, uploaded to the
-Moodle link for Assignment 1. Any common format is fine (`.mp4`, `.mov`, `.webm`);
+**Submission:** one short video per person, **1–2 minutes**, uploaded to the assignment github repo.
+This is a bit of a misuse of git, which is not a file sharing platform.
+However, it helps you to get to know the workflow.
+If you prefer you can also upload the video to the [Moodle link for Assignment 1](https://moodle.hertie-school.org/course/section.php?id=55657).
+Any common format is fine (`.mp4`, `.mov`, `.webm`);
 a phone or laptop webcam recording is entirely sufficient. If your file is too
 large for Moodle, upload it to your Hertie cloud storage and submit the link
 instead. Name the file `lastname_firstname_assignment1`.
 
 This assignment is graded on completion and on whether the connection you draw
-is a genuine one — not on production value, and not on getting the mathematics
+is a genuine one - not on production value, and not on getting the mathematics
 exactly right. Speak, don't read a script.
 
 ## A short video introduction (10 points)
 
 Record yourself speaking to camera for **1–2 minutes**, covering all four points
-below. Your face and voice should be recognisable — this is how the rest of us
+below. Your face and voice should be recognisable - this is how the rest of us
 get to know you.
 
-**(a) (2 points) Who you are.** Your name and where you come from — academically,
+**(a) (2 points) Who you are.** Your name and where you come from - academically,
 geographically or personally, whichever you find more interesting to say.
 
 **(b) (2 points) What you do.** Your background and current work: what is your background,
@@ -47,15 +50,15 @@ what you have worked on, what kind of data (if any) you have handled,
 and what you are hoping to get out of this course.
 
 **(c) (5 points) An example from your own context, connected to the course.**
-Find one situation from your own life, studies, or work — a real one, not a
-textbook one — and relate it to a concept from the **first two lectures**.
+Find one situation from your own life, studies, or work - a real one, not a
+textbook one - and relate it to a concept from the **first two lectures**.
 Say explicitly *which* concept you are using and *how* it applies. You have met,
 among others:
 
-- *Lecture 1* — sample spaces and events; counting with the multiplication rule,
+- *Lecture 1* - sample spaces and events; counting with the multiplication rule,
   permutations and combinations; conditional probability; independence;
   Bayes' rule and updating a belief in light of evidence.
-- *Lecture 2* — random variables as a way of turning outcomes into numbers;
+- *Lecture 2* - random variables as a way of turning outcomes into numbers;
   PMFs and CDFs; the Bernoulli, Binomial and (discrete) Uniform distributions
   as models for real-world counts.
 
