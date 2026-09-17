@@ -9,11 +9,18 @@ title: page.title
   <header class="post-header">
     {%- comment -%}
     `title` is the identifier (the slug's own name), `subtitle` the assignment's name from
-    the plan or, failing that, its template README's heading. A pending assignment has no
-    subtitle - the name is in the README, which is embargoed until hand-out.
+    the plan or, failing that, its template README's heading. The NAME is what a student
+    came to read, so it takes the heading and the identifier sits above it as a kicker -
+    the identifier still has to be there, because it is what ties the page to its schedule
+    row. A pending assignment has no subtitle - the name is in the README, which is
+    embargoed until hand-out - so there the identifier is the heading, as it always was.
     {%- endcomment -%}
+    {% if page.subtitle %}
+    <p class="post-kicker">{{ page.title }}</p>
+    <h1 class="post-title">{{ page.subtitle }}</h1>
+    {% else %}
     <h1 class="post-title">{{ page.title }}</h1>
-    {% if page.subtitle %}<p class="post-subtitle">{{ page.subtitle }}</p>{% endif %}
+    {% endif %}
     {%- comment -%}
     `handout_pending` (site.py): the plan has dated this assignment but it has not been
     handed out, so `date` is a hand-out still to come rather than a release that happened.
@@ -25,18 +32,39 @@ title: page.title
     {% else %}
     <p class="post-meta">Released on {{ page.date | date: "%A" }} {{ page.date | date: site.dateformat }}</p>
     {% endif %}
+    {%- comment -%}
+    The deadline, bold and beside the release date rather than further down the page: it is
+    the one fact a student opens this page for. The date lives on `due_event`, which is
+    where site.py writes it and what the schedule's own due row reads - `page.due` has
+    never existed, so the block that read it printed a bare time.
+    {%- endcomment -%}
+    {% if page.due_event %}
+    <p class="post-meta post-due"><strong>Due {{ page.due_event.date | date: "%A" }} {{ page.due_event.date | date: site.dateformat }} {{ page.due_event.date | date: "%H:%M" }}</strong></p>
+    {% endif %}
+    {%- comment -%}
+    What the assignment is out of, under the deadline and off `max_points` (site.py, the
+    sum of the `questions:` maxima in the assignment's own grading_config.yml - the same
+    total the gradebook prints beside a score). Written only when the assignment declares
+    numeric maxima, so an assignment with no `questions:` block prints no line at all
+    rather than a total of nothing. The brief no longer opens with a `**Points:** __` line
+    for its author to fill in: a fact that is already in the assignment's definition is
+    read from there, and the hand-edited copy is the one that goes stale.
+    {%- endcomment -%}
+    {% if page.max_points %}
+    <p class="post-meta">Worth {{ page.max_points }} points</p>
+    {% endif %}
   </header>
 
   <div>
-    {% include open_in.html %}
-
-    {% if page.due_event %}
     {%- comment -%}
-    The date lives on `due_event`, which is where site.py writes it and what the schedule's
-    own due row reads. `page.due` has never existed, so this printed a bare time.
+    `open_in.html` is the "open this in your local copy" strip: it reads the reader's
+    profile and rewrites every repo shape on the page to their own. An `external`
+    assignment has no repo at either level, so the strip offers to set up a local copy of
+    nothing - and "set up" is the first thing on the page a student meets.
     {%- endcomment -%}
-    <p style="font-weight: bold">Due Date: {{ page.due_event.date | date: site.dateformat }} {{ page.due_event.date | date: "%H:%M" }}</p>
-    {% endif %}
+    {% unless page.submit_shape == "external" %}
+    {% include open_in.html %}
+    {% endunless %}
 
     {%- comment -%}
     Where the student actually works. This is the first thing they need and it used to be a
@@ -47,36 +75,114 @@ title: page.title
     only the repos they can see, so the filter lands on their own. Absent while the
     assignment is pending - there is nothing at the other end of it yet.
     {%- endcomment -%}
-    {% if page.repo_url %}
-    <div class="callout">
-      <p><a class="btn" data-dsl-repo-url target="_blank" rel="noopener" href="{{ page.repo_url }}">Open your private {% unless page.submit_external %}submission {% endunless %}repo on GitHub</a></p>
-      {%- comment -%}
-      `escape`: `repo_name` is a SHAPE, `<slug>-<your-handle>`, and those angle brackets
-      make `<your-handle>` an unknown HTML tag that the browser silently drops - so the
-      name rendered as `assignment-1-` with the useful half missing.
+    {%- comment -%}
+    `submit_shape` (site.py, off `course.submit_shape` and so off the assignment's own
+    grading_config.yml) is the SHAPE in one word - `external`, `assignment-repo-private`,
+    `assignment-repo-public`, `assignment-repo-student-choice`. `external` is handed in
+    off GitHub - Moodle, Kaggle, in class - and NO
+    repo is created for it at all. So there is nothing to open and nothing to name: the
+    brief below says where the work goes, and `submit_url` puts a button on it when the
+    assignment names an address. This block used to print off `repo_url` alone, so a Moodle
+    assignment told the whole cohort that a push to `main` was its submission.
 
-      `submit_external` (site.py, off the assignment's own grading_config.yml): the work is
-      handed in off GitHub - Moodle, Kaggle, in class - and the repo carries the brief and
-      nothing else. The sentence below used to print off `repo_url` alone, so a Moodle
-      assignment told the whole cohort that a push to `main` was its submission. Where the
-      work actually goes is the brief's to say: the toolkit is never told.
-      {%- endcomment -%}
-      {%- comment -%}
-      `data-dsl-repo`: the repo SHAPE, and the one thing on the page that a reader with a
-      profile can be told exactly. open_in.html rewrites every one of these to the real
-      name (`assignment-1-jane`) and repoints every `data-dsl-repo-url` beside them at that
-      repo, so a student stops reading `<your-handle>` and substituting themselves. Marked
-      rather than matched on the prose, because the sentences around them are reworded.
-      {%- endcomment -%}
-      {% if page.submit_external %}
-      <p>Handed in outside GitHub - <code data-dsl-repo>{{ page.repo_name | escape }}</code> carries the brief.
-      See it for where to submit.</p>
-      {% else %}
-      <p>Your work goes in <code data-dsl-repo>{{ page.repo_name | escape }}</code>. Clone it, commit as you go, and
-      push to <code>main</code> - that push is your submission.</p>
+    `escape`: `repo_name` is a SHAPE, `<slug>-<your-handle>`, and those angle brackets make
+    `<your-handle>` an unknown HTML tag that the browser silently drops - so the name
+    rendered as `assignment-1-` with the useful half missing.
+
+    `data-dsl-repo`: the repo SHAPE, and the one thing on the page that a reader with a
+    profile can be told exactly. open_in.html rewrites every one of these to the real name
+    (`assignment-1-jane`) and repoints every `data-dsl-repo-url` beside them at that repo,
+    so a student stops reading `<your-handle>` and substituting themselves. Marked rather
+    than matched on the prose, because the sentences around them are reworded.
+    {%- endcomment -%}
+    {%- comment -%}
+    `handout_pending` gates the whole block: an assignment still to come has no brief to
+    read and no address to go to, so a callout would answer a question the page has not
+    asked yet. It is also why the external arm says only WHERE the work is handed in and
+    never "no repository is created": a cohort handed out before that arm existed has the
+    repos it was given, and this would be telling those students their own repo is not
+    there.
+
+    ONE arm for every shape that has a repo: one button, one link, and the `case` below
+    branches only the SENTENCE. A shape that copied the button carried its own copy of the
+    open_in.html contract to keep in step, and the two drifted the first time one of them
+    was reworded.
+
+    The callout answers ROUTE and nothing else - where the work goes, which of it is read,
+    and what the deadline costs. Every shape's route is the same route: clone, commit,
+    push to `main`. So the
+    `case` is down to the two arms that genuinely differ - a shared drop box, where the
+    address is a folder in one named repo, and `assignment-repo-public`, whose repo is not
+    private and must not be called so. WHO CAN READ the repo is a different question,
+    asked after the brief has been read rather than above it, and it is answered once, in
+    the `shape_note` box at the foot of this page (`course.SHAPE_NOTES`).
+
+    Where the marks land is not answered here at all. It was, on four of the five arms, in
+    four wordings of one sentence - and the page a student opens to find out what to do is
+    not where they go looking for a mark. The gradebook is `grades-<handle>`, it is the
+    same repo for every shape, and it says so itself, on every row it carries.
+
+    `repo_name_is_shape` (site.py) is what decides whether the two data attributes are
+    written at all. `shared_dropbox_repo` is the one shape whose `repo_name` is a REAL
+    repo and not a shape: there is a single private drop box for the whole cohort, and
+    what is the
+    student's own is a folder in it (`submit_path`). There is nothing in that name for
+    open_in.html to substitute a handle into, and rewriting it would point every reader at
+    a repo that does not exist - so the flag is false and the markers are left off.
+
+    `data-dsl-dropbox` / `data-dsl-dropbox-path` are what that shape gets INSTEAD, on the
+    callout itself: the real repo name handed over as a fact, and beside it the folder
+    shape that is the reader's own. open_in.html substitutes the handle into the FOLDER and
+    never into the name, which is the whole difference from `data-dsl-repo` above - and it
+    is why a drop box offers the same `Edit online` / `Edit locally` as every other shape
+    rather than nothing at all. Gated on `submit_path`, which is this shape's key and no
+    other's: asking `submit_shape` again here would be a second spelling of the same
+    question, and the two eventually disagree.
+
+    `cutoff_sentence` and `late_rule` close the paragraph for every arm at once, which is
+    why neither is inside the `case`: a sentence repeated per arm is a sentence three arms
+    keep in step, and the first reword of it left one of them saying something else. The
+    cutoff text is written in Python (`course.CUTOFF_SENTENCE`), not here, because the
+    About line of every submission repo says the same thing and the two are read minutes
+    apart.
+
+    `late_rule` (site.py, off the assignment's own grading_config.yml) closes the
+    paragraph, so what happens after the deadline is read where the deadline's own answer
+    is. Written for every TIMED shape and for no other: `external` collects no commits, so
+    no day is counted and no penalty is ever applied (`course.collects_commits`), and a
+    sentence there would quote a rule about a deadline this toolkit does not hold. The
+    theme reads the KEY's presence rather than asking the shape again - a second
+    spelling of "which shapes are timed" is one that eventually disagrees with the first.
+    {%- endcomment -%}
+    {% unless page.handout_pending %}
+    {% if page.submit_shape == "external" %}
+    <div class="callout">
+      {% if page.submit_url %}
+      <p><a class="btn" target="_blank" rel="noopener" href="{{ page.submit_url }}">Submit on {{ page.submit_host }}</a></p>
       {% endif %}
+      <p>Handed in outside GitHub.{% unless page.submit_url %} See the brief.{% endunless %}</p>
+    </div>
+    {% elsif page.repo_url %}
+    <div class="callout"{% if page.submit_path %} data-dsl-dropbox="{{ page.repo_name | escape }}" data-dsl-dropbox-path="{{ page.submit_path | escape }}"{% endif %}>
+      <p><a class="btn" {% if page.repo_name_is_shape %}data-dsl-repo-url {% endif %}target="_blank" rel="noopener" href="{{ page.repo_url }}">Open the submission repo on GitHub</a></p>
+      <p>
+      {% case page.submit_shape %}
+      {% when "shared-dropbox-repo" %}
+      Push your work into the <code>{{ page.submit_path | escape }}</code> folder of
+      <code>{{ page.repo_name | escape }}</code> - that push is your submission.
+      {% when "assignment-repo-public" %}
+      Your work goes in your repo <code data-dsl-repo>{{ page.repo_name | escape }}</code>. Clone it, commit
+      as you go, and push to <code>main</code> - that push is your submission.
+      {% else %}
+      Your work goes in your private repo <code data-dsl-repo>{{ page.repo_name | escape }}</code>. Clone it, commit
+      as you go, and push to <code>main</code> - that push is your submission.
+      {% endcase %}
+      {% if page.cutoff_sentence %}{{ page.cutoff_sentence }}{% endif %}
+      {% if page.late_rule %}Late work: {{ page.late_rule }}.{% endif %}
+      </p>
     </div>
     {% endif %}
+    {% endunless %}
 
     {%- comment -%}
     `pdf` / `attachment` / `solutions` are hand-authored front matter from the upstream
@@ -97,11 +203,6 @@ title: page.title
       {% endif %}
     </p>
     {% endif %}
-
-    <div style="color: gray;">
-      <h3>Late Policy</h3>
-      {% include late_policy.html %}
-    </div>
   </div>
 
   <br />
@@ -110,19 +211,22 @@ title: page.title
   </article>
 
   {%- comment -%}
-  And again under the brief, quietly: a student who has just finished reading the task is
-  at the point of starting it, and should not have to scroll back up for the link.
+  Who can read the repo this assignment hands out - only the teaching team, the whole
+  internet, the cohort, or whoever the student later decides. Written for every shape that
+  hands one out (`course.SHAPE_NOTES`, via `site._assignment_entry`), so the box is its
+  own presence test and the layout carries none of the words.
+
+  UNDER the brief, not in the callout above it: the callout is the route, read in a
+  hurry and acted on, and a warning stapled to it was read as part of the instruction.
+  This is an aside to the whole assignment, so it reads last - after what the work is,
+  and before the student opens the repo.
+
+  `escape`, like every other value this layout prints: the text is a YAML scalar written
+  for a repo's About line as well as for this page, so it carries a plain `>` in
+  "Settings > Danger zone" and the escape is what makes that an entity here.
   {%- endcomment -%}
-  {% if page.repo_url %}
-  <p class="post-meta">
-    {% if page.submit_external %}
-    Handed in outside GitHub - see
-    <a data-dsl-repo-url target="_blank" rel="noopener" href="{{ page.repo_url }}"><code data-dsl-repo>{{ page.repo_name | escape }}</code></a> for where to submit.
-    {% else %}
-    Submit by pushing to <code>main</code> in
-    <a data-dsl-repo-url target="_blank" rel="noopener" href="{{ page.repo_url }}"><code data-dsl-repo>{{ page.repo_name | escape }}</code></a>.
-    {% endif %}
-  </p>
+  {% if page.shape_note %}
+  <div class="shape-note"><em>{{ page.shape_note | escape }}</em></div>
   {% endif %}
 
 </div>

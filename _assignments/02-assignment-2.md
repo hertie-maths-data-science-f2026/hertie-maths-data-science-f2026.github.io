@@ -6,11 +6,17 @@ type: assignment
 date: 2026-09-22T07:00:00
 title: "Assignment 2"
 handout_pending: true
+submit_shape: "assignment-repo-private"
 repo_name: "assignment-2-<your-team>"
+repo_name_is_shape: true
+cutoff_sentence: "What is on main at the grading cutoff is what is marked."
+late_rule: "10% per day, up to 10 days"
 due_event:
     type: due
     date: 2026-10-04T23:59:00
     description: "Assignment 2"
+    submit_shape: "assignment-repo-private"
     repo_name: "assignment-2-<your-team>"
+    repo_name_is_shape: true
 ---
 _**Assignment 2 is not yet released** - your private `assignment-2-<your-team>` repo appears when it is._

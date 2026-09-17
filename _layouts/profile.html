@@ -32,6 +32,13 @@ repository it cannot find. "Mark this step done" is the way out for a student wh
 last term, or on another machine: the flag is this browser's, not GitHub's, and the page
 cannot ask GitHub without sending the reader's handle somewhere.
 
+Step 3 can only NAME the folder to clone into: `vscode://vscode.git/clone` carries a url
+and a ref and nothing else, so a student who accepts whatever folder the dialog opens at
+leaves step 4 - and every `local` button on the site - pointing at a clone that is not
+there. Under it is the command that needs no dialog: the page cannot RUN anything, but the
+line it prints puts the clone exactly where the folder above says it is - and works for a
+student whose editor is not VS Code, who gets no clone button at all.
+
 The materials repo is named once here, as the default a cohort release deploys into
 (`cohort_dest_repo`, dsl_course/deploy.py). Nothing else on this page depends on it: the
 per-file control reads the repo out of each file's own GitHub URL, so a course that renamed
@@ -120,6 +127,12 @@ student shown `/Users/j.doe/...` typed it in verbatim and got a path no editor c
       <span class="profile-hint" id="dsl-clone-fork" hidden>Fork the repo in step 2 to
         enable this.</span>
     </p>
+    <p class="profile-hint" id="dsl-clone-where" hidden>You will be asked where to put it:
+      choose <code id="dsl-clone-parent"></code>, and the clone lands in the materials
+      folder from step 1.</p>
+    <div id="dsl-clone-cmd" hidden>
+      <p class="profile-hint">Or clone it straight there from a terminal:</p>
+    </div>
   </section>
 
   <section class="profile-step">
@@ -143,6 +156,10 @@ student shown `/Users/j.doe/...` typed it in verbatim and got a path no editor c
   var repo = root.getAttribute("data-materials-repo");
 
   function el(id) { return document.getElementById(id); }
+
+  /* Built once and refilled, because `refresh` runs on every keystroke and a block rebuilt
+     each time would hang a fresh Copy listener on every one. */
+  var cmd = api.commandBlock().querySelector("code");
 
   function show(id, on) { el(id).hidden = !on; }
 
@@ -260,6 +277,15 @@ student shown `/Users/j.doe/...` typed it in verbatim and got a path no editor c
       : "");
     show("dsl-clone-handle", !me.handle);
     show("dsl-clone-fork", !!me.handle && !forked);
+    /* The whole of what the saved folder can do for this step - see the top of the page. */
+    var parent = api.cloneParent(me.materials, repo);
+    if (parent) { el("dsl-clone-parent").textContent = parent; }
+    show("dsl-clone-where", !!parent && !!me.handle && !!forked);
+    /* The same clone, spelt exactly - no dialog to get wrong, and no VS Code needed. */
+    if (parent && me.handle) {
+      cmd.textContent = api.cloneCommand(me.handle, repo, me.materials);
+    }
+    show("dsl-clone-cmd", !!parent && !!me.handle && !!forked);
 
     var open = api.localUrl(me.editor, me.materials, repo, "");
     link(el("dsl-open"), open);
@@ -323,6 +349,7 @@ student shown `/Users/j.doe/...` typed it in verbatim and got a path no editor c
         api.save("forked", "1");
         refresh();
       });
+      el("dsl-clone-cmd").appendChild(cmd.parentNode);
       refresh();
     } catch (e) { /* Leaves the page as rendered: boxes empty, buttons greyed. */ }
   });

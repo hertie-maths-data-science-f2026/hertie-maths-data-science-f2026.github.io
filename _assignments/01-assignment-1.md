@@ -6,17 +6,17 @@ type: assignment
 date: 2026-09-08T07:00:00
 title: "Assignment 1"
 subtitle: "Introduce Yourself"
-repo_url: "https://github.com/orgs/hertie-maths-data-science-f2026/repositories?q=assignment-1-"
-repo_name: "assignment-1-<your-handle>"
-submit_external: true
+submit_shape: "external"
+submit_url: "https://moodle.hertie-school.org/course/section.php?id=55657"
+submit_host: "moodle.hertie-school.org"
 due_event:
     type: due
     date: 2026-09-20T23:59:00
     description: "Assignment 1"
     subtitle: "Introduce Yourself"
-    repo_url: "https://github.com/orgs/hertie-maths-data-science-f2026/repositories?q=assignment-1-"
-    repo_name: "assignment-1-<your-handle>"
-    submit_external: true
+    submit_shape: "external"
+    submit_url: "https://moodle.hertie-school.org/course/section.php?id=55657"
+    submit_host: "moodle.hertie-school.org"
 ---
 {% raw %}
 *Math for Data Science · Fall 2026*

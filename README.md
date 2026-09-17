@@ -25,7 +25,7 @@ Each collection is CLEARED and rewritten on every sync, so a file you add to one
 
 ## Everything else is yours
 
-`index.md`, `schedule.md`, any page you add yourself, `_announcements/`, `_images/`, `Gemfile`, `.gitignore`, `_data/late_policy.yml`, `_data/previous_offering.yml`, further `_data/*.yml` - seeded once when the site is created, then never rewritten. Change them freely.
+`index.md`, `schedule.md`, any page you add yourself, `_announcements/`, `_images/`, `Gemfile`, `.gitignore`, `_data/previous_offering.yml`, further `_data/*.yml` - seeded once when the site is created, then never rewritten. Change them freely.
 
 The rendering is not yours to change here: `_layouts/`, `_includes/` and `_sass/_course.scss` are shipped from `templates/site/` in the DSL teaching toolkit, and the rest of the styling from the shared `dsl-jekyll-theme`. An edit in this repo is overwritten on the next sync; open a PR against the toolkit instead, and every course site gets it.
 

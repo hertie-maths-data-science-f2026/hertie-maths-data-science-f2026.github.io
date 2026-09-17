@@ -27,19 +27,36 @@ the plan's); the link only once the assignment has handed out and there is somet
 other end of it. `escape`, because the shape's `<your-handle>` would otherwise read as a
 tag and vanish.
 
-`submit_external` (site.py, off the assignment's own grading_config.yml) is an assignment
-handed in off GitHub - Moodle, Kaggle, in class - whose repo carries the brief and nothing
-else. This row said "Submit via" for those too, which is the one thing the repo is not for.
+`submit_shape` (site.py, off `course.submit_shape`) is the SHAPE in one word: `external`
+is handed in off GitHub - Moodle, Kaggle, in class - and NO repo is created for it at all,
+so there is no name to print here. `submit_url` is the address the assignment names, and is
+written only once the brief is out. This row said "Submit via <repo>" for those too, which
+is the one thing there is not.
+
+`shared_dropbox_repo` names ONE repo for the whole cohort, so `repo_name` is that repo
+rather than a shape, and `submit_path` is the folder inside it that is the reader's own -
+which is the half of the answer a name cannot carry.
 {%- endcomment -%}
 <div class="col col-4 markdown-content" data-label="Details">
-    {%- if include.event.repo_name -%}
-    {%- if include.event.submit_external -%}
-    Handed in outside GitHub - the brief is in
-    {%- else -%}
-    Submit via
+    {%- if include.event.submit_shape == "external" -%}
+    Handed in outside GitHub
+    {%- if include.event.submit_url %} - <a href="{{ include.event.submit_url }}">{{ include.event.submit_host }}</a>
+    {%- else %} - see the brief
     {%- endif -%}
+    {%- elsif include.event.repo_name -%}
+    Submit via
     {%- if include.event.repo_url %} <a href="{{ include.event.repo_url }}"><code>{{ include.event.repo_name | escape }}</code></a>
     {%- else %} <code>{{ include.event.repo_name | escape }}</code>
+    {%- endif -%}
+    {%- comment -%}
+    The shape rides on the sub-hash for the same reason the repo name does. One word,
+    because the row is a glance: the assignment's own page carries the sentence about what
+    a public repo means for what a student may commit into it, and about when a repo whose
+    flag the student holds may be published.
+    {%- endcomment -%}
+    {%- if include.event.submit_shape == "assignment-repo-public" %} (public)
+    {%- elsif include.event.submit_shape == "assignment-repo-student-choice" %} (yours to publish)
+    {%- elsif include.event.submit_shape == "shared-dropbox-repo" %} ({{ include.event.submit_path | escape }} folder)
     {%- endif -%}
     {%- endif -%}
 </div>

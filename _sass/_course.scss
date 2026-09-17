@@ -287,6 +287,54 @@
     margin-left: 8px;
 }
 
+/* A command the reader runs themselves, and the button that takes it: the only way to
+   clone into an EXACT folder, since no clone URL can carry one and no page can run
+   anything. It wraps rather than scrolls - a path with a cohort org in it is long, and a
+   clipped command reads as a broken one. */
+.cmd {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    /* Clear air underneath: in a callout the brief's own sentence follows, and a command
+       butted straight against it reads as part of the same thought. */
+    margin: 0.3em 0 1em 0;
+    /* Grey like the hint above it, and NOT `@extend %quiet-note`: that would size the
+       block as well, and the `code` inside sizes itself off this - 0.85em of 0.85em is a
+       command no one can read. The brief's own text stays the theme's, black and full
+       size, because it is the thing on the page that matters. */
+    color: $grey-color-dark;
+
+    code {
+        flex: 1;
+        min-width: 0;
+        padding: 0.4em 0.5em;
+        border: 1px solid #d8d8d8;
+        border-radius: 3px;
+        font-size: 0.85em;
+        white-space: pre-wrap;
+        word-break: break-all;
+    }
+    /* The same button as a field's Save on /profile/, and sized here rather than there
+       because this block appears on an assignment page too. */
+    .cmd-copy {
+        flex: none;
+        padding: 3px 14px;
+        font-size: 0.8em;
+        cursor: pointer;
+    }
+}
+
+/* Under the button row, not beside it: the folder the clone dialog has to be pointed at by
+   hand, because no `vscode://vscode.git/clone` URL can carry one. */
+.callout .open-in-where {
+    @extend %quiet-note;
+    margin: 0.4em 0 0 0;
+
+    code {
+        word-break: break-all;
+    }
+}
+
 /* The one line a student sees before they have a profile: what the buttons would do, and
    where to switch them on. An offer, not an instruction, above pages whose subject is the
    material rather than this. */
@@ -461,13 +509,39 @@
     }
 }
 
-/* An assignment page's name, under its identifier in the h1 (see _layouts/assignment.html).
-   Sized between the title and the body: it is the assignment's real name, not metadata. */
-.post-subtitle {
-    margin: -0.4em 0 0.8em 0;
+/* An assignment page's identifier, above its name in the h1 (see _layouts/assignment.html).
+   The name is the heading now, at the theme's `.post-title` size; the identifier is what
+   ties the page to its schedule row, so it is kept and made small rather than dropped. */
+.post-kicker {
+    margin: 0 0 0.1em 0;
     font-family: $display-font;
-    font-size: 1.15em;
+    font-size: 1.2em;
+    letter-spacing: 0.04em;
+    font-weight: 600;
     color: $grey-color-dark;
+}
+
+/* The due line under the header: the one date a student acts on, so a step up from the
+   released line beside it. */
+.post-due {
+    font-size: 1.1em;
+}
+
+/* The aside under an assignment's brief: what is unusual about the repo it hands out
+   (_layouts/assignment.html, off `shape_note`). A rule, not a box - a second callout
+   below the brief would compete with the real one above it, and this is read after the
+   assignment rather than instead of it.
+
+   Both colours are the brand colour at low alpha rather than a grey and a tint, so the
+   block takes its contrast from whatever the theme puts BEHIND it: a fixed pale fill
+   disappears on a dark background, and fixed dark text is unreadable on one. The text
+   colour is left to inherit for the same reason. */
+.shape-note {
+    margin: 1em 0 0 0;
+    padding: 0.6em 0.9em;
+    border-left: 3px solid rgba($brand-color, 0.55);
+    background: rgba($brand-color, 0.07);
+    font-size: 0.92em;
 }
 
 hr.session-rule {
