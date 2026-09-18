@@ -15,5 +15,8 @@ links:
     - url: https://github.com/hertie-maths-data-science-f2026/materials/blob/main/labs/03_lab/lab3_student.py
       name: "lab3_student.py"
       section: "lab"
+    - url: https://github.com/hertie-maths-data-science-f2026/materials/tree/main/labs/03_lab/solutions
+      name: "solutions/ (2 files)"
+      section: "lab"
 ---
 
