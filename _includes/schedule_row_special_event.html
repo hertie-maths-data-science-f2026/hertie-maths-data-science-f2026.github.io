@@ -5,7 +5,7 @@ toolkit; every sync rewrites it.
 {%- comment -%}
 The KIND, not the name. This printed `name` - the entry's own title - so a guest lecture put
 its whole name where "Lecture" / "Lab" / "Exam" print a row's kind, and left its Title cell
-empty. site.py now writes the name to `description`, which is the Title column below.
+empty. site.py now writes the name to `title`, which is the Title column below.
 {%- endcomment -%}
 <div class="col col-1" style="color: #7d6230 ;font-weight: bold;" data-label="Event">Event</div>
 <div class="col col-1-2" data-label="Date">
@@ -20,5 +20,8 @@ empty. site.py now writes the name to `description`, which is the Title column b
     <br class="date-spliter" />{{ include.event.date | date: "%A" }}
     {% endif %}
 </div>
-<div class="col col-2" data-label="Title"><b>{{ include.event.description }}</b></div>
-<div class="col col-4 markdown-content" data-label="Details">{{ include.event.content }}</div>
+<div class="col col-2" data-label="Title"><b>{{ include.event.title }}</b></div>
+<div class="col col-4 markdown-content" data-label="Details">
+    {%- include schedule_details.html details=include.event.details -%}
+    {{ include.event.content }}
+</div>

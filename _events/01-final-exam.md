@@ -4,6 +4,6 @@
 # classroom-config/schedule.yml (dates, titles) or its org structure (what released).
 type: exam
 date: 2026-12-08T14:00:00
-description: "Final Exam (2hrs)"
+title: "Final Exam"
+details: "Two hours."
 ---
-Details to be confirmed.

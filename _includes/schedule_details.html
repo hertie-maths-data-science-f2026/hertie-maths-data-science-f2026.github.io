@@ -1,0 +1,25 @@
+{%- comment -%}
+SYSTEM-OWNED - do not edit. Written by the DSL course sync from templates/site/ in the
+toolkit; every sync rewrites it.
+{%- endcomment -%}
+{%- comment -%}
+The declared half of a schedule row's Details cell: the schedule.yml entry's own
+`details:`, whichever row type is showing it. Faculty prose, and RAW markdown - unlike
+`content`, which Jekyll has already rendered, front matter reaches a template exactly as
+it was typed, so without `markdownify` its asterisks show.
+
+Written once and included, rather than the same line copied into each row: every row type
+renders this cell, and copies of a cell are how one of them comes to render it
+differently.
+
+Takes `details=` rather than reading `include.event.details` itself, so the schedule
+layout's fallback row - which has an `event` of its own and no `include.event` - can use
+it too.
+
+The CALLER places it at the TOP of its cell, above whatever else that cell generates and
+outside every branch of it: a lecture row's links and its "not released yet" note are two
+arms of one `if`, and a blurb written into either arm would vanish on the other. The cell's
+own content answers "what is there to open"; this answers "what is this about", and a row
+wants both.
+{%- endcomment -%}
+{%- if include.details %}{{ include.details | markdownify }}{% endif -%}

@@ -10,8 +10,8 @@ live in site.events and are deliberately left out - they are not news, and sever
 no text to show.
 
 The one exception is a row the generator has flagged `announce: true` - currently the
-"Cohort archived" row, for the fortnight before the whole cohort goes read-only. That IS
-news, and it is the only warning a student gets. The flag is written by dsl_course/site.py
+archive row, for the fortnight before the whole cohort goes read-only. That IS news, and
+it is the only warning a student gets. The flag is written by dsl_course/site.py
 only inside its window and the collection is rewritten on every sync, so the bullet
 disappears on its own.
 
@@ -44,7 +44,14 @@ would leave the box showing one real update out of seven, or none at all.
         {%- elsif n.type == 'assignment' -%}
             New Assignment released: [<a href="{{ n.url | prepend: site.baseurl }}">{{ n.title }}</a>]
         {%- else -%}
-            {{- n.content -}}
+            {%- comment -%}
+            A hand-written `_announcements/` entry, or the archive row. `details` first,
+            because that is the one key every generated row writes its prose into - and
+            markdownified, since front matter is raw markdown, unlike `content`, which
+            Jekyll has already rendered. `content` is the fallback for an entry that
+            writes its text as a body instead, which a hand-written one may.
+            {%- endcomment -%}
+            {%- if n.details -%}{{ n.details | markdownify }}{%- else -%}{{- n.content -}}{%- endif -%}
         {%- endif -%}
     {%- endcapture -%}
     {%- assign bullet = bullet | strip -%}

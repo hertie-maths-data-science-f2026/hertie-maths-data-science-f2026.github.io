@@ -11,6 +11,7 @@ schedule layout's own include of this file - which passes `event` only - is unch
 <div class="col col-1-2" data-label="Date">
     {{ include.event.date | date: site.dateformat }}
     {{ include.event.date | date: "%H:%M" }}
+    {% if include.event.tbc %}<b>(TBC)</b>{% endif %}
     <br class="date-spliter"/>{{ include.event.date | date: "%A" }}
 </div>
 {%- comment -%}
@@ -28,6 +29,7 @@ The body used to render here either way, which told a reader of the SCHEDULE to 
 links above" - links that live on the Lectures tab, not this page.
 {%- endcomment -%}
 <div class="col col-4 markdown-content" data-label="Details">
+    {%- include schedule_details.html details=include.event.details -%}
     {%- if include.event.links and include.event.links.size > 0 -%}
     {% include lecture_links.html lecture=include.event %}
     {%- else -%}

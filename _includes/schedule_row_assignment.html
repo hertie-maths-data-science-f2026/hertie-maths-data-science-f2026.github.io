@@ -6,6 +6,7 @@ toolkit; every sync rewrites it.
 <div class="col col-1-2" data-label="Date">
     {{ include.event.date | date: site.dateformat }}
     {{ include.event.date | date: "%H:%M" }}
+    {% if include.event.tbc %}<b>(TBC)</b>{% endif %}
     <br class="date-spliter" />{{ include.event.date | date: "%A" }}
 </div>
 {%- comment -%}
@@ -28,6 +29,7 @@ sentence itself is site.py's, not this file's - written in one place, it cannot 
 the one the Assignments tab shows for the same state.
 {%- endcomment -%}
 <div class="col col-4 markdown-content" data-label="Details">
+    {%- include schedule_details.html details=include.event.details -%}
     {%- if include.event.handout_pending -%}
     {{ include.event.content }}
     {%- else -%}

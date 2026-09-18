@@ -6,6 +6,7 @@ toolkit; every sync rewrites it.
 <div class="col col-1-2" data-label="Date">
     {{ include.event.date | date: site.dateformat }}
     {{ include.event.date | date: "%H:%M" }}
+    {% if include.event.tbc %}<b>(TBC)</b>{% endif %}
     <br class="date-spliter" />{{ include.event.date | date: "%A" }}
 </div>
 {%- comment -%}
@@ -15,7 +16,7 @@ it, because the identifier is what ties the row to its material and must read th
 before and after that material ships.
 {%- endcomment -%}
 <div class="col col-2" data-label="Title">
-    <b>{{ include.event.description }}</b>
+    <b>{{ include.event.title }}</b>
     {%- if include.event.subtitle %}<br/>{{ include.event.subtitle }}{%- endif -%}
 </div>
 {%- comment -%}
@@ -38,6 +39,12 @@ rather than a shape, and `submit_path` is the folder inside it that is the reade
 which is the half of the answer a name cannot carry.
 {%- endcomment -%}
 <div class="col col-4 markdown-content" data-label="Details">
+    {%- comment -%}
+    `details` rides the `due_event` sub-hash for the same reason `repo_name` does: the
+    schedule reaches this row through `map: "due_event"`, so it cannot see the parent
+    entry's copy.
+    {%- endcomment -%}
+    {%- include schedule_details.html details=include.event.details -%}
     {%- if include.event.submit_shape == "external" -%}
     Handed in outside GitHub
     {%- if include.event.submit_url %} - <a href="{{ include.event.submit_url }}">{{ include.event.submit_host }}</a>

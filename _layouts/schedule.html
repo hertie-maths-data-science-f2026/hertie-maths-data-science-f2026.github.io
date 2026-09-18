@@ -47,8 +47,8 @@ layout: default
             {% else %}
             <div class="col col-1" data-label="Event">{{ event.type | default: "Event" }}</div>
             <div class="col col-1-2" data-label="Date">{{ event.date | date: site.dateformat }}</div>
-            <div class="col col-2" data-label="Title"><b>{{ event.title | default: event.description }}</b></div>
-            <div class="col col-4 markdown-content" data-label="Details">{{ event.content }}</div>
+            <div class="col col-2" data-label="Title"><b>{{ event.title }}</b></div>
+            <div class="col col-4 markdown-content" data-label="Details">{%- include schedule_details.html details=event.details -%}{{ event.content }}</div>
             {% endcase %}
         </li>
         {% endfor %}

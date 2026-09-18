@@ -26,8 +26,13 @@ a name without stripping it.
 {%- assign entry = include.entry -%}
 <h2 class="session-title">{% include session_title.html lecture=entry %}</h2>
 
-{%- if entry.description %}
-<div class="session-description">{{ entry.description | markdownify }}</div>
+{%- comment -%}
+`details` is the schedule.yml entry's `details:` - the same sentence the session's schedule
+row shows in its Details column, repeated here under the heading it is about. The CSS class
+keeps its name: it is a contract with the dsl-jekyll-theme, not a description of the field.
+{%- endcomment -%}
+{%- if entry.details %}
+<div class="session-description">{{ entry.details | markdownify }}</div>
 {%- endif %}
 
 {{ include.extra }}

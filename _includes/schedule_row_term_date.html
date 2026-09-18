@@ -2,7 +2,13 @@
 SYSTEM-OWNED - do not edit. Written by the DSL course sync from templates/site/ in the
 toolkit; every sync rewrites it.
 {%- endcomment -%}
-<div class="col col-1" style="color: #59468f ;font-weight: bold;" data-label="Event">{{ include.event.name | default: "Term" }}</div>
+{%- comment -%}
+The KIND, spelled here rather than read off the entry. site.py used to write the row's whole
+name ("Term starts") into `name`, which prints in this column, beside a `description: ""`
+that left the Title cell blank - the one row on the schedule that named itself in a
+different column from every other. The name is `title` now, in the Title cell below.
+{%- endcomment -%}
+<div class="col col-1" style="color: #59468f ;font-weight: bold;" data-label="Event">Term</div>
 <div class="col col-1-2" data-label="Date">
     {% if include.event.dateless %}
     <b>TBC</b>
@@ -15,5 +21,5 @@ toolkit; every sync rewrites it.
     <br class="date-spliter" />{{ include.event.date | date: "%A" }}
     {% endif %}
 </div>
-<div class="col col-2" data-label="Title"><b>{{ include.event.description }}</b></div>
+<div class="col col-2" data-label="Title"><b>{{ include.event.title }}</b></div>
 <div class="col col-4" data-label="Details"></div>

@@ -12,7 +12,7 @@ submit_host: "moodle.hertie-school.org"
 due_event:
     type: due
     date: 2026-09-20T23:59:00
-    description: "Assignment 1"
+    title: "Assignment 1"
     subtitle: "Introduce Yourself"
     submit_shape: "external"
     submit_url: "https://moodle.hertie-school.org/course/section.php?id=55657"

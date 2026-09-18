@@ -14,7 +14,7 @@ late_rule: "10% per day, up to 10 days"
 due_event:
     type: due
     date: 2026-11-08T23:59:00
-    description: "Assignment 4"
+    title: "Assignment 4"
     submit_shape: "assignment-repo-private"
     repo_name: "assignment-4-<your-team>"
     repo_name_is_shape: true
