@@ -5,6 +5,7 @@
 type: lecture
 date: 2026-11-03T08:00:00
 title: "Session 9"
+details: "in-class quiz 4"
 unreleased: true
 readings_pending: true
 links: []

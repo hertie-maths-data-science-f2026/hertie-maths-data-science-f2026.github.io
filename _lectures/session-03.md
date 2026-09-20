@@ -6,6 +6,7 @@ type: lecture
 date: 2026-09-15T08:00:00
 title: "Session 3"
 subtitle: "Expectation and Joint Distributions"
+details: "in-class quiz 1"
 reading_list: |2
   ### Session 3 readings
 

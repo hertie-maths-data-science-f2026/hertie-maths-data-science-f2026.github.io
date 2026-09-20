@@ -5,6 +5,7 @@
 type: lecture
 date: 2026-11-17T08:00:00
 title: "Session 11"
+details: "in-class quiz 5"
 unreleased: true
 readings_pending: true
 links: []
