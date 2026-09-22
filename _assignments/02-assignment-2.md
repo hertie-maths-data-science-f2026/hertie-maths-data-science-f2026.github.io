@@ -5,18 +5,41 @@
 type: assignment
 date: 2026-09-22T07:00:00
 title: "Assignment 2"
-handout_pending: true
+subtitle: "Multinomial Sampling, PMFs and Naive Bayes"
 submit_shape: "assignment-repo-private"
+repo_url: "https://github.com/orgs/hertie-maths-data-science-f2026/repositories?q=assignment-2-"
 repo_name: "assignment-2-<your-team>"
 repo_name_is_shape: true
 cutoff_sentence: "What is on main at the grading cutoff is what is marked."
 late_rule: "10% per day, up to 10 days"
+shape_note: "NB: this repo is private - only you and the teaching team can read it."
 due_event:
     type: due
     date: 2026-10-04T23:59:00
     title: "Assignment 2"
+    subtitle: "Multinomial Sampling, PMFs and Naive Bayes"
     submit_shape: "assignment-repo-private"
+    repo_url: "https://github.com/orgs/hertie-maths-data-science-f2026/repositories?q=assignment-2-"
     repo_name: "assignment-2-<your-team>"
     repo_name_is_shape: true
 ---
-_**Assignment 2 is not yet released** - your private `assignment-2-<your-team>` repo appears when it is._
+{% raw %}
+## Getting started
+
+This folder is a self-contained [uv](https://docs.astral.sh/uv/) project - it
+carries its own Python version and dependencies, so nothing else needs
+installing. From this folder, run:
+
+```bash
+uv sync              # build the environment (first time only)
+uv run jupyter lab   # start the notebook server
+```
+
+Jupyter Lab opens in your browser. Open `assignment2_student.ipynb` and work through it; your
+answers go wherever a cell says `# Your code here`.
+
+## Submission
+- Commit the jupyter notebook and any other files that hold your solution
+- Make sure that the solution is readable and has one clear answer to each question
+- Write you individual contributions to CONTRIBUTIONS.md and commit it
+{% endraw %}
