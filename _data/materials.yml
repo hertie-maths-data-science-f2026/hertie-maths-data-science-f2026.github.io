@@ -38,7 +38,7 @@ sections:
           - name: "lab3_student.py"
             url: https://github.com/hertie-maths-data-science-f2026/materials/blob/main/labs/03_lab/lab3_student.py
   - name: "lectures"
-    files: 159
+    files: 160
     entries:
       - name: "01_lecture/"
         url: https://github.com/hertie-maths-data-science-f2026/materials/tree/main/lectures/01_lecture
@@ -498,6 +498,12 @@ sections:
         entries:
           - name: "03_expectation_and_joint_distributions.pdf"
             url: https://github.com/hertie-maths-data-science-f2026/materials/blob/main/lectures/03_lecture/03_expectation_and_joint_distributions.pdf
+      - name: "04_lecture/"
+        url: https://github.com/hertie-maths-data-science-f2026/materials/tree/main/lectures/04_lecture
+        files: 1
+        entries:
+          - name: "04_calculus_for_data_science.pdf"
+            url: https://github.com/hertie-maths-data-science-f2026/materials/blob/main/lectures/04_lecture/04_calculus_for_data_science.pdf
   - name: "m4ds"
     files: 4
     entries:

@@ -24,6 +24,9 @@ reading_list: |2
 
   - Chapter 6.1 (p. 470 - 477)
   - Chapter 6.3 (p. 497 - 511)
-links: []
+links:
+    - url: https://github.com/hertie-maths-data-science-f2026/materials/blob/main/lectures/04_lecture/04_calculus_for_data_science.pdf
+      name: "04_calculus_for_data_science.pdf"
+      section: "lecture"
 ---
 
