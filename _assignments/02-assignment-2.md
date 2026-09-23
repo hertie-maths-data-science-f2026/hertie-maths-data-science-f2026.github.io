@@ -17,6 +17,12 @@ team_join_url: "https://github.com/hertie-maths-data-science-f2026/welcome/issue
 team_join_cap: "4"
 team_join_closes: "4th Oct"
 team_salt: "hertie-maths-data-science-f2026"
+teams:
+  - name: "team-phn"
+    members: 1
+    cap: 4
+    members_sha256: ["e1df2d20ddf2cca8d462bc7f2b6f9273e6e5a4de853dad1f6bd8da68f62c8f0c"]
+    repo_url: "https://github.com/hertie-maths-data-science-f2026/assignment-2-team-phn"
 due_event:
     type: due
     date: 2026-10-04T23:59:00
