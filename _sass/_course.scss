@@ -371,11 +371,6 @@
     margin: 0 0 0.8em 0;
 }
 
-/* Your Profile (_layouts/profile.html). Four numbered steps, each a heading, a control and
-   the hint that says why it is not available yet - a form, not a page of prose.
-
-   No width on the block itself: the boxes are capped below, but a saved path is long and
-   a column narrow enough to suit a text field wrapped every one of them. */
 /* A numbered step's heading - Your Profile's four steps, and an assignment page's two
    team steps (_layouts/assignment.html). Top level rather than under `.profile-steps`, so
    both pages share one look rather than keeping two in step. */
@@ -437,6 +432,11 @@
     }
 }
 
+/* Your Profile (_layouts/profile.html). Four numbered steps, each a heading, a control and
+   the hint that says why it is not available yet - a form, not a page of prose.
+
+   No width on the block itself: the boxes are capped below, but a saved path is long and
+   a column narrow enough to suit a text field wrapped every one of them. */
 .profile-steps {
 
     /* `[hidden]` is a rule in the BROWSER's stylesheet, which every author rule below
