@@ -19,9 +19,9 @@ team_join_closes: "4th Oct"
 team_salt: "hertie-maths-data-science-f2026"
 teams:
   - name: "free_4_all"
-    members: 2
+    members: 3
     cap: 4
-    members_sha256: ["274efe9cd364d79569fec83fb2d5c11712b65c04bd8b29781ef757324fd6c08a", "d7b503295102b84d34815375844a937eb4a4f79f2f6b8efe6081bb8866c983f4"]
+    members_sha256: ["274efe9cd364d79569fec83fb2d5c11712b65c04bd8b29781ef757324fd6c08a", "ef01fee35cab1cdcd1ab428647af2fbe0a7954b9db699287ce7fbc56dc155897", "d7b503295102b84d34815375844a937eb4a4f79f2f6b8efe6081bb8866c983f4"]
     repo_url: "https://github.com/hertie-maths-data-science-f2026/assignment-2-free_4_all"
   - name: "team-geneva"
     members: 2
