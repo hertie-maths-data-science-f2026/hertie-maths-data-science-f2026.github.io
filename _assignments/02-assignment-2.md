@@ -24,9 +24,9 @@ teams:
     members_sha256: ["0b5a63dd349e29c72a239ca6030c2d6424dc28dac344f6fc054cb6096e07f6d8", "f153c7fc1f01574e06b4f2f5d62a8ebf2985ea58eb3b3c221125618d0e299c83", "e1df2d20ddf2cca8d462bc7f2b6f9273e6e5a4de853dad1f6bd8da68f62c8f0c"]
     repo_url: "https://github.com/hertie-maths-data-science-f2026/assignment-2-team-phn"
   - name: "team-spreewald"
-    members: 1
+    members: 2
     cap: 4
-    members_sha256: ["3ac1a0cf94c6eb21e9436690ee7173176a1a34a25438e1e83eb95e90225415dc"]
+    members_sha256: ["aa07f1e80e5d6739aba2356a5ef5aa8fc9184cdf97db9ea284633fe400b39f47", "3ac1a0cf94c6eb21e9436690ee7173176a1a34a25438e1e83eb95e90225415dc"]
     repo_url: "https://github.com/hertie-maths-data-science-f2026/assignment-2-team-spreewald"
 due_event:
     type: due
