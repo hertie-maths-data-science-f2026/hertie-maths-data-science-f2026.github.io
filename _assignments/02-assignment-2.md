@@ -18,6 +18,11 @@ team_join_cap: "4"
 team_join_closes: "4th Oct"
 team_salt: "hertie-maths-data-science-f2026"
 teams:
+  - name: "free_4_all"
+    members: 1
+    cap: 4
+    members_sha256: ["274efe9cd364d79569fec83fb2d5c11712b65c04bd8b29781ef757324fd6c08a"]
+    repo_url: "https://github.com/hertie-maths-data-science-f2026/assignment-2-free_4_all"
   - name: "team-phn"
     members: 4
     cap: 4
