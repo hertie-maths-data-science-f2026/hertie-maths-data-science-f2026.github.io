@@ -43,6 +43,11 @@ teams:
     cap: 4
     members_sha256: ["ab30a9a3b99810fadac786233e2d54dba611211c96be5e218c9740bc1461f64f", "aa07f1e80e5d6739aba2356a5ef5aa8fc9184cdf97db9ea284633fe400b39f47", "3ac1a0cf94c6eb21e9436690ee7173176a1a34a25438e1e83eb95e90225415dc"]
     repo_url: "https://github.com/hertie-maths-data-science-f2026/assignment-2-team-spreewald"
+  - name: "the_best_team"
+    members: 1
+    cap: 4
+    members_sha256: ["dd252c16586e994ac0b99abf178fd3d1d1de1779d6a46b28a8234cef8d81452a"]
+    repo_url: "https://github.com/hertie-maths-data-science-f2026/assignment-2-the_best_team"
 due_event:
     type: due
     date: 2026-10-04T23:59:00
