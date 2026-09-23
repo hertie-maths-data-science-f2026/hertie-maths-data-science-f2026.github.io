@@ -24,9 +24,9 @@ teams:
     members_sha256: ["274efe9cd364d79569fec83fb2d5c11712b65c04bd8b29781ef757324fd6c08a", "d7b503295102b84d34815375844a937eb4a4f79f2f6b8efe6081bb8866c983f4"]
     repo_url: "https://github.com/hertie-maths-data-science-f2026/assignment-2-free_4_all"
   - name: "team-geneva"
-    members: 1
+    members: 2
     cap: 4
-    members_sha256: ["7d5fb4ac03f089f578636f91805120c8bcc94eeed1faedaee88ff8407e3ac8c0"]
+    members_sha256: ["676c65d51ff7e9aa8df4f8bf8b718788bccffdc07a13e7bd78a61dc5cabccb8b", "7d5fb4ac03f089f578636f91805120c8bcc94eeed1faedaee88ff8407e3ac8c0"]
     repo_url: "https://github.com/hertie-maths-data-science-f2026/assignment-2-team-geneva"
   - name: "team-lea"
     members: 2
