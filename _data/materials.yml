@@ -9,7 +9,7 @@ documents:
     url: https://github.com/hertie-maths-data-science-f2026/materials/blob/main/uv.lock
 sections:
   - name: "labs"
-    files: 7
+    files: 9
     entries:
       - name: "01_lab/"
         url: https://github.com/hertie-maths-data-science-f2026/materials/tree/main/labs/01_lab
@@ -37,6 +37,14 @@ sections:
             url: https://github.com/hertie-maths-data-science-f2026/materials/blob/main/labs/03_lab/lab3_student.ipynb
           - name: "lab3_student.py"
             url: https://github.com/hertie-maths-data-science-f2026/materials/blob/main/labs/03_lab/lab3_student.py
+      - name: "04_lab/"
+        url: https://github.com/hertie-maths-data-science-f2026/materials/tree/main/labs/04_lab
+        files: 2
+        entries:
+          - name: "lab4_handout.pdf"
+            url: https://github.com/hertie-maths-data-science-f2026/materials/blob/main/labs/04_lab/lab4_handout.pdf
+          - name: "lab4_student.ipynb"
+            url: https://github.com/hertie-maths-data-science-f2026/materials/blob/main/labs/04_lab/lab4_student.ipynb
   - name: "lectures"
     files: 160
     entries:
@@ -557,26 +565,3 @@ sections:
         entries:
           - name: "READINGS.md"
             url: https://github.com/hertie-maths-data-science-f2026/materials/blob/main/readings/05_week-5/READINGS.md
-  - name: "students"
-    files: 6
-    entries:
-      - name: "m4ds/"
-        url: https://github.com/hertie-maths-data-science-f2026/materials/tree/main/students/m4ds
-        files: 4
-        entries:
-          - name: "images/"
-            url: https://github.com/hertie-maths-data-science-f2026/materials/tree/main/students/m4ds/images
-            files: 3
-            entries:
-              - name: "__init__.py"
-                url: https://github.com/hertie-maths-data-science-f2026/materials/blob/main/students/m4ds/images/__init__.py
-              - name: "figure.py"
-                url: https://github.com/hertie-maths-data-science-f2026/materials/blob/main/students/m4ds/images/figure.py
-              - name: "joint_pmf.py"
-                url: https://github.com/hertie-maths-data-science-f2026/materials/blob/main/students/m4ds/images/joint_pmf.py
-          - name: "__init__.py"
-            url: https://github.com/hertie-maths-data-science-f2026/materials/blob/main/students/m4ds/__init__.py
-      - name: "pyproject.toml"
-        url: https://github.com/hertie-maths-data-science-f2026/materials/blob/main/students/pyproject.toml
-      - name: "README.md"
-        url: https://github.com/hertie-maths-data-science-f2026/materials/blob/main/students/README.md
