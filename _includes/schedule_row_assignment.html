@@ -27,6 +27,14 @@ name and there is nothing here to link to yet. Exactly the shape of an unrelease
 row (schedule_row_lecture.html): the generated body sentence in place of the links. The
 sentence itself is site.py's, not this file's - written in one place, it cannot drift from
 the one the Assignments tab shows for the same state.
+
+`team_join_url` is the third state: a group assignment whose teams the students pick, out
+now and waiting for them. The brief is out and linked as usual, so this is one line beside
+it rather than in place of it - and it is the only line on the schedule that asks a student
+to DO something on a date that is not the deadline, so it names that date. The date and the
+address are site.py's front matter, the same two values the Assignments tab's callout
+renders; the wording differs because a cell of a table is not a paragraph, but there is no
+second copy of the facts to go stale.
 {%- endcomment -%}
 <div class="col col-4 markdown-content" data-label="Details">
     {%- include schedule_details.html details=include.event.details -%}
@@ -37,5 +45,8 @@ the one the Assignments tab shows for the same state.
     {% if include.event.solutions %}
     [<a href="{{ include.event.solutions | prepend: site.baseurl}}">Solutions</a>]
     {% endif %}
+    {%- endif -%}
+    {%- if include.event.team_join_url -%}
+    <br/>[<a target="_blank" rel="noopener" href="{{ include.event.team_join_url }}">Form your team</a>] by {{ include.event.team_join_closes }}
     {%- endif -%}
 </div>

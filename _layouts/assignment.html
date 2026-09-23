@@ -67,6 +67,86 @@ title: page.title
     {% endunless %}
 
     {%- comment -%}
+    A group assignment whose teams the students pick themselves, inside its window, is TWO
+    steps, in order: form a team, then open the team's repo. Until a team exists the
+    handout provisions nothing for that student, so the repo button alone led to an empty
+    listing with no explanation. So the page numbers them, in Your Profile's visual
+    language (`.profile-step-title` / `.profile-step-num`), and the submission callout
+    below becomes step 2. With no window open none of this renders, and the submission
+    callout is exactly the unnumbered box it always was.
+
+    `team_join_url` is the presence test: site.py writes the `team_join_*` keys only while
+    the window is open. The cap and the closing date are site.py's too, off the
+    assignment's own grading_config.yml and the plan's grading pin - the same two facts the
+    Join-team form enforces and the same day its refusal names. The date arrives already
+    spoken (`grades.spoken_day`), so it is printed as it stands.
+
+    `teams` is NAMES AND COUNTS: the site carries no readable handle. Each row also carries
+    `data-members`, salted SHA-256 digests of its members' handles
+    (`site.member_digest`), for client-side recognition only. `teams` is written only once
+    a team has formed, so the day the window opens there is no empty table, just the line
+    saying so. This page is the ONE list of
+    teams: the mail, the Join-team form and its refusals all link here, and a push to
+    teams.csv re-syncs it within minutes. Names are spelt as teams.csv spells them, which
+    is how the Join-team form insists they be typed.
+
+    The READER's own team is recognised in the browser, off the handle Your Profile saved
+    (`dslOpenIn.stored("handle")`, the same key open_in.html reads), hashed exactly as
+    site.py hashes (`<cohort org>:<handle, lower-cased>`, the org in `data-salt`) and
+    compared with each row's `data-members`. A browser with no `crypto.subtle` gets the
+    static page: both steps in full, nothing dimmed. Found, step 1 is marked done and step 2's button goes straight to the
+    team's repo (`data-repo-url`, precomputed by site.py from the name the handout
+    provisions). Not found, step 2 is dimmed with a hint - never disabled, because the page
+    cannot verify. No handle saved, an inline box asks for one - Your Profile's own field
+    and Save (`.profile-steps` scopes those styles, so the box wears that class), writing
+    the same `dsl.handle` through `dslOpenIn.save` - and detection re-runs in place. With no
+    script, or storage that throws, `data-team-state` is never set: both steps read in full
+    and nothing is dimmed.
+    {%- endcomment -%}
+    {% if page.team_join_url %}
+    <div class="team-steps" id="dsl-team-steps" data-salt="{{ page.team_salt | escape }}">
+    <div class="profile-steps team-handle" hidden>
+      <label for="dsl-team-handle">Enter your GitHub handle to see your team here</label>
+      <span class="profile-entry">
+        <input type="text" id="dsl-team-handle" autocomplete="off" autocapitalize="off"
+               spellcheck="false" placeholder="j.doe">
+        <button type="button" class="btn btn--field">Save</button>
+      </span>
+      <p class="profile-hint">Saved in this browser only, the same as in <a href="{{ '/profile/' | prepend: site.baseurl }}">Your Profile</a>.</p>
+    </div>
+    <section class="callout team-step-form">
+      <h2 class="profile-step-title"><span class="profile-step-num">1</span> Form your team</h2>
+      <p class="team-found" hidden></p>
+      <p><a class="btn" target="_blank" rel="noopener" href="{{ page.team_join_url }}">Open a Join team issue</a></p>
+      <p>
+      You pick your own team for this assignment, of up to {{ page.team_join_cap }} people.
+      Open a <strong>Join team</strong> issue in this cohort's <code>welcome</code> repo to start a team
+      or join one - team formation closes on {{ page.team_join_closes }}.
+      {% if page.repo_name %}Your team's submission repo appears once the team does.{% endif %}
+      </p>
+      {% if page.teams %}
+      <table class="team-table">
+        <thead><tr><th>Team</th><th>Places left</th></tr></thead>
+        <tbody>
+        {% for team in page.teams %}
+          {% assign left = team.cap | minus: team.members %}
+          <tr data-team="{{ team.name | escape }}" data-members="{{ team.members_sha256 | join: ' ' }}"{% if team.repo_url %} data-repo-url="{{ team.repo_url }}"{% endif %}>
+            <td>{{ team.name }}</td>
+            <td>{% if left > 0 %}{{ left }}{% else %}full{% endif %}</td>
+          </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+      <p>To join one, type its name exactly as the table spells it.</p>
+      {% else %}
+      <p>No teams yet - be the first: choose <em>Create a new team</em>.</p>
+      {% endif %}
+    </section>
+    {% capture step_two %}<h2 class="profile-step-title"><span class="profile-step-num">2</span> Open your submission repo</h2>
+      <p class="team-hint" hidden>Form or join a team first.</p>{% endcapture %}
+    {% endif %}
+
+    {%- comment -%}
     Where the student actually works. This is the first thing they need and it used to be a
     grey italic line at the very bottom of the page, under the whole brief - so the answer
     to "where do I write this?" sat below the thing it was needed for. `repo_url` is the
@@ -156,14 +236,16 @@ title: page.title
     {%- endcomment -%}
     {% unless page.handout_pending %}
     {% if page.submit_shape == "external" %}
-    <div class="callout">
+    <div class="callout callout-submit">
+      {{ step_two }}
       {% if page.submit_url %}
       <p><a class="btn" target="_blank" rel="noopener" href="{{ page.submit_url }}">Submit on {{ page.submit_host }}</a></p>
       {% endif %}
       <p>Handed in outside GitHub.{% unless page.submit_url %} See the brief.{% endunless %}</p>
     </div>
     {% elsif page.repo_url %}
-    <div class="callout"{% if page.submit_path %} data-dsl-dropbox="{{ page.repo_name | escape }}" data-dsl-dropbox-path="{{ page.submit_path | escape }}"{% endif %}>
+    <div class="callout callout-submit"{% if page.submit_path %} data-dsl-dropbox="{{ page.repo_name | escape }}" data-dsl-dropbox-path="{{ page.submit_path | escape }}"{% endif %}>
+      {{ step_two }}
       <p><a class="btn" {% if page.repo_name_is_shape %}data-dsl-repo-url {% endif %}target="_blank" rel="noopener" href="{{ page.repo_url }}">Open the submission repo on GitHub</a></p>
       <p>
       {% case page.submit_shape %}
@@ -183,6 +265,123 @@ title: page.title
     </div>
     {% endif %}
     {% endunless %}
+    {% if page.team_join_url %}
+    </div>
+    <script>
+    (function () {
+      var root = document.getElementById("dsl-team-steps");
+      var profile = window.dslOpenIn;
+      if (!root || !profile) { return; }
+      /* How the reader is looked for: the same digest site.py writes
+         (`site.member_digest`) - SHA-256 of `<cohort org>:<handle>`, lower-cased, hex. */
+      function memberKey(handle) {
+        var text = root.getAttribute("data-salt") + ":" + handle;
+        return window.crypto.subtle.digest("SHA-256", new TextEncoder().encode(text))
+          .then(function (buf) {
+            return Array.prototype.map.call(new Uint8Array(buf), function (b) {
+              return ("0" + b.toString(16)).slice(-2);
+            }).join("");
+          });
+      }
+      /* THE membership test, and the only code that knows how a row encodes its members. */
+      function inTeam(key, row) {
+        return (row.getAttribute("data-members") || "").split(" ").indexOf(key) >= 0;
+      }
+      function el(sel) { return root.querySelector(sel); }
+      function toggle(sel, on) {
+        var node = el(sel);
+        if (node) { if (on) { node.removeAttribute("hidden"); } else { node.setAttribute("hidden", ""); } }
+        return node;
+      }
+      /* Step 1's line for a reader the page has looked for: who they are in, or that they
+         are in none yet - with a way back to the box if the saved handle is not theirs. */
+      function say(lead, strong) {
+        var line = toggle(".team-found", true);
+        line.textContent = lead;
+        var b = document.createElement("strong");
+        b.appendChild(document.createTextNode(strong));
+        line.appendChild(b);
+        line.appendChild(document.createTextNode(" \u00b7 "));
+        var change = document.createElement("a");
+        change.setAttribute("href", "#dsl-team-handle");
+        change.appendChild(document.createTextNode("not you? change"));
+        change.addEventListener("click", function (e) {
+          e.preventDefault();
+          ask(profile.stored("handle"));
+        });
+        line.appendChild(change);
+      }
+      function ask(current) {
+        root.setAttribute("data-team-state", "no-handle");
+        toggle(".team-found", false);
+        toggle(".team-hint", false);
+        toggle(".team-handle", true);
+        var box = el("#dsl-team-handle");
+        if (box) { box.value = current || ""; }
+      }
+      /* The submission button as rendered, so a second detection starts from it rather
+         than from the team repo a first one pointed it at. */
+      var btn = el(".callout-submit a.btn");
+      var rendered = btn ? btn.getAttribute("href") : "";
+      var named = root.querySelectorAll(".callout-submit [data-dsl-repo]");
+      var shapes = Array.prototype.map.call(named, function (n) { return n.textContent; });
+      function recognise(handle, key) {
+        var rows = root.querySelectorAll("tr[data-team]");
+        var mine = null;
+        for (var i = 0; i < rows.length && !mine; i++) {
+          if (inTeam(key, rows[i])) { mine = rows[i]; }
+        }
+        toggle(".team-handle", false);
+        if (!mine) {
+          root.setAttribute("data-team-state", "missing");
+          toggle(".team-hint", true);
+          say("Not in a team yet as ", handle);
+          return;
+        }
+        root.setAttribute("data-team-state", "found");
+        toggle(".team-hint", false);
+        say("\u2713 You're in team ", mine.getAttribute("data-team"));
+        var url = mine.getAttribute("data-repo-url");
+        if (url && btn) {
+          btn.setAttribute("href", url);
+          profile.newTab(btn, url);
+          for (var j = 0; j < named.length; j++) {
+            named[j].textContent = url.split("/").pop();
+          }
+        }
+      }
+      function detect() {
+        if (btn) { btn.setAttribute("href", rendered); }
+        for (var j = 0; j < named.length; j++) { named[j].textContent = shapes[j]; }
+        /* Trimmed, and any `@` a student typed taken off, then lower-cased: GitHub
+           handles are ASCII, so this is site.py's `.lower()` exactly. */
+        var handle = profile.stored("handle").trim().replace(/^@/, "").toLowerCase();
+        if (!handle) { ask(""); return; }
+        /* A browser that cannot hash (no `crypto.subtle`) leaves the page as rendered:
+           both steps in full, nothing dimmed. */
+        memberKey(handle).then(function (key) { recognise(handle, key); }, function () {});
+      }
+      try {
+        /* No hashing, no recognising: the static page is the whole answer, and a box that
+           saved a handle to no visible effect would be worse than none. */
+        if (!(window.crypto && window.crypto.subtle && window.TextEncoder)) { return; }
+        var save = el(".team-handle button");
+        save.addEventListener("click", function () {
+          /* Your Profile's own rule - trimmed, and an empty box stores nothing - plus the
+             `@` a student may type before a handle, which no GitHub URL wants. */
+          var typed = el("#dsl-team-handle").value.trim().replace(/^@/, "");
+          if (!typed) { return; }
+          profile.save("handle", typed);
+          detect();
+        });
+        el("#dsl-team-handle").addEventListener("keydown", function (e) {
+          if (e.key === "Enter") { save.click(); }
+        });
+        detect();
+      } catch (e) { /* The static page already reads in full. */ }
+    })();
+    </script>
+    {% endif %}
 
     {%- comment -%}
     `pdf` / `attachment` / `solutions` are hand-authored front matter from the upstream

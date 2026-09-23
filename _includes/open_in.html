@@ -349,7 +349,9 @@ day that sentence is reworded.
       path = ownShape(box.getAttribute("data-dsl-dropbox-path"), me.handle);
       if (!repo || !path) { return; }
     }
-    var btn = document.querySelector(".callout a.btn");
+    /* The SUBMISSION callout's button: on a page inside a team-formation window the "Form
+       your team" step comes first, and its button is not the repo's. */
+    var btn = document.querySelector(".callout-submit a.btn");
     if (!btn) { return; }
     /* Nothing to resolve on a drop box page: the layout marks nothing there, because every
        name it prints is already the real one. */

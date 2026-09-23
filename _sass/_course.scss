@@ -335,6 +335,34 @@
     }
 }
 
+/* The teams that exist, in the "Form your team" callout (_layouts/assignment.html).
+   Scoped to its class, never to a bare `table`: the theme's header lays itself out with
+   one, and it styles no table itself, so an unclassed one rendered as a run of words.
+   Rules rather than boxes, and only as wide as its two columns. */
+.team-table {
+    width: auto;
+    min-width: 16em;
+    margin: 0.4em 0 0.8em 0;
+    border-collapse: collapse;
+    font-size: 0.92em;
+
+    th,
+    td {
+        padding: 0.35em 1.2em 0.35em 0;
+        text-align: left;
+        border-bottom: 1px solid #e3e3e3;
+    }
+
+    th {
+        border-bottom: 2px solid rgba($brand-color, 0.55);
+        font-weight: 600;
+    }
+
+    tr:last-child td {
+        border-bottom: none;
+    }
+}
+
 /* The one line a student sees before they have a profile: what the buttons would do, and
    where to switch them on. An offer, not an instruction, above pages whose subject is the
    material rather than this. */
@@ -348,6 +376,67 @@
 
    No width on the block itself: the boxes are capped below, but a saved path is long and
    a column narrow enough to suit a text field wrapped every one of them. */
+/* A numbered step's heading - Your Profile's four steps, and an assignment page's two
+   team steps (_layouts/assignment.html). Top level rather than under `.profile-steps`, so
+   both pages share one look rather than keeping two in step. */
+.profile-step-title {
+    margin: 0 0 0.6em 0;
+    font-size: 1.15em;
+    line-height: 1.3;
+}
+.profile-step-num {
+    display: inline-block;
+    width: 1.6em;
+    height: 1.6em;
+    margin-right: 0.45em;
+    border-radius: 50%;
+    background: $brand-color;
+    color: #fff;
+    font-size: 0.8em;
+    line-height: 1.6em;
+    text-align: center;
+    vertical-align: 0.08em;
+}
+
+/* Form your team, then open the team's repo - an assignment page inside a team-formation
+   window. `data-team-state` is set only by the page's script, once it has read the
+   reader's saved handle: with no script every step reads in full and nothing is dimmed. */
+.team-steps {
+
+    /* The browser's own `[hidden]` rule loses to any author rule below - see
+       `.profile-steps`. */
+    [hidden] {
+        display: none !important;
+    }
+
+    /* The handle box for a reader with none saved: Your Profile's field, whose styles it
+       takes by also wearing `.profile-steps` (capped with `#dsl-handle` there). */
+    .team-handle {
+        margin: 0 0 1em 0;
+    }
+
+    .team-found {
+        font-size: 1.05em;
+        margin: 0 0 0.6em 0;
+    }
+
+    .team-hint {
+        @extend %quiet-note;
+        margin: 0 0 0.6em 0;
+    }
+
+    /* Done, or not yet reachable: faded, never hidden or disabled - the page cannot
+       verify either, and a reader it has guessed wrong about must still get through. */
+    &[data-team-state="found"] .team-step-form,
+    &[data-team-state="missing"] .callout-submit {
+        opacity: 0.55;
+    }
+
+    &[data-team-state="found"] .team-step-form .profile-step-num {
+        background: $grey-color-dark;
+    }
+}
+
 .profile-steps {
 
     /* `[hidden]` is a rule in the BROWSER's stylesheet, which every author rule below
@@ -365,24 +454,6 @@
     .profile-step + .profile-step {
         border-top: 1px solid #e3e3e3;
         padding-top: 1.4em;
-    }
-    .profile-step-title {
-        margin: 0 0 0.6em 0;
-        font-size: 1.15em;
-        line-height: 1.3;
-    }
-    .profile-step-num {
-        display: inline-block;
-        width: 1.6em;
-        height: 1.6em;
-        margin-right: 0.45em;
-        border-radius: 50%;
-        background: $brand-color;
-        color: #fff;
-        font-size: 0.8em;
-        line-height: 1.6em;
-        text-align: center;
-        vertical-align: 0.08em;
     }
     .profile-field {
         margin: 0 0 1.4em 0;
@@ -428,6 +499,7 @@
         font-size: 0.95em;
     }
     #dsl-handle,
+    #dsl-team-handle,
     .profile-choice input[type="text"] {
         max-width: 18em;
     }
