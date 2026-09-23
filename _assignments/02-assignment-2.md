@@ -49,9 +49,9 @@ teams:
     members_sha256: ["ab30a9a3b99810fadac786233e2d54dba611211c96be5e218c9740bc1461f64f", "aa07f1e80e5d6739aba2356a5ef5aa8fc9184cdf97db9ea284633fe400b39f47", "3ac1a0cf94c6eb21e9436690ee7173176a1a34a25438e1e83eb95e90225415dc"]
     repo_url: "https://github.com/hertie-maths-data-science-f2026/assignment-2-team-spreewald"
   - name: "team_optimist"
-    members: 1
+    members: 2
     cap: 4
-    members_sha256: ["471de9160bdd823ec43fdaee7d30c11f895a24a5c419ecec441c253e3cab41d5"]
+    members_sha256: ["5203da002da686eeecbab926972895b1a26bfa25d7bee0a40b1f52430cc3d3a3", "471de9160bdd823ec43fdaee7d30c11f895a24a5c419ecec441c253e3cab41d5"]
     repo_url: "https://github.com/hertie-maths-data-science-f2026/assignment-2-team_optimist"
   - name: "the_best_team"
     members: 2
