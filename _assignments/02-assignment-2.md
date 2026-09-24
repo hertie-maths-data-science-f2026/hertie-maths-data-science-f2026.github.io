@@ -64,9 +64,9 @@ teams:
     members_sha256: ["dd252c16586e994ac0b99abf178fd3d1d1de1779d6a46b28a8234cef8d81452a", "250fcce0687e751c875a454ebf1ecb37205fe1e5160008dd08756166be4e8e3b"]
     repo_url: "https://github.com/hertie-maths-data-science-f2026/assignment-2-the_best_team"
   - name: "tubin4ever"
-    members: 1
+    members: 2
     cap: 4
-    members_sha256: ["52d6225895b949c28508937b6c520755d5255133d4168e1caade3ed9e4581529"]
+    members_sha256: ["4dd86d032edde455601bea3832c06c6dcf126c90818622f33da0f228ce704090", "52d6225895b949c28508937b6c520755d5255133d4168e1caade3ed9e4581529"]
     repo_url: "https://github.com/hertie-maths-data-science-f2026/assignment-2-tubin4ever"
 due_event:
     type: due
