@@ -23,6 +23,11 @@ teams:
     cap: 4
     members_sha256: ["241f35f19e352c61f8a807d82c04e5165cb533ce74a0f589732c7ef3c8c09018", "34ab38e3b01da369b22c9fbe785126b12c067c63c682372e27619ec21f29987c", "af0434ae158d8700d62d1b131a7cf964df96f27aef7ae225fef276f3aaad310b", "5f9df52654c4f27df5ec2306b9feb1eb03bbda964069d691b3aef7afabd8ae76"]
     repo_url: "https://github.com/hertie-maths-data-science-f2026/assignment-2-bayes-baes"
+  - name: "best-team"
+    members: 1
+    cap: 4
+    members_sha256: ["e1e066e97dc79aa22482b9aa764268dc3fc6fe13fa1bee14fe62fb6c026342d4"]
+    repo_url: "https://github.com/hertie-maths-data-science-f2026/assignment-2-best-team"
   - name: "brains"
     members: 4
     cap: 4
