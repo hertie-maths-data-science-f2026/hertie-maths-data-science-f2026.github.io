@@ -24,9 +24,9 @@ teams:
     members_sha256: ["241f35f19e352c61f8a807d82c04e5165cb533ce74a0f589732c7ef3c8c09018", "34ab38e3b01da369b22c9fbe785126b12c067c63c682372e27619ec21f29987c", "af0434ae158d8700d62d1b131a7cf964df96f27aef7ae225fef276f3aaad310b", "5f9df52654c4f27df5ec2306b9feb1eb03bbda964069d691b3aef7afabd8ae76"]
     repo_url: "https://github.com/hertie-maths-data-science-f2026/assignment-2-bayes-baes"
   - name: "best-team"
-    members: 2
+    members: 3
     cap: 4
-    members_sha256: ["e1e066e97dc79aa22482b9aa764268dc3fc6fe13fa1bee14fe62fb6c026342d4", "676c65d51ff7e9aa8df4f8bf8b718788bccffdc07a13e7bd78a61dc5cabccb8b"]
+    members_sha256: ["e1e066e97dc79aa22482b9aa764268dc3fc6fe13fa1bee14fe62fb6c026342d4", "676c65d51ff7e9aa8df4f8bf8b718788bccffdc07a13e7bd78a61dc5cabccb8b", "7d5fb4ac03f089f578636f91805120c8bcc94eeed1faedaee88ff8407e3ac8c0"]
     repo_url: "https://github.com/hertie-maths-data-science-f2026/assignment-2-best-team"
   - name: "brains"
     members: 4
@@ -59,9 +59,9 @@ teams:
     members_sha256: ["ea23af5a1f984a34c061acac6835cf58dfe0cccace91e958443d295d2c84442d", "bfca282244262c3287b9fec90e09a19166506d16a139f252f36d976cbfc5019d", "5203da002da686eeecbab926972895b1a26bfa25d7bee0a40b1f52430cc3d3a3", "471de9160bdd823ec43fdaee7d30c11f895a24a5c419ecec441c253e3cab41d5"]
     repo_url: "https://github.com/hertie-maths-data-science-f2026/assignment-2-team_optimist"
   - name: "the_best_team"
-    members: 3
+    members: 2
     cap: 4
-    members_sha256: ["dd252c16586e994ac0b99abf178fd3d1d1de1779d6a46b28a8234cef8d81452a", "250fcce0687e751c875a454ebf1ecb37205fe1e5160008dd08756166be4e8e3b", "7d5fb4ac03f089f578636f91805120c8bcc94eeed1faedaee88ff8407e3ac8c0"]
+    members_sha256: ["dd252c16586e994ac0b99abf178fd3d1d1de1779d6a46b28a8234cef8d81452a", "250fcce0687e751c875a454ebf1ecb37205fe1e5160008dd08756166be4e8e3b"]
     repo_url: "https://github.com/hertie-maths-data-science-f2026/assignment-2-the_best_team"
   - name: "tubin4ever"
     members: 3
