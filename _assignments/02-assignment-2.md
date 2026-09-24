@@ -24,9 +24,9 @@ teams:
     members_sha256: ["241f35f19e352c61f8a807d82c04e5165cb533ce74a0f589732c7ef3c8c09018", "34ab38e3b01da369b22c9fbe785126b12c067c63c682372e27619ec21f29987c", "af0434ae158d8700d62d1b131a7cf964df96f27aef7ae225fef276f3aaad310b", "5f9df52654c4f27df5ec2306b9feb1eb03bbda964069d691b3aef7afabd8ae76"]
     repo_url: "https://github.com/hertie-maths-data-science-f2026/assignment-2-bayes-baes"
   - name: "brains"
-    members: 3
+    members: 4
     cap: 4
-    members_sha256: ["ca95badfdb599ff03b799c4cfedc150e16b19ce4c20273d1d1c2487a0632b08c", "c2cbec86b4897204edd0f43bb6130f00bc94f1f9ce90be5d161c68c9c50932f7", "b85a5007ace3cc1787b3fd3d3b520950d5ec3c2672409b4791b2a4150e633c82"]
+    members_sha256: ["ca95badfdb599ff03b799c4cfedc150e16b19ce4c20273d1d1c2487a0632b08c", "e1939ed298aad15349879219d89846e4054a08dfe3837c6ede3d92d0ad8254c8", "c2cbec86b4897204edd0f43bb6130f00bc94f1f9ce90be5d161c68c9c50932f7", "b85a5007ace3cc1787b3fd3d3b520950d5ec3c2672409b4791b2a4150e633c82"]
     repo_url: "https://github.com/hertie-maths-data-science-f2026/assignment-2-brains"
   - name: "free_4_all"
     members: 3
