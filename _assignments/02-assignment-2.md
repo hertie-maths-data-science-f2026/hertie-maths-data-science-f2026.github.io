@@ -44,9 +44,9 @@ teams:
     members_sha256: ["91ebbe38a366d7e84a350756e10f76cf3e4613a57a592374bd5e39363dafc2ba", "6ccbd8bfb41e763779000b641a831b4f944e32a0827efa030260b0e6cb8d7b63", "1160469d8406a8fc6efed852c251d1f0a6e70bf7463326b3b08cae5e6807f85c"]
     repo_url: "https://github.com/hertie-maths-data-science-f2026/assignment-2-team-lea"
   - name: "team-phn"
-    members: 4
+    members: 3
     cap: 4
-    members_sha256: ["0b5a63dd349e29c72a239ca6030c2d6424dc28dac344f6fc054cb6096e07f6d8", "d02563d8de88275d480b8ec23387ea6c25b757bf186ff56785dccae35c721931", "f153c7fc1f01574e06b4f2f5d62a8ebf2985ea58eb3b3c221125618d0e299c83", "e1df2d20ddf2cca8d462bc7f2b6f9273e6e5a4de853dad1f6bd8da68f62c8f0c"]
+    members_sha256: ["0b5a63dd349e29c72a239ca6030c2d6424dc28dac344f6fc054cb6096e07f6d8", "f153c7fc1f01574e06b4f2f5d62a8ebf2985ea58eb3b3c221125618d0e299c83", "e1df2d20ddf2cca8d462bc7f2b6f9273e6e5a4de853dad1f6bd8da68f62c8f0c"]
     repo_url: "https://github.com/hertie-maths-data-science-f2026/assignment-2-team-phn"
   - name: "team-spreewald"
     members: 3
@@ -59,9 +59,9 @@ teams:
     members_sha256: ["ea23af5a1f984a34c061acac6835cf58dfe0cccace91e958443d295d2c84442d", "bfca282244262c3287b9fec90e09a19166506d16a139f252f36d976cbfc5019d", "5203da002da686eeecbab926972895b1a26bfa25d7bee0a40b1f52430cc3d3a3", "471de9160bdd823ec43fdaee7d30c11f895a24a5c419ecec441c253e3cab41d5"]
     repo_url: "https://github.com/hertie-maths-data-science-f2026/assignment-2-team_optimist"
   - name: "the_best_team"
-    members: 2
+    members: 3
     cap: 4
-    members_sha256: ["dd252c16586e994ac0b99abf178fd3d1d1de1779d6a46b28a8234cef8d81452a", "250fcce0687e751c875a454ebf1ecb37205fe1e5160008dd08756166be4e8e3b"]
+    members_sha256: ["dd252c16586e994ac0b99abf178fd3d1d1de1779d6a46b28a8234cef8d81452a", "d02563d8de88275d480b8ec23387ea6c25b757bf186ff56785dccae35c721931", "250fcce0687e751c875a454ebf1ecb37205fe1e5160008dd08756166be4e8e3b"]
     repo_url: "https://github.com/hertie-maths-data-science-f2026/assignment-2-the_best_team"
   - name: "tubin4ever"
     members: 3
