@@ -35,7 +35,7 @@ address: |
 # Shared visual theme — layout, branding and styles come from dsl-jekyll-theme.
 # Restyling happens there and propagates to every DSL site (see that repo).
 # managed by the DSL course sync - rewritten on every run
-remote_theme: "hertie-data-science-lab/dsl-jekyll-theme@e4b8fdc9e87b4729c9dcef142591551a2361d4b5"
+remote_theme: "hertie-data-science-lab/dsl-jekyll-theme@c33c9b7e471914cb8014a09a12710cb98819e0d9"
 plugins:
   - jekyll-remote-theme
   - jekyll-feed
