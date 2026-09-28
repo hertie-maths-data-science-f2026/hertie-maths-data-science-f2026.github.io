@@ -6,8 +6,28 @@ type: lecture
 date: 2026-10-06T08:00:00
 title: "Session 6"
 subtitle: "Maximum Likelihood Estimation"
-unreleased: true
-readings_pending: true
+reading_list: |2
+  ### Session 6 readings
+
+  #### Required Readings
+
+  Wasserman, All of Statistics
+
+  - Chapter 6
+  - Chapter 9.1
+  - Chapter 9.3
+  - Chapter 9.4
+
+
+
+  #### Additional Readings
+
+  [Orloff and Bloom, MIT notes on Maximum Likelihood Estimation](https://math.mit.edu/~dav/05.dir/class10-prep.pdf)
+
+  Herman and Strang, Calculus Volume 2
+
+  - Chapter 6.1
+  - Chapter 6.3
 links: []
 ---
-_**Materials for session 6 are not yet released** - they will appear in [`materials/lectures/06_lecture`](https://github.com/hertie-maths-data-science-f2026/materials/tree/main/lectures), [`materials/readings/06_week-6`](https://github.com/hertie-maths-data-science-f2026/materials/tree/main/readings) when they are._
+
