@@ -46,7 +46,7 @@ sections:
           - name: "lab4_student.ipynb"
             url: https://github.com/hertie-maths-data-science-f2026/materials/blob/main/labs/04_lab/lab4_student.ipynb
   - name: "lectures"
-    files: 160
+    files: 161
     entries:
       - name: "01_lecture/"
         url: https://github.com/hertie-maths-data-science-f2026/materials/tree/main/lectures/01_lecture
@@ -512,6 +512,12 @@ sections:
         entries:
           - name: "04_calculus_for_data_science.pdf"
             url: https://github.com/hertie-maths-data-science-f2026/materials/blob/main/lectures/04_lecture/04_calculus_for_data_science.pdf
+      - name: "05_lecture/"
+        url: https://github.com/hertie-maths-data-science-f2026/materials/tree/main/lectures/05_lecture
+        files: 1
+        entries:
+          - name: "05_continuous_random_variables_and_limit_theorems.pdf"
+            url: https://github.com/hertie-maths-data-science-f2026/materials/blob/main/lectures/05_lecture/05_continuous_random_variables_and_limit_theorems.pdf
   - name: "m4ds"
     files: 4
     entries:

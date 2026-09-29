@@ -20,6 +20,9 @@ reading_list: |2
   - Chapter 7.2 - 7.3 (p. 324 - 332)
   - Chapter 7.5 (p. 337 - 343)
   - Chapter 10.2 - 10.3 (p. 467 - 476)
-links: []
+links:
+    - url: https://github.com/hertie-maths-data-science-f2026/materials/blob/main/lectures/05_lecture/05_continuous_random_variables_and_limit_theorems.pdf
+      name: "05_continuous_random_variables_and_limit_theorems.pdf"
+      section: "lecture"
 ---
 
