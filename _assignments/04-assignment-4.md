@@ -3,7 +3,7 @@
 # rewrites this whole collection on every run. Edit the source instead: the cohort's
 # classroom-config/schedule.yml (dates, titles) or its org structure (what released).
 type: assignment
-date: 2026-11-03T07:00:00
+date: 2026-11-10T07:00:00
 title: "Assignment 4"
 handout_pending: true
 submit_shape: "assignment-repo-private"
@@ -13,7 +13,7 @@ cutoff_sentence: "What is on main at the grading cutoff is what is marked."
 late_rule: "10% per day, up to 10 days"
 due_event:
     type: due
-    date: 2026-11-22T23:59:00
+    date: 2026-11-29T23:59:00
     title: "Assignment 4"
     submit_shape: "assignment-repo-private"
     repo_name: "assignment-4-<your-team>"
