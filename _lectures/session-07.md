@@ -6,8 +6,15 @@ type: lecture
 date: 2026-10-13T08:00:00
 title: "Session 7"
 details: "in-class quiz 3"
-unreleased: true
-readings_pending: true
+reading_list: |2
+  ### Session 7 readings
+
+  #### Readings
+
+  Gelman et al., Bayesian Data Analysis
+
+  - Chapter 1 (p. 3 - 13)
+  - Chapter 2 (p. 29 - 56)
 links: []
 ---
-_**Materials for session 7 are not yet released** - they will appear in [`materials/lectures/07_lecture`](https://github.com/hertie-maths-data-science-f2026/materials/tree/main/lectures), [`materials/readings/07_week-7`](https://github.com/hertie-maths-data-science-f2026/materials/tree/main/readings) when they are._
+
