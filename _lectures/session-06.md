@@ -28,6 +28,9 @@ reading_list: |2
 
   - Chapter 6.1
   - Chapter 6.3
-links: []
+links:
+    - url: https://github.com/hertie-maths-data-science-f2026/materials/blob/main/lectures/06_lecture/06_maximum_likelihood_estimation.pdf
+      name: "06_maximum_likelihood_estimation.pdf"
+      section: "lecture"
 ---
 
