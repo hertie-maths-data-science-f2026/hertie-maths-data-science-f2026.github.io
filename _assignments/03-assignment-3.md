@@ -19,9 +19,9 @@ team_join_closes: "8th Nov"
 team_salt: "hertie-maths-data-science-f2026"
 teams:
   - name: "hello"
-    members: 2
+    members: 3
     cap: 4
-    members_sha256: ["dd252c16586e994ac0b99abf178fd3d1d1de1779d6a46b28a8234cef8d81452a", "250fcce0687e751c875a454ebf1ecb37205fe1e5160008dd08756166be4e8e3b"]
+    members_sha256: ["dd252c16586e994ac0b99abf178fd3d1d1de1779d6a46b28a8234cef8d81452a", "ddb5593657bc47cb89f9d4999c6c926b1e0ec665ea5d256b212db12d6d7ae53b", "250fcce0687e751c875a454ebf1ecb37205fe1e5160008dd08756166be4e8e3b"]
     repo_url: "https://github.com/hertie-maths-data-science-f2026/assignment-3-hello"
   - name: "team-phn"
     members: 1
