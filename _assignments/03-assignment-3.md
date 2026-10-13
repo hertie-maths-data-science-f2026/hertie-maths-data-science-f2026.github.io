@@ -19,9 +19,9 @@ team_join_closes: "8th Nov"
 team_salt: "hertie-maths-data-science-f2026"
 teams:
   - name: "team-spreewald"
-    members: 1
+    members: 2
     cap: 4
-    members_sha256: ["3ac1a0cf94c6eb21e9436690ee7173176a1a34a25438e1e83eb95e90225415dc"]
+    members_sha256: ["aa07f1e80e5d6739aba2356a5ef5aa8fc9184cdf97db9ea284633fe400b39f47", "3ac1a0cf94c6eb21e9436690ee7173176a1a34a25438e1e83eb95e90225415dc"]
     repo_url: "https://github.com/hertie-maths-data-science-f2026/assignment-3-team-spreewald"
 due_event:
     type: due
