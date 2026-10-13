@@ -38,14 +38,14 @@
     //
     //   lecture        #f2dede  label #a94442   red
     //   lab            #dff0d8  label #3c763d   green
-    //   assignment     #d9edf7  label #31708f   blue
-    //   due            #d9edf7  label #31708f   blue (one assignment category:
+    //   assignment     #d6e6f7  label #1f5fa8   blue
+    //   due            #d6e6f7  label #1f5fa8   blue (one assignment category:
     //                                           the same hue as the row that puts
     //                                           the assignment out, told apart by
     //                                           the "Assignment due" label)
-    //   exam           #f0f1f2  label #5a5f66   grey
+    //   exam           #e6e8ec  label #2b2f36   grey
     //   special_event  #fbf2d5  label #7d6230   amber
-    //   term_date      #e5dcf0  label #59468f   violet
+    //   term_date      #ead9f6  label #7b3fb8   violet
     //
     // All backgrounds sit at the same pale tonal level, so body text (#111) and
     // links keep >5:1 contrast on every row; each label clears 4.5:1 on its own
@@ -61,15 +61,15 @@
     }
 
     .table-row-assignment {
-        background-color: #d9edf7;
+        background-color: #d6e6f7;
     }
 
     .table-row-due {
-        background-color: #d9edf7;
+        background-color: #d6e6f7;
     }
 
     .table-row-exam {
-        background-color: #f0f1f2;
+        background-color: #e6e8ec;
     }
 
     .table-row-special_event {
@@ -77,7 +77,7 @@
     }
 
     .table-row-term_date {
-        background-color: #e5dcf0;
+        background-color: #ead9f6;
     }
 
     .col-1 {
@@ -219,10 +219,10 @@
     }
 }
 
-/* `· source` after a file the site hosts its own rendered copy of - the file's home on
+/* `· GitHub` after a file the site hosts its own rendered copy of - the file's home on
    GitHub, inside a sentence. The UPDATES box only: everywhere else a file link carries the
-   full `.file-btns` row below, but a row of buttons inside a bullet of prose would swamp
-   the bullet. Quieter than the name it follows, because the name is what a student opens.
+   `.file-menu` chevron below, but a menu inside a bullet of prose would swamp the bullet.
+   Quieter than the name it follows, because the name is what a student opens.
    */
 .file-actions {
     font-size: 0.85em;
@@ -240,47 +240,168 @@
     color: $grey-color-dark;
 }
 
-/* The row of buttons beside a file link - `source | render | online | local`, the same
-   file wherever it can be had. `source` and `render` are written in Liquid
-   (_includes/file_link.html); `online` and `local` are appended by script once the browser
-   holds the profile they need (_includes/open_in.html), so a first visit shows the first
-   two alone.
+/* The chevron beside a file link and its menu - every way to have the file, one-line rows
+   and no headings: `View here` (only for a hosted copy) and `View on GitHub` written in
+   Liquid (_includes/file_link.html), a hairline, then `Edit in browser` and `Edit in
+   <editor>`, written greyed there and made live by script once the browser holds the
+   profile they need (_includes/open_in.html). Each row is an icon, the label, and a short
+   muted status on the right - where it goes, or why it is off. The student console draws
+   the same control (console/src/styles/open.css `.file-menu`), so the two look alike.
 
-   Outlined rather than filled, and small: this is the SAME button as the ones on
-   /profile/, but a session page carries a dozen file rows and the All Materials tree
-   carries hundreds, and a wall of solid red would leave the file names - the thing a
-   reader is scanning for - as the quietest part of the page. Filling on hover is what
-   says they are one family. */
-.file-btns {
-    display: inline-flex;
-    flex-wrap: wrap;
-    gap: 4px;
-    margin-left: 0.5em;
+   The chevron is small and outlined: a session page carries a dozen file rows and the All
+   Materials tree hundreds, and the names are what a reader scans for. It still makes a
+   24px tap target. */
+.file-menu {
+    position: relative;
+    display: inline-block;
+    margin-left: 4px;
     vertical-align: baseline;
 }
 
-.file-btn {
-    display: inline-block;
-    padding: 0 8px;
+.file-chev {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 24px;
+    min-height: 24px;
+    box-sizing: border-box;
+    padding: 0 6px;
     border: 1px solid $brand-color;
     border-radius: 999px;
-    background: transparent;
-    color: $brand-color !important;
-    font-family: $display-font;
-    font-weight: 600;
+    color: $brand-color;
     font-size: 0.72em;
-    line-height: 1.65;
-    letter-spacing: 0.02em;
-    white-space: nowrap;
-    text-decoration: none !important;
+    line-height: 1;
+    list-style: none;
+    margin: 0;
+    cursor: pointer;
+    vertical-align: middle;
 
-    &:hover {
+    &::-webkit-details-marker {
+        display: none;
+    }
+
+    &::before,
+    &::after {
+        content: none !important;
+    }
+
+    &:hover,
+    .file-menu[open] > & {
         background: $brand-color;
-        color: #fff !important;
+        color: #fff;
     }
 }
 
-/* An assignment page has ONE repo rather than a list of files, so its `online` and `local`
+.file-menu-list {
+    position: absolute;
+    z-index: 20;
+    top: calc(100% + 4px);
+    left: 0;
+    min-width: 18rem;
+    /* Escaped: Ruby Sass and libsass read a bare `min()` as their own function. */
+    max-width: unquote("min(26rem, calc(100vw - 32px))");
+    margin: 0 !important;
+    padding: 6px 0 !important;
+    list-style: none !important;
+    background: #fff;
+    border: 1px solid #d8d8d8;
+    border-radius: 8px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+    font-size: 0.875rem;
+    line-height: 1.35;
+
+    /* The menu is a widget, not a list in the page's prose, so it opts out of every list
+       style around it - with `!important`, because what it has to beat is not one rule
+       but whichever the page it sits in brings: the theme's `article ul > li:before`
+       en dash (every tab) and `ul#archive li`'s dotted rule, padding and white fill (All
+       Materials - an id, which no class selector outranks). The rows' own padding and
+       the hairline's fill are restated below at higher specificity, also `!important`. */
+    > li {
+        display: block !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        border: 0 !important;
+        background: none !important;
+        list-style: none !important;
+
+        &::before,
+        &::after {
+            content: none !important;
+        }
+    }
+
+    /* A row: icon and label take the width, the status sits at the right. The row's own
+       link only (`> li > a`): a greyed row's status carries an inline Profile link. */
+    > li > a,
+    > .file-menu-off {
+        display: flex !important;
+        align-items: center;
+        gap: 10px;
+        padding: 7px 14px !important;
+        white-space: nowrap;
+    }
+
+    /* The hairline between the two Open rows and the two Edit rows. */
+    > .file-menu-sep {
+        height: 1px;
+        margin: 4px 14px !important;
+        background: #ececec !important;
+    }
+
+    > li > a {
+        color: inherit !important;
+        text-decoration: none !important;
+
+        &:hover,
+        &:focus-visible {
+            background: #f1f1f1;
+        }
+    }
+
+    small {
+        flex: none;
+        color: mix($grey-color-dark, #fff, 80%);
+        font-size: 0.75rem;
+    }
+
+    svg {
+        width: 16px;
+        height: 16px;
+        fill: none;
+        stroke: currentColor;
+        stroke-width: 1.8;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        flex: none;
+    }
+}
+
+.file-menu-lbl {
+    display: inline-flex;
+    flex-grow: 1;
+    align-items: center;
+    gap: 10px;
+}
+
+/* A row this file does not have, still listed so every menu reads the same: muted, not a
+   link, its reason as the status. The reason's own Profile link stays a link. */
+.file-menu-off {
+    color: mix($grey-color-dark, #fff, 55%);
+    cursor: default;
+
+    small {
+        color: inherit;
+    }
+
+    small a {
+        display: inline;
+        padding: 0;
+        color: $brand-color !important;
+        text-decoration: underline !important;
+    }
+}
+
+/* An assignment page has ONE repo rather than a list of files, so its Edit online and Edit locally
    are full-size buttons beside the GitHub one (added by the same script) - outlined,
    because the repo itself is still what a student opens first. */
 .callout .btn + .btn {
@@ -289,7 +410,7 @@
 
 /* A command the reader runs themselves, and the button that takes it: the only way to
    clone into an EXACT folder, since no clone URL can carry one and no page can run
-   anything. It wraps rather than scrolls - a path with a cohort org in it is long, and a
+   anything. It wraps rather than scrolls - a path with a semester org in it is long, and a
    clipped command reads as a broken one. */
 .cmd {
     display: flex;
@@ -324,7 +445,7 @@
     }
 }
 
-/* Under the button row, not beside it: the folder the clone dialog has to be pointed at by
+/* Under the callout's button row, not beside it: the folder the clone dialog has to be pointed at by
    hand, because no `vscode://vscode.git/clone` URL can carry one. */
 .callout .open-in-where {
     @extend %quiet-note;
@@ -335,7 +456,7 @@
     }
 }
 
-/* The teams that exist, in the "Form your team" callout (_layouts/assignment.html).
+/* The teams that exist, in the "Form your team" / "Teams" callout (_layouts/assignment.html).
    Scoped to its class, never to a bare `table`: the theme's header lays itself out with
    one, and it styles no table itself, so an unclassed one rendered as a run of words.
    Rules rather than boxes, and only as wide as its two columns. */
@@ -459,7 +580,7 @@
         margin: 0 0 1.4em 0;
     }
     /* One field: its box and its own Save, side by side. The two folder boxes hold an
-       absolute path with the cohort org in it, so they run the width of the page; the
+       absolute path with the semester org in it, so they run the width of the page; the
        handle box is capped to the size of the thing it holds. */
     .profile-entry {
         display: flex;
@@ -652,7 +773,7 @@ hr.session-rule {
     margin-bottom: 12px;
 }
 
-// Optional `title` from a course's people.yml / dsl-course.yml (e.g. "Assistant
+// Optional `title` from a course's instructors.yml / dsl-course.yml (e.g. "Assistant
 // Professor of ..."). Secondary to the name, which stays the card's headline.
 .profile-title {
     font-size: 0.75rem;

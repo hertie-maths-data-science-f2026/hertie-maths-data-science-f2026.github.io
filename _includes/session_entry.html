@@ -3,8 +3,7 @@ SYSTEM-OWNED - do not edit. Written by the DSL course sync from templates/site/ 
 toolkit; every sync rewrites it.
 {%- endcomment -%}
 {%- comment -%}
-One session's block, shared by the Lectures, Labs and Readings pages so the three read
-identically. The order is the same everywhere and is the point of this file existing:
+One row's block, shared by every tab page so they read identically. The order is the same everywhere and is the point of this file existing:
 
   1. heading  - the ordinal ("Session 3") and, when the schedule declares one, the name
   2. body     - the learning objectives, then whatever the page passes as `extra`
@@ -12,19 +11,30 @@ identically. The order is the same everywhere and is the point of this file exis
   3. links    - the files, last. They used to sit up beside the heading, where they
                 crowded the title and made the description read as an afterthought.
 
-How a file link renders - the name to the hosted copy where there is one, and the row of
-`source | render | online | local` buttons after it - is `file_link.html`, shared with the
-Updates box and the All Materials tree.
+How a file link renders - the name to the hosted copy where there is one, and the chevron
+menu after it (View here for a hosted copy, View on GitHub, Edit in browser, Edit in the
+reader's editor) - is `file_link.html`, shared with the Updates box and the All Materials
+tree.
 
-`include.section` is the singular section noun ("lecture", "lab", "reading") that selects
-which of the entry's links belong to this page, matched against each link's own `section`
-field. A row carries the links of every section that released into it, so the filter is
-what keeps a reading off the Lectures page. It used to be a prefix on the link NAME, which
-had to be stripped again here for display and was showing raw wherever something rendered
-a name without stripping it.
+`include.section`, when given, is the singular section noun ("lecture", "lab", "reading")
+that selects which of the entry's links belong to this page, matched against each link's
+own `section` field - the open-courseware site's pages still pass it. A semester site's
+kind tab passes none: a row is one entry of one kind, and every link it carries is its own.
+`include.skip`, when given, is a section noun whose links are left out: a lecture's own tab
+skips "reading", so the readings attached to it show on the Readings tab only.
+
+"None" arrives as nil (kind.html passes `section=only` with `only` unassigned), so the
+guard tests `== nil`. It must not test `== blank`: Liquid 4 (GitHub Pages) answers that by
+calling Ruby's `blank?`, which only Rails defines, so `nil == blank` and `"" == blank` are
+both false there and the list rendered empty on every kind tab.
 {%- endcomment -%}
 {%- assign entry = include.entry -%}
 <h2 class="session-title">{% include session_title.html lecture=entry %}</h2>
+{%- comment -%}A row with no date yet (`event_datetime: tbc`) says so; a dated one's date is
+on the Schedule.{%- endcomment -%}
+{%- if entry.dateless %}
+<p class="session-when"><b>TBC</b></p>
+{%- endif %}
 
 {%- comment -%}
 `details` is the schedule.yml entry's `details:` - the same sentence the session's schedule
@@ -39,8 +49,10 @@ keeps its name: it is a contract with the dsl-jekyll-theme, not a description of
 
 {%- capture links -%}
 {%- for link in entry.links -%}
-{%- if link.section == include.section -%}
+{%- if include.section == nil or link.section == include.section -%}
+{%- unless link.section == include.skip -%}
 <li>{% include file_link.html name=link.name url=link.url view_url=link.view_url %}</li>
+{%- endunless -%}
 {%- endif -%}
 {%- endfor -%}
 {%- endcapture -%}

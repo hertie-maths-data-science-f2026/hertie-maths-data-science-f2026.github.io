@@ -4,19 +4,21 @@
 
 **Do not edit this repository.** It is machine-written: every sync rewrites the generated files below and pushing redeploys the site, so an edit here is overwritten and lost.
 
-Its content comes from the cohort's `classroom-config/` files (`schedule.yml`, `people.yml`) and what the course org actually releases.
+Its content comes from the semester's `semester-config/` files (`schedule.yml`, `instructors.yml`) and what the course org actually releases.
 
 ## What the sync owns
 
 | Path | Holds |
 | --- | --- |
 | `_lectures/` | one page per session and lab |
-| `_assignments/` | one page per handed-out assignment |
-| `_events/` | exams, term dates, display-only rows |
-| `_data/people.yml` | the staff cards |
+| `_assignments/` | one page per assignment, with its hand-out and due rows |
+| `_events/` | exams, semester dates, display-only rows |
+| `_data/people.yml` | the instructor cards |
 | `_data/nav.yml` | the nav bar |
-| `_data/materials.yml` | the All Materials index |
-| the tab pages - `lectures.md`, `labs.md`, `readings.md`, `assignments.md`, `materials.md`, `profile.md` | the wrappers the tabs point at |
+| `_data/materials.yml` | the syllabus the home page pins and the All Materials index |
+| `_data/console.yml` | the banner's link, where the course has one |
+| `files/` | the hosted copies of what the course's `publish.yml` makes public |
+| the tab pages - `assignments.md`, `materials.md`, `profile.md` | the wrappers the tabs point at |
 | `_layouts/`, `_includes/`, `_sass/_course.scss` | how every page renders |
 | `.github/workflows/deploy.yml` | the Pages build |
 | `_config.yml` | the course identity keys, the pinned theme, and the `collections:`/`defaults:` the layouts need |

@@ -34,26 +34,29 @@ cannot ask GitHub without sending the reader's handle somewhere.
 
 Step 3 can only NAME the folder to clone into: `vscode://vscode.git/clone` carries a url
 and a ref and nothing else, so a student who accepts whatever folder the dialog opens at
-leaves step 4 - and every `local` button on the site - pointing at a clone that is not
+leaves step 4 - and every editor item in a file's menu - pointing at a clone that is not
 there. Under it is the command that needs no dialog: the page cannot RUN anything, but the
 line it prints puts the clone exactly where the folder above says it is - and works for a
 student whose editor is not VS Code, who gets no clone button at all.
 
-The materials repo is named once here, as the default a cohort release deploys into
-(`cohort_dest_repo`, dsl_course/deploy.py). Nothing else on this page depends on it: the
-per-file control reads the repo out of each file's own GitHub URL, so a course that renamed
-its materials repo still gets working file links and only these buttons point at the
-default name.
+The materials repo is the first of `site.data.materials.repos`, the repos this semester
+releases into (written by the sync, dsl_course/site.py `_materials_index`); before anything
+is released it is the default a release deploys into (`semester_dest_repo`). A course that
+releases into several repos is told which one these steps set up, and `open_in.html`
+offers its Edit items for that repo's files only: the others have no fork or clone
+these steps made.
 
-The two folder examples put the clone under a folder named for THIS cohort org, so a
+The two folder examples put the clone under a folder named for THIS semester org, so a
 student on two courses is not steered into cloning two `materials` repos into one place.
 They ship spelt as macOS spells a home folder, and the script below respells the home
 part for the reader's own platform where the browser can tell (Windows, Linux) - a Windows
 student shown `/Users/j.doe/...` typed it in verbatim and got a path no editor could open.
 {% endcomment %}
+{%- assign materials_repos = site.data.materials.repos -%}
+{%- assign setup_repo = materials_repos | first | default: "materials" -%}
 <div class="profile-steps" id="dsl-profile"
      data-org="{{ site.github_org }}"
-     data-materials-repo="materials">
+     data-materials-repo="{{ setup_repo }}">
 
   <section class="profile-step">
     <h2 class="profile-step-title"><span class="profile-step-num">1</span> Your details</h2>
@@ -73,10 +76,10 @@ student shown `/Users/j.doe/...` typed it in verbatim and got a path no editor c
       <label for="dsl-materials">Materials folder (local path)</label>
       <span class="profile-entry">
         <input type="text" id="dsl-materials" autocomplete="off" spellcheck="false"
-               placeholder="/Users/j.doe/Documents/repositories/{{ site.github_org }}/materials">
+               placeholder="/Users/j.doe/Documents/repositories/{{ site.github_org }}/{{ setup_repo }}">
         <button type="button" class="btn btn--field" data-save="materials">Save</button>
       </span>
-      <p class="profile-hint">Where your clone of <code>materials</code> is (or will go).</p>
+      <p class="profile-hint">Where your clone of <code>{{ setup_repo }}</code> is (or will go).</p>
       <p class="profile-hint profile-saved" id="dsl-saved-materials"></p>
     </div>
 
@@ -109,9 +112,15 @@ student shown `/Users/j.doe/...` typed it in verbatim and got a path no editor c
   <section class="profile-step">
     <h2 class="profile-step-title"><span class="profile-step-num">2</span> Fork the materials repo</h2>
     <p class="profile-hint">Your own editable repo copy on GitHub.</p>
+    {%- if materials_repos.size > 1 %}
+    <p class="profile-hint" id="dsl-setup-repos">This course releases into {{ materials_repos.size }}
+      repos ({{ materials_repos | join: ", " }}). These steps set up the first,
+      <code>{{ setup_repo }}</code>, and the Edit items in a file's menu open its
+      files.</p>
+    {%- endif %}
     <p class="profile-buttons">
       <a class="btn" id="dsl-fork" target="_blank" rel="noopener"
-         href="https://github.com/{{ site.github_org }}/materials/fork">Fork materials</a>
+         href="https://github.com/{{ site.github_org }}/{{ setup_repo }}/fork">Fork {{ setup_repo }}</a>
       <span class="profile-hint" id="dsl-fork-todo">Already forked it, or forked it on
         another machine? <a href="#" id="dsl-forked">Mark this step done</a>.</span>
       <span class="profile-hint" id="dsl-fork-done" hidden>Forked - step 3 is unlocked.</span>

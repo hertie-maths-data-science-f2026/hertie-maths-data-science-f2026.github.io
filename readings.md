@@ -1,7 +1,8 @@
 ---
-layout: readings
+layout: kind
 title: Readings
 permalink: /readings/
+kind: readings
 ---
 
-Hosted files are only accessible to enrolled students & auditors.
+Readings are only accessible to enrolled students & auditors.

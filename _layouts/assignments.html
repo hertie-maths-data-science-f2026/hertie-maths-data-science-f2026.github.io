@@ -13,6 +13,8 @@ is listed, because its dates are already public on the schedule - but unlinked, 
 its own sentence in place of a brief: the page behind it holds nothing until hand-out, and
 the title shown is the plan-side name, never the one the template's README gives it.
 {% endcomment %}
+{% include console_banner.html %}
+
 {% if site.assignments == nil or site.assignments.size == 0 %}
 <p>No assignments yet.</p>
 {% else %}

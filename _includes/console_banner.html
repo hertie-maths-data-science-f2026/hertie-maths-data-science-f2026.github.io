@@ -1,0 +1,15 @@
+{%- comment -%}
+SYSTEM-OWNED - do not edit. Written by the DSL course sync from templates/site/ in the
+toolkit; every sync rewrites it.
+{%- endcomment -%}
+{%- comment -%}
+The semester site and the student console both carry a semester's materials (decision
+0035 rule 1); the console adds what a public page cannot know - the reader's own repos,
+receipts and marks. `_data/console.yml` (site.py, off the institution policy) links to
+this semester's screens. Shown on the home, schedule and kind tabs and above the
+Assignments list; not on an assignment page, Your Profile or All Materials. No link, no
+banner: the open-courseware site has none.
+{%- endcomment -%}
+{%- if site.data.console and site.data.console.url -%}
+<p class="console-banner"><a href="{{ site.data.console.url }}"><strong>Open this semester in the student console</strong></a>: assignments and their briefs, your repos, teams, materials and marks.</p>
+{%- endif -%}

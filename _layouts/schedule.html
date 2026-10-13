@@ -8,6 +8,8 @@ layout: default
     <h1 class="post-title">Schedule</h1>
 </header>
 
+{% include console_banner.html %}
+
 {{ content }}
 
 <div class="home" style="font-size: 0.8em;">
@@ -21,35 +23,48 @@ layout: default
         
         {% assign all_assignment_dues = site.assignments | map: "due_event" %}
 
-        {% assign all_events = site.events | concat: site.lectures %}
+        {%- comment -%}A row with `show_on_site: false` and an undated one (a folder released
+        outside the plan) are on their kind's tab only.{%- endcomment -%}
+        {% assign sessions = site.lectures | where_exp: "entry", "entry.off_schedule != true" | where_exp: "entry", "entry.undated != true" %}
+        {% assign all_events = site.events | concat: sessions %}
         {% assign all_events = all_events | concat: site.assignments %}
         {% assign all_events = all_events | concat: all_assignment_dues %}
-        {% assign all_events_sorted = all_events | sort: 'date' %}
+        {%- comment -%}`sort_at`, which every row carries: a `dateless` one (`event_datetime: tbc`)
+        has no `date:`, only its place.{%- endcomment -%}
+        {% assign all_events_sorted = all_events | sort: 'sort_at' %}
 
         {%- comment -%}
         A branch per row type site.py emits, rather than an include filename built out of
-        `event.type`. A dynamic name means an unrecognised type - a schedule.yml typo, a row
+        `event.kind`. A dynamic name means an unrecognised type - a schedule.yml typo, a row
         kind added on the toolkit side before its template ships - asks Jekyll for a file
         that does not exist, which fails the WHOLE build and takes the live site down with
         it. Here an unknown type falls through to a neutral row instead: the schedule keeps
         rendering and the odd row is visibly plain.
         {%- endcomment -%}
+        {%- comment -%}
+        A row of the _lectures collection is a release entry of any kind: one row shape,
+        labelled and coloured from `_data/kinds.yml` (the institution policy's kinds).
+        {%- endcomment -%}
         {% for event in all_events_sorted %}
-        <li class="table-row table-row-{{ event.type}}">
-            {% case event.type %}
-            {% when "lecture" %}{% include schedule_row_lecture.html event=event %}
-            {% when "lab" %}{% include schedule_row_lab.html event=event %}
+        {% assign kind = nil %}
+        {% if event.collection == "lectures" %}{% assign kind = site.data.kinds | where: "key", event.kind | first %}{% endif %}
+        <li class="table-row table-row-{{ event.kind}}"{% if kind %} style="background-color: {{ kind.background }};"{% endif %}>
+            {% if event.collection == "lectures" %}
+            {% include schedule_row_lecture.html event=event kind=kind.label colour=kind.colour %}
+            {% else %}
+            {% case event.kind %}
             {% when "assignment" %}{% include schedule_row_assignment.html event=event %}
             {% when "due" %}{% include schedule_row_due.html event=event %}
             {% when "exam" %}{% include schedule_row_exam.html event=event %}
             {% when "special_event" %}{% include schedule_row_special_event.html event=event %}
             {% when "term_date" %}{% include schedule_row_term_date.html event=event %}
             {% else %}
-            <div class="col col-1" data-label="Event">{{ event.type | default: "Event" }}</div>
+            <div class="col col-1" data-label="Event">{{ event.kind | default: "Event" }}</div>
             <div class="col col-1-2" data-label="Date">{{ event.date | date: site.dateformat }}</div>
             <div class="col col-2" data-label="Title"><b>{{ event.title }}</b></div>
             <div class="col col-4 markdown-content" data-label="Details">{%- include schedule_details.html details=event.details -%}{{ event.content }}</div>
             {% endcase %}
+            {% endif %}
         </li>
         {% endfor %}
 

@@ -6,13 +6,12 @@ layout: page
 
 {{ content }}
 
-{% include open_in.html %}
-
 {% comment %}
-Labs are their own entries in the _lectures collection (`type: lab`), each carrying its
+Labs are their own entries in the _lectures collection (`kind: lab`), each carrying its
 links whose `section` is "lab". Same block as Lectures and Readings.
 {% endcomment %}
-{% assign entries = site.lectures | where: "type", "lab" | sort: 'date' %}
+{% assign entries = site.lectures | where: "kind", "lab" %}
+{% assign entries = entries | sort: 'date' %}
 {% for entry in entries %}
 <section class="session">
 {% include session_entry.html entry=entry section="lab" %}

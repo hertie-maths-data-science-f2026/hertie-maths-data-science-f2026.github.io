@@ -1,7 +1,8 @@
 ---
-layout: labs
+layout: kind
 title: Labs
 permalink: /labs/
+kind: lab
 ---
 
-Lab materials are only accessible to enrolled students & auditors.
+Labs are only accessible to enrolled students & auditors.

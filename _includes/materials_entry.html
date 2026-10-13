@@ -4,11 +4,11 @@ toolkit; every sync rewrites it.
 {%- endcomment -%}
 {% comment %}
 One node of the All Materials tree - a file (through `file_link.html`, so it carries the
-same row of buttons as every other file on the site) or a directory (its name links straight
+same menu as every other file on the site) or a directory (its name links straight
 to its GitHub tree, and the arrow beside it opens its children in the page, closed by
 default). Includes ITSELF for a directory's children.
 
-The one rule, learned by breaking every cohort site that had a nested release: read the node
+The one rule, learned by breaking every semester site that had a nested release: read the node
 as `include.entry` throughout, and never copy it into a local name with an assign or capture
 tag. Both write to Liquid's OUTERMOST scope, so a recursive call overwrites its own caller's
 node, never reaches a leaf, and Liquid aborts the whole page with "Nesting too deep" on data

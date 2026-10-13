@@ -3,21 +3,24 @@ SYSTEM-OWNED - do not edit. Written by the DSL course sync from templates/site/ 
 toolkit; every sync rewrites it.
 {%- endcomment -%}
 {%- comment -%}
-Also THE lab row: `schedule_row_lab.html` includes this file with its own `kind`/`colour`,
-because the two differ in nothing else. Both defaults spell the lecture row, so the
-schedule layout's own include of this file - which passes `event` only - is unchanged.
+THE row of every release entry, whatever its kind: the schedule layout passes the kind's
+label and colour from `_data/kinds.yml`. Both defaults spell the lecture row.
+A `dateless` row (`event_datetime: tbc`) has no `date:` and prints "TBC".
 {%- endcomment -%}
 <div class="col col-1" style="color: {{ include.colour | default: '#a94442' }} ;font-weight: bold;" data-label="Event">{{ include.kind | default: 'Lecture' }}</div>
 <div class="col col-1-2" data-label="Date">
+    {% if include.event.dateless %}
+    TBC
+    {% else %}
     {{ include.event.date | date: site.dateformat }}
     {{ include.event.date | date: "%H:%M" }}
     {% if include.event.tbc %}<b>(TBC)</b>{% endif %}
     <br class="date-spliter"/>{{ include.event.date | date: "%A" }}
+    {% endif %}
 </div>
 {%- comment -%}
-`title` is the ordinal ("Session 3"); `subtitle` is the name the schedule.yml entry
-declared for it. The ordinal is what ties the row to `materials/lectures/03_...`, so it
-stays and the name sits under it rather than replacing it.
+`title` is the kind and the row's number ("Lecture 3"); `subtitle` is the name the
+schedule.yml entry declared for it, under it.
 {%- endcomment -%}
 <div class="col col-2" data-label="Title">
     <b>{{ include.event.title }}</b>

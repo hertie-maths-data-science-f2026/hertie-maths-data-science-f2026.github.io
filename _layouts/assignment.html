@@ -72,14 +72,19 @@ title: page.title
     handout provisions nothing for that student, so the repo button alone led to an empty
     listing with no explanation. So the page numbers them, in Your Profile's visual
     language (`.profile-step-title` / `.profile-step-num`), and the submission callout
-    below becomes step 2. With no window open none of this renders, and the submission
+    below becomes step 2. With no window open the steps do not render, and the submission
     callout is exactly the unnumbered box it always was.
 
-    `team_join_url` is the presence test: site.py writes the `team_join_*` keys only while
-    the window is open. The cap and the closing date are site.py's too, off the
-    assignment's own grading_config.yml and the plan's grading pin - the same two facts the
-    Join-team form enforces and the same day its refusal names. The date arrives already
+    `team_join_url` is the presence test for the INVITATION: site.py writes the
+    `team_join_*` keys only while the window is open. The cap and the closing date are
+    site.py's too, off the assignment's own grading_config.yml and the plan's grading
+    pin - the same two facts the Join-team form enforces and the same day its refusal names. The date arrives already
     spoken (`grades.spoken_day`), so it is printed as it stands.
+
+    Once the window shuts the teams STAY, for the rest of the semester: `teams` is written
+    whenever any has formed and the assignment is out, so with no `team_join_url` the
+    block is one unnumbered "Teams" callout - the table, read-only, team and headcount -
+    with no join steps, no cap, and an unnumbered submission callout below.
 
     `teams` is NAMES AND COUNTS: the site carries no readable handle. Each row also carries
     `data-members`, salted SHA-256 digests of its members' handles
@@ -92,7 +97,7 @@ title: page.title
 
     The READER's own team is recognised in the browser, off the handle Your Profile saved
     (`dslOpenIn.stored("handle")`, the same key open_in.html reads), hashed exactly as
-    site.py hashes (`<cohort org>:<handle, lower-cased>`, the org in `data-salt`) and
+    site.py hashes (`<semester org>:<handle, lower-cased>`, the org in `data-salt`) and
     compared with each row's `data-members`. A browser with no `crypto.subtle` gets the
     static page: both steps in full, nothing dimmed. Found, step 1 is marked done and step 2's button goes straight to the
     team's repo (`data-repo-url`, precomputed by site.py from the name the handout
@@ -101,9 +106,11 @@ title: page.title
     and Save (`.profile-steps` scopes those styles, so the box wears that class), writing
     the same `dsl.handle` through `dslOpenIn.save` - and detection re-runs in place. With no
     script, or storage that throws, `data-team-state` is never set: both steps read in full
-    and nothing is dimmed.
+    and nothing is dimmed. The same recognition runs once the window has shut, off the
+    same rows: the Teams callout names the reader's team and the submission button goes
+    to its repo.
     {%- endcomment -%}
-    {% if page.team_join_url %}
+    {% if page.team_join_url or page.teams %}
     <div class="team-steps" id="dsl-team-steps" data-salt="{{ page.team_salt | escape }}">
     <div class="profile-steps team-handle" hidden>
       <label for="dsl-team-handle">Enter your GitHub handle to see your team here</label>
@@ -114,13 +121,14 @@ title: page.title
       </span>
       <p class="profile-hint">Saved in this browser only, the same as in <a href="{{ '/profile/' | prepend: site.baseurl }}">Your Profile</a>.</p>
     </div>
+    {% if page.team_join_url %}
     <section class="callout team-step-form">
       <h2 class="profile-step-title"><span class="profile-step-num">1</span> Form your team</h2>
       <p class="team-found" hidden></p>
       <p><a class="btn" target="_blank" rel="noopener" href="{{ page.team_join_url }}">Open a Join team issue</a></p>
       <p>
       You pick your own team for this assignment, of up to {{ page.team_join_cap }} people.
-      Open a <strong>Join team</strong> issue in this cohort's <code>welcome</code> repo to start a team
+      Open a <strong>Join team</strong> issue in this semester's <code>join</code> repo to start a team
       or join one - team formation closes on {{ page.team_join_closes }}.
       {% if page.repo_name %}Your team's submission repo appears once the team does.{% endif %}
       </p>
@@ -144,13 +152,30 @@ title: page.title
     </section>
     {% capture step_two %}<h2 class="profile-step-title"><span class="profile-step-num">2</span> Open your submission repo</h2>
       <p class="team-hint" hidden>Form or join a team first.</p>{% endcapture %}
+    {% else %}
+    <section class="callout team-step-form">
+      <h2>Teams</h2>
+      <p class="team-found" hidden></p>
+      <table class="team-table">
+        <thead><tr><th>Team</th><th>Members</th></tr></thead>
+        <tbody>
+        {% for team in page.teams %}
+          <tr data-team="{{ team.name | escape }}" data-members="{{ team.members_sha256 | join: ' ' }}"{% if team.repo_url %} data-repo-url="{{ team.repo_url }}"{% endif %}>
+            <td>{{ team.name }}</td>
+            <td>{{ team.members }}</td>
+          </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+    </section>
+    {% endif %}
     {% endif %}
 
     {%- comment -%}
     Where the student actually works. This is the first thing they need and it used to be a
     grey italic line at the very bottom of the page, under the whole brief - so the answer
     to "where do I write this?" sat below the thing it was needed for. `repo_url` is the
-    cohort org's repo list filtered to this assignment rather than one student's address:
+    semester org's repo list filtered to this assignment rather than one student's address:
     the page is public and identical for everyone, and GitHub shows a signed-in student
     only the repos they can see, so the filter lands on their own. Absent while the
     assignment is pending - there is nothing at the other end of it yet.
@@ -163,7 +188,7 @@ title: page.title
     repo is created for it at all. So there is nothing to open and nothing to name: the
     brief below says where the work goes, and `submit_url` puts a button on it when the
     assignment names an address. This block used to print off `repo_url` alone, so a Moodle
-    assignment told the whole cohort that a push to `main` was its submission.
+    assignment told the whole semester that a push to `main` was its submission.
 
     `escape`: `repo_name` is a SHAPE, `<slug>-<your-handle>`, and those angle brackets make
     `<your-handle>` an unknown HTML tag that the browser silently drops - so the name
@@ -179,7 +204,7 @@ title: page.title
     `handout_pending` gates the whole block: an assignment still to come has no brief to
     read and no address to go to, so a callout would answer a question the page has not
     asked yet. It is also why the external arm says only WHERE the work is handed in and
-    never "no repository is created": a cohort handed out before that arm existed has the
+    never "no repository is created": a semester handed out before that arm existed has the
     repos it was given, and this would be telling those students their own repo is not
     there.
 
@@ -204,7 +229,7 @@ title: page.title
 
     `repo_name_is_shape` (site.py) is what decides whether the two data attributes are
     written at all. `shared_dropbox_repo` is the one shape whose `repo_name` is a REAL
-    repo and not a shape: there is a single private drop box for the whole cohort, and
+    repo and not a shape: there is a single private drop box for the whole semester, and
     what is the
     student's own is a folder in it (`submit_path`). There is nothing in that name for
     open_in.html to substitute a handle into, and rewriting it would point every reader at
@@ -265,7 +290,7 @@ title: page.title
     </div>
     {% endif %}
     {% endunless %}
-    {% if page.team_join_url %}
+    {% if page.team_join_url or page.teams %}
     </div>
     <script>
     (function () {
@@ -273,7 +298,7 @@ title: page.title
       var profile = window.dslOpenIn;
       if (!root || !profile) { return; }
       /* How the reader is looked for: the same digest site.py writes
-         (`site.member_digest`) - SHA-256 of `<cohort org>:<handle>`, lower-cased, hex. */
+         (`site.member_digest`) - SHA-256 of `<semester org>:<handle>`, lower-cased, hex. */
       function memberKey(handle) {
         var text = root.getAttribute("data-salt") + ":" + handle;
         return window.crypto.subtle.digest("SHA-256", new TextEncoder().encode(text))
@@ -411,7 +436,7 @@ title: page.title
 
   {%- comment -%}
   Who can read the repo this assignment hands out - only the teaching team, the whole
-  internet, the cohort, or whoever the student later decides. Written for every shape that
+  internet, the semester, or whoever the student later decides. Written for every shape that
   hands one out (`course.SHAPE_NOTES`, via `site._assignment_entry`), so the box is its
   own presence test and the layout carries none of the words.
 

@@ -3,14 +3,14 @@ SYSTEM-OWNED - do not edit. Written by the DSL course sync from templates/site/ 
 toolkit; every sync rewrites it.
 {%- endcomment -%}
 {%- comment -%}
-The Updates box announces content that has actually REACHED students: lecture and lab
-sessions whose materials shipped, assignments whose repos are handed out, and hand-written
+The Updates box announces content that has actually REACHED students: rows of every
+kind whose materials shipped (one with `show_on_site: false` excepted), assignments whose repos are handed out, and hand-written
 entries in _announcements. Display-only schedule rows (exams, special events, term dates)
 live in site.events and are deliberately left out - they are not news, and several carry
 no text to show.
 
 The one exception is a row the generator has flagged `announce: true` - currently the
-archive row, for the fortnight before the whole cohort goes read-only. That IS news, and
+archive row, for the fortnight before the whole semester goes read-only. That IS news, and
 it is the only warning a student gets. The flag is written by dsl_course/site.py
 only inside its window and the collection is rewritten on every sync, so the bullet
 disappears on its own.
@@ -21,9 +21,10 @@ handed out with `handout_pending: true` (dsl_course/site.py) - and the WHOLE ter
 the schedule from the day the plan is written. So an unfiltered box, sorted newest-first,
 announced the last week of term as "New Lab is up" before week one had happened. Filtered
 BEFORE the limit, not inside the loop: dropping a placeholder's bullet after the fact
-would leave the box showing one real update out of seven, or none at all.
+would leave the box showing one real update out of seven, or none at all. A `dateless` row
+(`event_datetime: tbc`) is never news either: it has no date.
 {%- endcomment -%}
-{%- assign released_sessions = site.lectures | where_exp: "entry", "entry.unreleased != true" -%}
+{%- assign released_sessions = site.lectures | where_exp: "entry", "entry.unreleased != true" | where_exp: "entry", "entry.off_schedule != true" | where_exp: "entry", "entry.undated != true" | where_exp: "entry", "entry.dateless != true" -%}
 {%- assign released_assignments = site.assignments | where_exp: "entry", "entry.handout_pending != true" -%}
 {%- assign all_events = released_sessions | concat: released_assignments -%}
 {%- assign archiving = site.events | where_exp: "entry", "entry.announce == true" -%}
@@ -37,11 +38,13 @@ would leave the box showing one real update out of seven, or none at all.
 <ul>
     {%- for n in all_events_sorted limit:7 -%}
     {%- capture bullet -%}
-        {%- if n.type == 'lecture' -%}
-            New Lecture is up: {{ n.title }} {% include lecture_links.html lecture=n %}
-        {%- elsif n.type == 'lab' -%}
-            New Lab is up: {{ n.title }} {% include lecture_links.html lecture=n %}
-        {%- elsif n.type == 'assignment' -%}
+        {%- if n.collection == 'lectures' -%}
+            {%- assign kind = site.data.kinds | where: "key", n.kind | first -%}
+            {%- assign noun = kind.label | default: n.kind | downcase -%}
+            {%- assign verb = "is" -%}
+            {%- if n.kind == 'readings' -%}{%- assign verb = "are" -%}{%- endif -%}
+            New {{ noun }} {{ verb }} up: {{ n.title }} {% include lecture_links.html lecture=n %}
+        {%- elsif n.kind == 'assignment' -%}
             New Assignment released: [<a href="{{ n.url | prepend: site.baseurl }}">{{ n.title }}</a>]
         {%- else -%}
             {%- comment -%}

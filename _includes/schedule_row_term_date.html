@@ -4,11 +4,11 @@ toolkit; every sync rewrites it.
 {%- endcomment -%}
 {%- comment -%}
 The KIND, spelled here rather than read off the entry. site.py used to write the row's whole
-name ("Term starts") into `name`, which prints in this column, beside a `description: ""`
+name ("Semester starts") into `name`, which prints in this column, beside a `description: ""`
 that left the Title cell blank - the one row on the schedule that named itself in a
 different column from every other. The name is `title` now, in the Title cell below.
 {%- endcomment -%}
-<div class="col col-1" style="color: #59468f ;font-weight: bold;" data-label="Event">Term</div>
+<div class="col col-1" style="color: #7b3fb8 ;font-weight: bold;" data-label="Event">Semester</div>
 <div class="col col-1-2" data-label="Date">
     {% if include.event.dateless %}
     <b>TBC</b>

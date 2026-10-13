@@ -1,0 +1,47 @@
+---
+# SYSTEM-OWNED - do not edit. Written by the DSL course sync from templates/site/ in the
+# toolkit; every sync rewrites it.
+layout: page
+---
+
+{% include console_banner.html %}
+
+{{ content }}
+
+{% include open_in.html %}
+
+{% comment %}
+One tab per row kind the semester has (Lectures, Labs, Readings, Drop-ins, ...). The page's
+own `kind` selects every row whose `tabs` name it: a lecture carrying its week's readings
+is on the Readings tab too, under the same name, showing only its reading links; its own
+tab skips those links and the citations (decision 0013: attached readings show on the
+Schedule and the Readings tab only). Dated
+rows come in date order (`sort_at`, which also places a `dateless` row after its kind's
+last dated one), then the rows of folders released outside the plan (`undated`). An
+`events:` row of the same kind (an exam) is listed after them; a `dateless` one has no
+`date:` and reads TBC.
+{% endcomment %}
+{% assign rows = site.lectures | where_exp: "entry", "entry.tabs contains page.kind" %}
+{% assign dated = rows | where_exp: "entry", "entry.undated != true" | sort: 'sort_at' %}
+{% assign undated = rows | where: "undated", true | sort: 'order' %}
+{% assign entries = dated | concat: undated %}
+{% for entry in entries %}
+{% assign only = nil %}
+{% assign skip = "reading" %}
+{% if page.kind == "readings" %}{% assign skip = nil %}{% if entry.kind != "readings" %}{% assign only = "reading" %}{% endif %}{% endif %}
+<section class="session">
+{% capture citations %}{% if page.kind == "readings" and entry.reading_list %}<div class="reading-list markdown-content">{{ entry.reading_list | markdownify }}</div>{% endif %}{% if page.kind == "readings" and entry.readings_pending and entry.unreleased != true %}<p class="session-note"><em>Readings for this session are not yet released.</em></p>{% endif %}{% endcapture %}
+{% include session_entry.html entry=entry section=only skip=skip extra=citations %}
+</section>
+{% unless forloop.last %}<hr class="session-rule"/>{% endunless %}
+{% endfor %}
+{% assign events = site.events | where: "kind", page.kind | sort: 'sort_at' %}
+{% for event in events %}
+{% if entries.size > 0 or forloop.index > 1 %}<hr class="session-rule"/>{% endif %}
+<section class="session">
+<h2 class="session-title">{{ event.title }}</h2>
+<p>{% if event.dateless %}<b>TBC</b>{% else %}{{ event.date | date: site.dateformat }}{% if event.tbc %} <b>(TBC)</b>{% endif %}{% endif %}</p>
+{%- include schedule_details.html details=event.details -%}
+</section>
+{% endfor %}
+{% if entries.size == 0 and events.size == 0 %}<p>Nothing released yet.</p>{% endif %}

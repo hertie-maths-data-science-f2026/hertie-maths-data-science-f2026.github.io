@@ -6,14 +6,13 @@ layout: page
 
 {{ content }}
 
-{% include open_in.html %}
-
 {% comment %}
-The _lectures collection holds both lecture and lab sessions (`type: lab`), so select the
+The _lectures collection holds both lecture and lab sessions (`kind: lab`), so select the
 lecture ones - otherwise every lab renders an empty container here. Every entry is the
 shared session block (session_entry.html), so this page, Labs and Readings read alike.
 {% endcomment %}
-{% assign entries = site.lectures | where: "type", "lecture" | sort: 'date' %}
+{% assign entries = site.lectures | where: "kind", "lecture" %}
+{% assign entries = entries | sort: 'date' %}
 {% for entry in entries %}
 <section class="session">
 {% include session_entry.html entry=entry section="lecture" %}

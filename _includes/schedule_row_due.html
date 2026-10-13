@@ -2,7 +2,7 @@
 SYSTEM-OWNED - do not edit. Written by the DSL course sync from templates/site/ in the
 toolkit; every sync rewrites it.
 {%- endcomment -%}
-<div class="col col-1" style="color: #31708f ;font-weight: bold;" data-label="Event">Assignment due</div>
+<div class="col col-1" style="color: #1f5fa8 ;font-weight: bold;" data-label="Event">Assignment due</div>
 <div class="col col-1-2" data-label="Date">
     {{ include.event.date | date: site.dateformat }}
     {{ include.event.date | date: "%H:%M" }}
@@ -34,7 +34,7 @@ so there is no name to print here. `submit_url` is the address the assignment na
 written only once the brief is out. This row said "Submit via <repo>" for those too, which
 is the one thing there is not.
 
-`shared_dropbox_repo` names ONE repo for the whole cohort, so `repo_name` is that repo
+`shared_dropbox_repo` names ONE repo for the whole semester, so `repo_name` is that repo
 rather than a shape, and `submit_path` is the folder inside it that is the reader's own -
 which is the half of the answer a name cannot carry.
 {%- endcomment -%}

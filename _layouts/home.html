@@ -6,12 +6,14 @@ layout: default
 
 <div class="home">
 
+    {% include console_banner.html %}
+
     <h1>{{ site.course_name }} <span style="font-size: 20px;color: #0006;">/ {{ site.course_semester }} </span></h1>
 
     {% include announcements.html %}
 
-    {%- comment -%}For the set-up line alone: the syllabus pin below is one link with no `[source]` beside it, so the control has nothing here to decorate.{%- endcomment -%}
-    {% include open_in.html %}
+    {%- comment -%}For the set-up line alone: the syllabus pin below is one link with no `[source]` beside it, so the control has nothing here to decorate. Semester sites only: the set-up line links /profile/, which the public open-courseware site does not have. `site.data.materials.repos` is written by the semester sync alone (an empty list still counts: Liquid's only false values are nil and false).{%- endcomment -%}
+    {% if site.data.materials.repos %}{% include open_in.html %}{% endif %}
     <br />
 
     {%- comment -%}
@@ -26,8 +28,23 @@ layout: default
     </p>
     {% endif %}
 
+    {%- comment -%}Blank (the public site writes "" when dsl-course.yml has none): no heading.{%- endcomment -%}
+    {% if site.course_description and site.course_description != "" %}
     <h2>Course Description</h2>
     <p>{{ site.course_description }}</p>
+    {% endif %}
+
+    {%- comment -%}
+    The public open-courseware site's contact and licence (`_data/course.yml`, written by
+    public_site.course_facts). A semester site has no such file, so neither line shows.
+    {%- endcomment -%}
+    {% assign facts = site.data.course %}
+    {% if facts.contact and facts.contact != "" %}
+    <p class="course-contact"><strong>Contact:</strong> <a href="mailto:{{ facts.contact }}">{{ facts.contact }}</a></p>
+    {% endif %}
+    {% if facts.licence.name and facts.licence.name != "" %}
+    <p class="course-licence"><strong>Licence:</strong> {% if facts.licence.url and facts.licence.url != "" %}<a href="{{ facts.licence.url }}">{{ facts.licence.name }}</a>{% else %}{{ facts.licence.name }}{% endif %}</p>
+    {% endif %}
     
     {{ content }}
 
