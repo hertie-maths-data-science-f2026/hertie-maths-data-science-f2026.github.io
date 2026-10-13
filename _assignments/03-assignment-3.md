@@ -23,6 +23,11 @@ teams:
     cap: 4
     members_sha256: ["dd252c16586e994ac0b99abf178fd3d1d1de1779d6a46b28a8234cef8d81452a", "250fcce0687e751c875a454ebf1ecb37205fe1e5160008dd08756166be4e8e3b"]
     repo_url: "https://github.com/hertie-maths-data-science-f2026/assignment-3-hello"
+  - name: "team-phn"
+    members: 1
+    cap: 4
+    members_sha256: ["e1df2d20ddf2cca8d462bc7f2b6f9273e6e5a4de853dad1f6bd8da68f62c8f0c"]
+    repo_url: "https://github.com/hertie-maths-data-science-f2026/assignment-3-team-phn"
   - name: "team-spreewald"
     members: 3
     cap: 4
