@@ -5,18 +5,46 @@
 type: assignment
 date: 2026-10-13T07:00:00
 title: "Assignment 3"
-handout_pending: true
+subtitle: "Limit Theorems, Maximum Likelihood and Bayesian Inference"
 submit_shape: "assignment-repo-private"
+repo_url: "https://github.com/orgs/hertie-maths-data-science-f2026/repositories?q=assignment-3-"
 repo_name: "assignment-3-<your-team>"
 repo_name_is_shape: true
 cutoff_sentence: "What is on main at the grading cutoff is what is marked."
 late_rule: "10% per day, up to 10 days"
+shape_note: "NB: this repo is private - only you and the teaching team can read it."
+team_join_url: "https://github.com/hertie-maths-data-science-f2026/welcome/issues/new/choose"
+team_join_cap: "4"
+team_join_closes: "8th Nov"
+team_salt: "hertie-maths-data-science-f2026"
 due_event:
     type: due
     date: 2026-11-08T23:59:00
     title: "Assignment 3"
+    subtitle: "Limit Theorems, Maximum Likelihood and Bayesian Inference"
     submit_shape: "assignment-repo-private"
+    repo_url: "https://github.com/orgs/hertie-maths-data-science-f2026/repositories?q=assignment-3-"
     repo_name: "assignment-3-<your-team>"
     repo_name_is_shape: true
 ---
-_**Assignment 3 is not yet released** - your private `assignment-3-<your-team>` repo appears when it is._
+{% raw %}
+## Getting started
+
+This folder is a self-contained [uv](https://docs.astral.sh/uv/) project - it
+carries its own Python version and dependencies, so nothing else needs
+installing. From this folder, run:
+
+```bash
+uv sync              # build the environment (first time only)
+uv run jupyter lab   # start the notebook server
+```
+
+Jupyter Lab opens in your browser. Open `assignment3_student.ipynb` and work through it; your
+answers go wherever a cell says `# here your code`.
+
+## Submission
+- You can choose if you want to use python or R
+- Commit the jupyter notebook and any other files that hold your solution. If you don't want to use jupyter you can also submit a .pdf with your solution and R code that allows to reproduce your solution.
+- Make sure that the solution is readable and has one clear answer to each question
+- Write you individual contributions to CONTRIBUTIONS.md and commit it
+{% endraw %}
