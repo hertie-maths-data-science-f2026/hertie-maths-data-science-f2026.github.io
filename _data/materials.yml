@@ -62,7 +62,7 @@ sections:
           - name: "lab6_student.ipynb"
             url: https://github.com/hertie-maths-data-science-f2026/materials/blob/main/labs/06_lab/lab6_student.ipynb
   - name: "lectures"
-    files: 162
+    files: 163
     entries:
       - name: "01_lecture/"
         url: https://github.com/hertie-maths-data-science-f2026/materials/tree/main/lectures/01_lecture
@@ -540,6 +540,12 @@ sections:
         entries:
           - name: "06_maximum_likelihood_estimation.pdf"
             url: https://github.com/hertie-maths-data-science-f2026/materials/blob/main/lectures/06_lecture/06_maximum_likelihood_estimation.pdf
+      - name: "07_lecture/"
+        url: https://github.com/hertie-maths-data-science-f2026/materials/tree/main/lectures/07_lecture
+        files: 1
+        entries:
+          - name: "07_bayesian_analysis.pdf"
+            url: https://github.com/hertie-maths-data-science-f2026/materials/blob/main/lectures/07_lecture/07_bayesian_analysis.pdf
   - name: "m4ds"
     files: 4
     entries:

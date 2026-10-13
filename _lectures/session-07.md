@@ -15,6 +15,9 @@ reading_list: |2
 
   - Chapter 1 (p. 3 - 13)
   - Chapter 2 (p. 29 - 56)
-links: []
+links:
+    - url: https://github.com/hertie-maths-data-science-f2026/materials/blob/main/lectures/07_lecture/07_bayesian_analysis.pdf
+      name: "07_bayesian_analysis.pdf"
+      section: "lecture"
 ---
 
