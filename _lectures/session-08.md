@@ -5,8 +5,23 @@
 type: lecture
 date: 2026-10-27T08:00:00
 title: "Session 8"
-unreleased: true
-readings_pending: true
+reading_list: |2
+  ### Session 8 readings
+
+  #### Required Readings
+
+  Savov, No Bullshit Guide to Linear Algebra
+
+  - Chapter 7.1 (p. 257 - 268, stop at Discussion)
+  - Chapter 7.6 (p. 292 - 295, stop at LU decomposition)
+
+  #### Additional Readings
+
+  Goodfellow, Bengio and Courville, Deep Learning
+
+  - Chapter 2, Linear Algebra (p. 29 - 43)
+
+  [Lerman, SVD notes](https://www-users.cse.umn.edu/~lerman/math5467/svd.pdf)
 links: []
 ---
-_**Materials for session 8 are not yet released** - they will appear in [`materials/lectures/08_lecture`](https://github.com/hertie-maths-data-science-f2026/materials/tree/main/lectures), [`materials/readings/08_week-8`](https://github.com/hertie-maths-data-science-f2026/materials/tree/main/readings) when they are._
+
