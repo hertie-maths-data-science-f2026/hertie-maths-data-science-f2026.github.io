@@ -18,6 +18,11 @@ team_join_cap: "4"
 team_join_closes: "8th Nov"
 team_salt: "hertie-maths-data-science-f2026"
 teams:
+  - name: "hello"
+    members: 1
+    cap: 4
+    members_sha256: ["dd252c16586e994ac0b99abf178fd3d1d1de1779d6a46b28a8234cef8d81452a"]
+    repo_url: "https://github.com/hertie-maths-data-science-f2026/assignment-3-hello"
   - name: "team-spreewald"
     members: 2
     cap: 4
