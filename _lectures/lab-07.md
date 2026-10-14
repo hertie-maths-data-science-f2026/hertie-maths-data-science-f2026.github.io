@@ -8,7 +8,12 @@ date: 2026-10-14T09:00:00
 sort_at: 2026-10-14T09:00:00
 title: "Lab 7"
 tabs: [lab]
-unreleased: true
-links: []
+links:
+    - url: https://github.com/hertie-maths-data-science-f2026/materials/blob/main/labs/07_lab/lab7_handout.pdf
+      name: "lab7_handout.pdf"
+      section: "lab"
+    - url: https://github.com/hertie-maths-data-science-f2026/materials/blob/main/labs/07_lab/lab7_student.ipynb
+      name: "lab7_student.ipynb"
+      section: "lab"
 ---
-_**Materials for lab 7 are not yet released** - they will appear in [`materials/labs/07_lab`](https://github.com/hertie-maths-data-science-f2026/materials/tree/main/labs) when they are._
+
