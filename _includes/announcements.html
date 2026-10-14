@@ -22,9 +22,10 @@ the schedule from the day the plan is written. So an unfiltered box, sorted newe
 announced the last week of term as "New Lab is up" before week one had happened. Filtered
 BEFORE the limit, not inside the loop: dropping a placeholder's bullet after the fact
 would leave the box showing one real update out of seven, or none at all. A `dateless` row
-(`event_datetime: tbc`) is never news either: it has no date.
+(`event_datetime: tbc`) is never news either: it has no date; nor is a `no_materials` one,
+which ships nothing (an `events:` session, a release with an empty `deploy:`).
 {%- endcomment -%}
-{%- assign released_sessions = site.lectures | where_exp: "entry", "entry.unreleased != true" | where_exp: "entry", "entry.off_schedule != true" | where_exp: "entry", "entry.undated != true" | where_exp: "entry", "entry.dateless != true" -%}
+{%- assign released_sessions = site.lectures | where_exp: "entry", "entry.unreleased != true" | where_exp: "entry", "entry.no_materials != true" | where_exp: "entry", "entry.off_schedule != true" | where_exp: "entry", "entry.undated != true" | where_exp: "entry", "entry.dateless != true" -%}
 {%- assign released_assignments = site.assignments | where_exp: "entry", "entry.handout_pending != true" -%}
 {%- assign all_events = released_sessions | concat: released_assignments -%}
 {%- assign archiving = site.events | where_exp: "entry", "entry.announce == true" -%}
