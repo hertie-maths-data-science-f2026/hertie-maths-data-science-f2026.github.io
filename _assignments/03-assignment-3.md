@@ -25,9 +25,9 @@ teams:
     members_sha256: ["dd252c16586e994ac0b99abf178fd3d1d1de1779d6a46b28a8234cef8d81452a", "ddb5593657bc47cb89f9d4999c6c926b1e0ec665ea5d256b212db12d6d7ae53b", "d02563d8de88275d480b8ec23387ea6c25b757bf186ff56785dccae35c721931", "250fcce0687e751c875a454ebf1ecb37205fe1e5160008dd08756166be4e8e3b"]
     repo_url: "https://github.com/hertie-maths-data-science-f2026/assignment-3-hello"
   - name: "team-optimist"
-    members: 2
+    members: 3
     cap: 4
-    members_sha256: ["bfca282244262c3287b9fec90e09a19166506d16a139f252f36d976cbfc5019d", "471de9160bdd823ec43fdaee7d30c11f895a24a5c419ecec441c253e3cab41d5"]
+    members_sha256: ["bfca282244262c3287b9fec90e09a19166506d16a139f252f36d976cbfc5019d", "5203da002da686eeecbab926972895b1a26bfa25d7bee0a40b1f52430cc3d3a3", "471de9160bdd823ec43fdaee7d30c11f895a24a5c419ecec441c253e3cab41d5"]
     repo_url: "https://github.com/hertie-maths-data-science-f2026/assignment-3-team-optimist"
   - name: "team-phn"
     members: 4
