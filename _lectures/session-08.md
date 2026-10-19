@@ -11,6 +11,8 @@ tabs: [lecture, readings]
 reading_list: |2
   ### Session 8 readings
 
+  [Khan Academy](https://www.khanacademy.org/math/linear-algebra) on Linear Algebra
+
   #### Required Readings
 
   Savov, No Bullshit Guide to Linear Algebra
@@ -20,11 +22,11 @@ reading_list: |2
 
   #### Additional Readings
 
-  Goodfellow, Bengio and Courville, Deep Learning
+  Goodfellow, Bengio and Courville, [Deep Learning](https://www.deeplearningbook.org/contents/linear_algebra.html)
 
   - Chapter 2, Linear Algebra (p. 29 - 43)
 
-  [Lerman, SVD notes](https://www-users.cse.umn.edu/~lerman/math5467/svd.pdf)
+  [Dan Kalman, The SVD of a Matrix](https://dankalman.net/AUhome/pdffiles/svd.pdf)
 links: []
 ---
 
