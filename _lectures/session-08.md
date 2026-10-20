@@ -11,7 +11,12 @@ tabs: [lecture, readings]
 reading_list: |2
   ### Session 8 readings
 
+
+  #### Fresher
   [Khan Academy](https://www.khanacademy.org/math/linear-algebra) on Linear Algebra
+
+  Savov, No Bullshit Guide to Linear Algebra
+  - Chapter 2
 
   #### Required Readings
 
