@@ -40,9 +40,9 @@ teams:
     members_sha256: ["ab30a9a3b99810fadac786233e2d54dba611211c96be5e218c9740bc1461f64f", "aa07f1e80e5d6739aba2356a5ef5aa8fc9184cdf97db9ea284633fe400b39f47", "3ac1a0cf94c6eb21e9436690ee7173176a1a34a25438e1e83eb95e90225415dc"]
     repo_url: "https://github.com/hertie-maths-data-science-f2026/assignment-3-team-spreewald"
   - name: "tubin4ever"
-    members: 1
+    members: 2
     cap: 4
-    members_sha256: ["52d6225895b949c28508937b6c520755d5255133d4168e1caade3ed9e4581529"]
+    members_sha256: ["52d6225895b949c28508937b6c520755d5255133d4168e1caade3ed9e4581529", "ef01fee35cab1cdcd1ab428647af2fbe0a7954b9db699287ce7fbc56dc155897"]
     repo_url: "https://github.com/hertie-maths-data-science-f2026/assignment-3-tubin4ever"
 due_event:
     kind: due
