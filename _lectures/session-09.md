@@ -9,8 +9,32 @@ sort_at: 2026-11-03T08:00:00
 title: "Lecture 9"
 details: "in-class quiz 4"
 tabs: [lecture, readings]
-unreleased: true
-readings_pending: true
+reading_list: |2
+  ### Session 9 readings
+
+  #### Required Readings
+
+  [Kolter and Do, Linear Algebra Review and Reference](https://www.cs.cmu.edu/~zkolter/course/15-884/linalg-review.pdf)
+
+  - Chapter 4: Matrix Calculus (p. 20 - 26)
+
+  [Hertzmann, Fleet and Brubaker, CSC 411 Course Notes (University of Toronto, 2015)](https://www.cs.toronto.edu/~mbrubake/teaching/C11/Handouts/LagrangeMultipliers.pdf)
+
+  - Chapter 14, Lagrange Multipliers (p. 83 - 91)
+
+  James et al., An Introduction to Statistical Learning
+
+  - Chapter 6.3.1 (p. 253 - 256)
+  - Chapter 12.2 (p. 496 - 508)
+  - Chapter 12.5.1
+
+  #### Additional Resources
+
+  Khan Academy on Lagrange multipliers
+
+  - [Budgetary constraints (video)](https://www.khanacademy.org/math/multivariable-calculus/applications-of-multivariable-derivatives/lagrange-multipliers-and-constrained-optimization/v/lagrange-multiplier-example-part-1)
+  - [Lagrange multipliers, examples](https://www.khanacademy.org/math/multivariable-calculus/applications-of-multivariable-derivatives/constrained-optimization/a/lagrange-multipliers-examples)
+  - [Interpretation of Lagrange multipliers](https://www.khanacademy.org/math/multivariable-calculus/applications-of-multivariable-derivatives/constrained-optimization/a/interpretation-of-lagrange-multipliers)
 links: []
 ---
-_**Materials for lecture 9 are not yet released** - they will appear in [`materials/lectures/09_lecture`](https://github.com/hertie-maths-data-science-f2026/materials/tree/main/lectures), [`materials/readings/09_week-9`](https://github.com/hertie-maths-data-science-f2026/materials/tree/main/readings) when they are._
+
