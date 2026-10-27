@@ -19,6 +19,11 @@ team_join_cap: "4"
 team_join_closes: "18th Nov"
 team_salt: "hertie-maths-data-science-f2026"
 teams:
+  - name: "best-team"
+    members: 1
+    cap: 4
+    members_sha256: ["e1e066e97dc79aa22482b9aa764268dc3fc6fe13fa1bee14fe62fb6c026342d4"]
+    repo_url: "https://github.com/hertie-maths-data-science-f2026/assignment-3-best-team"
   - name: "hello"
     members: 4
     cap: 4
