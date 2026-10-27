@@ -19,6 +19,11 @@ team_join_cap: "4"
 team_join_closes: "18th Nov"
 team_salt: "hertie-maths-data-science-f2026"
 teams:
+  - name: "bayes-baes3"
+    members: 1
+    cap: 4
+    members_sha256: ["34ab38e3b01da369b22c9fbe785126b12c067c63c682372e27619ec21f29987c"]
+    repo_url: "https://github.com/hertie-maths-data-science-f2026/assignment-3-bayes-baes3"
   - name: "best-team"
     members: 3
     cap: 4
