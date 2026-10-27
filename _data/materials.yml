@@ -71,7 +71,7 @@ sections:
           - name: "lab7_student.ipynb"
             url: https://github.com/hertie-maths-data-science-f2026/materials/blob/main/labs/07_lab/lab7_student.ipynb
   - name: "lectures"
-    files: 163
+    files: 164
     entries:
       - name: "01_lecture/"
         url: https://github.com/hertie-maths-data-science-f2026/materials/tree/main/lectures/01_lecture
@@ -555,6 +555,12 @@ sections:
         entries:
           - name: "07_bayesian_analysis.pdf"
             url: https://github.com/hertie-maths-data-science-f2026/materials/blob/main/lectures/07_lecture/07_bayesian_analysis.pdf
+      - name: "08_lecture/"
+        url: https://github.com/hertie-maths-data-science-f2026/materials/tree/main/lectures/08_lecture
+        files: 1
+        entries:
+          - name: "08_linear_algebra_eigendecomposition_svd.pdf"
+            url: https://github.com/hertie-maths-data-science-f2026/materials/blob/main/lectures/08_lecture/08_linear_algebra_eigendecomposition_svd.pdf
   - name: "m4ds"
     files: 4
     entries:

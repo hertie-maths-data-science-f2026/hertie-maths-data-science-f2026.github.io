@@ -32,6 +32,9 @@ reading_list: |2
   - Chapter 2, Linear Algebra (p. 29 - 43)
 
   [Dan Kalman, The SVD of a Matrix](https://dankalman.net/AUhome/pdffiles/svd.pdf)
-links: []
+links:
+    - url: https://github.com/hertie-maths-data-science-f2026/materials/blob/main/lectures/08_lecture/08_linear_algebra_eigendecomposition_svd.pdf
+      name: "08_linear_algebra_eigendecomposition_svd.pdf"
+      section: "lecture"
 ---
 
