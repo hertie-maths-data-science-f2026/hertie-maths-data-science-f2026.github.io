@@ -8,7 +8,9 @@ date: 2026-10-28T09:00:00
 sort_at: 2026-10-28T09:00:00
 title: "Lab 8"
 tabs: [lab]
-unreleased: true
-links: []
+links:
+    - url: https://github.com/hertie-maths-data-science-f2026/materials/blob/main/labs/08_lab/lab8_handout.pdf
+      name: "lab8_handout.pdf"
+      section: "lab"
 ---
-_**Materials for lab 8 are not yet released** - they will appear in [`materials/labs/08_lab`](https://github.com/hertie-maths-data-science-f2026/materials/tree/main/labs) when they are._
+
