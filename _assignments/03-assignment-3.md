@@ -39,6 +39,11 @@ teams:
     cap: 4
     members_sha256: ["dd252c16586e994ac0b99abf178fd3d1d1de1779d6a46b28a8234cef8d81452a", "ddb5593657bc47cb89f9d4999c6c926b1e0ec665ea5d256b212db12d6d7ae53b", "d02563d8de88275d480b8ec23387ea6c25b757bf186ff56785dccae35c721931", "250fcce0687e751c875a454ebf1ecb37205fe1e5160008dd08756166be4e8e3b"]
     repo_url: "https://github.com/hertie-maths-data-science-f2026/assignment-3-hello"
+  - name: "team-lea"
+    members: 1
+    cap: 4
+    members_sha256: ["1160469d8406a8fc6efed852c251d1f0a6e70bf7463326b3b08cae5e6807f85c"]
+    repo_url: "https://github.com/hertie-maths-data-science-f2026/assignment-3-team-lea"
   - name: "team-optimist"
     members: 4
     cap: 4
