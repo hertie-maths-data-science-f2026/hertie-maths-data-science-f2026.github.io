@@ -15,8 +15,11 @@ links:
     - url: https://github.com/hertie-maths-data-science-f2026/materials/blob/main/labs/07_lab/lab7_student.ipynb
       name: "lab7_student.ipynb"
       section: "lab"
+    - url: https://github.com/hertie-maths-data-science-f2026/materials/blob/main/labs/07_lab/lab7_student.py
+      name: "lab7_student.py"
+      section: "lab"
     - url: https://github.com/hertie-maths-data-science-f2026/materials/tree/main/labs/07_lab/solutions
-      name: "solutions/ (2 files)"
+      name: "solutions/ (3 files)"
       section: "lab"
 ---
 

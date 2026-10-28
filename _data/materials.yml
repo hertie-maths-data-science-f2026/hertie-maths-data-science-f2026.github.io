@@ -10,24 +10,28 @@ documents:
     url: https://github.com/hertie-maths-data-science-f2026/materials/blob/main/uv.lock
 sections:
   - name: "labs"
-    files: 16
+    files: 23
     entries:
       - name: "01_lab/"
         url: https://github.com/hertie-maths-data-science-f2026/materials/tree/main/labs/01_lab
-        files: 2
+        files: 3
         entries:
           - name: "lab1_handout.pdf"
             url: https://github.com/hertie-maths-data-science-f2026/materials/blob/main/labs/01_lab/lab1_handout.pdf
           - name: "lab1_student.ipynb"
             url: https://github.com/hertie-maths-data-science-f2026/materials/blob/main/labs/01_lab/lab1_student.ipynb
+          - name: "lab1_student.py"
+            url: https://github.com/hertie-maths-data-science-f2026/materials/blob/main/labs/01_lab/lab1_student.py
       - name: "02_lab/"
         url: https://github.com/hertie-maths-data-science-f2026/materials/tree/main/labs/02_lab
-        files: 2
+        files: 3
         entries:
           - name: "lab2_handout.pdf"
             url: https://github.com/hertie-maths-data-science-f2026/materials/blob/main/labs/02_lab/lab2_handout.pdf
           - name: "lab2_student.ipynb"
             url: https://github.com/hertie-maths-data-science-f2026/materials/blob/main/labs/02_lab/lab2_student.ipynb
+          - name: "lab2_student.py"
+            url: https://github.com/hertie-maths-data-science-f2026/materials/blob/main/labs/02_lab/lab2_student.py
       - name: "03_lab/"
         url: https://github.com/hertie-maths-data-science-f2026/materials/tree/main/labs/03_lab
         files: 3
@@ -40,42 +44,52 @@ sections:
             url: https://github.com/hertie-maths-data-science-f2026/materials/blob/main/labs/03_lab/lab3_student.py
       - name: "04_lab/"
         url: https://github.com/hertie-maths-data-science-f2026/materials/tree/main/labs/04_lab
-        files: 2
+        files: 3
         entries:
           - name: "lab4_handout.pdf"
             url: https://github.com/hertie-maths-data-science-f2026/materials/blob/main/labs/04_lab/lab4_handout.pdf
           - name: "lab4_student.ipynb"
             url: https://github.com/hertie-maths-data-science-f2026/materials/blob/main/labs/04_lab/lab4_student.ipynb
+          - name: "lab4_student.py"
+            url: https://github.com/hertie-maths-data-science-f2026/materials/blob/main/labs/04_lab/lab4_student.py
       - name: "05_lab/"
         url: https://github.com/hertie-maths-data-science-f2026/materials/tree/main/labs/05_lab
-        files: 2
+        files: 3
         entries:
           - name: "lab5_handout.pdf"
             url: https://github.com/hertie-maths-data-science-f2026/materials/blob/main/labs/05_lab/lab5_handout.pdf
           - name: "lab5_student.ipynb"
             url: https://github.com/hertie-maths-data-science-f2026/materials/blob/main/labs/05_lab/lab5_student.ipynb
+          - name: "lab5_student.py"
+            url: https://github.com/hertie-maths-data-science-f2026/materials/blob/main/labs/05_lab/lab5_student.py
       - name: "06_lab/"
         url: https://github.com/hertie-maths-data-science-f2026/materials/tree/main/labs/06_lab
-        files: 2
+        files: 3
         entries:
           - name: "lab6_handout.pdf"
             url: https://github.com/hertie-maths-data-science-f2026/materials/blob/main/labs/06_lab/lab6_handout.pdf
           - name: "lab6_student.ipynb"
             url: https://github.com/hertie-maths-data-science-f2026/materials/blob/main/labs/06_lab/lab6_student.ipynb
+          - name: "lab6_student.py"
+            url: https://github.com/hertie-maths-data-science-f2026/materials/blob/main/labs/06_lab/lab6_student.py
       - name: "07_lab/"
         url: https://github.com/hertie-maths-data-science-f2026/materials/tree/main/labs/07_lab
-        files: 2
+        files: 3
         entries:
           - name: "lab7_handout.pdf"
             url: https://github.com/hertie-maths-data-science-f2026/materials/blob/main/labs/07_lab/lab7_handout.pdf
           - name: "lab7_student.ipynb"
             url: https://github.com/hertie-maths-data-science-f2026/materials/blob/main/labs/07_lab/lab7_student.ipynb
+          - name: "lab7_student.py"
+            url: https://github.com/hertie-maths-data-science-f2026/materials/blob/main/labs/07_lab/lab7_student.py
       - name: "08_lab/"
         url: https://github.com/hertie-maths-data-science-f2026/materials/tree/main/labs/08_lab
-        files: 1
+        files: 2
         entries:
           - name: "lab8_handout.pdf"
             url: https://github.com/hertie-maths-data-science-f2026/materials/blob/main/labs/08_lab/lab8_handout.pdf
+          - name: "lab8_student.py"
+            url: https://github.com/hertie-maths-data-science-f2026/materials/blob/main/labs/08_lab/lab8_student.py
   - name: "lectures"
     files: 164
     entries:
@@ -568,7 +582,7 @@ sections:
           - name: "08_linear_algebra_eigendecomposition_svd.pdf"
             url: https://github.com/hertie-maths-data-science-f2026/materials/blob/main/lectures/08_lecture/08_linear_algebra_eigendecomposition_svd.pdf
   - name: "m4ds"
-    files: 4
+    files: 9
     entries:
       - name: "images/"
         url: https://github.com/hertie-maths-data-science-f2026/materials/tree/main/m4ds/images
@@ -580,6 +594,24 @@ sections:
             url: https://github.com/hertie-maths-data-science-f2026/materials/blob/main/m4ds/images/figure.py
           - name: "joint_pmf.py"
             url: https://github.com/hertie-maths-data-science-f2026/materials/blob/main/m4ds/images/joint_pmf.py
+      - name: "plotting/"
+        url: https://github.com/hertie-maths-data-science-f2026/materials/tree/main/m4ds/plotting
+        files: 3
+        entries:
+          - name: "__init__.py"
+            url: https://github.com/hertie-maths-data-science-f2026/materials/blob/main/m4ds/plotting/__init__.py
+          - name: "figure.py"
+            url: https://github.com/hertie-maths-data-science-f2026/materials/blob/main/m4ds/plotting/figure.py
+          - name: "joint_pmf.py"
+            url: https://github.com/hertie-maths-data-science-f2026/materials/blob/main/m4ds/plotting/joint_pmf.py
+      - name: "probability/"
+        url: https://github.com/hertie-maths-data-science-f2026/materials/tree/main/m4ds/probability
+        files: 2
+        entries:
+          - name: "__init__.py"
+            url: https://github.com/hertie-maths-data-science-f2026/materials/blob/main/m4ds/probability/__init__.py
+          - name: "joint_pmf.py"
+            url: https://github.com/hertie-maths-data-science-f2026/materials/blob/main/m4ds/probability/joint_pmf.py
       - name: "__init__.py"
         url: https://github.com/hertie-maths-data-science-f2026/materials/blob/main/m4ds/__init__.py
   - name: "quiz"
