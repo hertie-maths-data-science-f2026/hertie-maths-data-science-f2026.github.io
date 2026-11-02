@@ -3,11 +3,10 @@
 # rewrites this whole collection on every run. Edit the source instead: the semester's
 # semester-config/schedule.yml (dates, titles) or its org structure (what released).
 kind: assignment
-date: 2026-09-15T08:00:00
-sort_at: 2026-09-15T08:00:00
+date: 2026-11-02T16:51:00
+sort_at: 2026-11-02T16:51:00
 title: "Assignment 5"
 subtitle: "Quiz 1"
-handout_pending: true
 submit_shape: "external"
 due_event:
     kind: due
@@ -17,4 +16,12 @@ due_event:
     subtitle: "Quiz 1"
     submit_shape: "external"
 ---
-_**Assignment 5 is not yet released** - the brief appears here when it is._
+{% raw %}
+## Task
+
+_Write the assignment here (dsl-stub: replace this whole file)._
+
+## What to submit
+
+_Say where and how students hand in - nothing is collected from this repo. `submit_url:` in the semester's `assignments.yml` puts that address on the semester site as a button._
+{% endraw %}
