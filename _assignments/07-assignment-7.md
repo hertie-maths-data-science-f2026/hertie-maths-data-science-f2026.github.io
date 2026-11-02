@@ -3,8 +3,8 @@
 # rewrites this whole collection on every run. Edit the source instead: the semester's
 # semester-config/schedule.yml (dates, titles) or its org structure (what released).
 kind: assignment
-date: 2026-10-19T08:00:00
-sort_at: 2026-10-19T08:00:00
+date: 2026-11-02T17:23:00
+sort_at: 2026-11-02T17:23:00
 title: "Assignment 7"
 subtitle: "Quiz 3"
 submit_shape: "assignment-repo-private"
