@@ -7,23 +7,15 @@ date: 2026-11-02T16:58:00
 sort_at: 2026-11-02T16:58:00
 title: "Assignment 6"
 subtitle: "Quiz 2"
-submit_shape: "assignment-repo-private"
-repo_url: "https://github.com/orgs/hertie-maths-data-science-f2026/repositories?q=assignment-6-"
-repo_name: "assignment-6-<your-handle>"
-repo_name_is_shape: true
-cutoff_sentence: "What is on main at the late cutoff is what is marked."
-late_rule: "10% per day, up to 10 days"
-shape_note: "NB: this repo is private - only you and the instructors can read it."
+submit_shape: "external"
+late_rule: "10% of the grade per day late, counted by your marker"
 due_event:
     kind: due
     date: 2026-09-15T08:00:00
     sort_at: 2026-09-15T08:00:00
     title: "Assignment 6"
     subtitle: "Quiz 2"
-    submit_shape: "assignment-repo-private"
-    repo_url: "https://github.com/orgs/hertie-maths-data-science-f2026/repositories?q=assignment-6-"
-    repo_name: "assignment-6-<your-handle>"
-    repo_name_is_shape: true
+    submit_shape: "external"
 ---
 {% raw %}
 ## Task

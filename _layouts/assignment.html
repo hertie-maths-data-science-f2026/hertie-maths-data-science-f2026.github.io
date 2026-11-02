@@ -253,11 +253,11 @@ title: page.title
 
     `late_rule` (site.py, off the assignment's own grading_config.yml) closes the
     paragraph, so what happens after the deadline is read where the deadline's own answer
-    is. Written for every TIMED shape and for no other: `external` collects no commits, so
-    no day is counted and no penalty is ever applied (`course.collects_commits`), and a
-    sentence there would quote a rule about a deadline this toolkit does not hold. The
-    theme reads the KEY's presence rather than asking the shape again - a second
-    spelling of "which shapes are timed" is one that eventually disagrees with the first.
+    is. For `external` it is written only when a penalty applies, and says the marker
+    counts the days (`course.late_rule`): no commit is timed, so there is no window or
+    cutoff to quote. The theme reads the KEY's presence rather than asking the shape
+    again - a second spelling of "which shapes are timed" is one that eventually
+    disagrees with the first.
     {%- endcomment -%}
     {% unless page.handout_pending %}
     {% if page.submit_shape == "external" %}
@@ -266,7 +266,7 @@ title: page.title
       {% if page.submit_url %}
       <p><a class="btn" target="_blank" rel="noopener" href="{{ page.submit_url }}">Submit on {{ page.submit_host }}</a></p>
       {% endif %}
-      <p>Handed in outside GitHub.{% unless page.submit_url %} See the brief.{% endunless %}</p>
+      <p>Handed in outside GitHub.{% unless page.submit_url %} See the brief.{% endunless %}{% if page.late_rule %} Late work: {{ page.late_rule }}.{% endif %}</p>
     </div>
     {% elsif page.repo_url %}
     <div class="callout callout-submit"{% if page.submit_path %} data-dsl-dropbox="{{ page.repo_name | escape }}" data-dsl-dropbox-path="{{ page.submit_path | escape }}"{% endif %}>

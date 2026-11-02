@@ -8,6 +8,7 @@ sort_at: 2026-11-02T16:51:00
 title: "Assignment 5"
 subtitle: "Quiz 1"
 submit_shape: "external"
+late_rule: "10% of the grade per day late, counted by your marker"
 due_event:
     kind: due
     date: 2026-09-15T08:00:00

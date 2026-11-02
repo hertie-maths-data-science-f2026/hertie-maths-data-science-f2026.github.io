@@ -10,6 +10,7 @@ subtitle: "Introduce Yourself"
 submit_shape: "external"
 submit_url: "https://moodle.hertie-school.org/course/section.php?id=55657"
 submit_host: "moodle.hertie-school.org"
+late_rule: "10% of the grade per day late, counted by your marker"
 due_event:
     kind: due
     date: 2026-09-20T23:59:00
