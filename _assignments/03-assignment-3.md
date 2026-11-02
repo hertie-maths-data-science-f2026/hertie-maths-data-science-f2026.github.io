@@ -30,9 +30,9 @@ teams:
     members_sha256: ["e1e066e97dc79aa22482b9aa764268dc3fc6fe13fa1bee14fe62fb6c026342d4", "676c65d51ff7e9aa8df4f8bf8b718788bccffdc07a13e7bd78a61dc5cabccb8b", "7d5fb4ac03f089f578636f91805120c8bcc94eeed1faedaee88ff8407e3ac8c0", "9afa2ad3446a9a51d599a5f82b014848c1a850f22606e2ed144dee870c446e61"]
     repo_url: "https://github.com/hertie-maths-data-science-f2026/assignment-3-best-team"
   - name: "brains"
-    members: 1
+    members: 2
     cap: 4
-    members_sha256: ["ca95badfdb599ff03b799c4cfedc150e16b19ce4c20273d1d1c2487a0632b08c"]
+    members_sha256: ["ca95badfdb599ff03b799c4cfedc150e16b19ce4c20273d1d1c2487a0632b08c", "c2cbec86b4897204edd0f43bb6130f00bc94f1f9ce90be5d161c68c9c50932f7"]
     repo_url: "https://github.com/hertie-maths-data-science-f2026/assignment-3-brains"
   - name: "hello"
     members: 4
