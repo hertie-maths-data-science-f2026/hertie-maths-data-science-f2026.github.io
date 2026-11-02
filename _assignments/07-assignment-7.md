@@ -7,12 +7,13 @@ date: 2026-10-19T08:00:00
 sort_at: 2026-10-19T08:00:00
 title: "Assignment 7"
 subtitle: "Quiz 3"
-handout_pending: true
 submit_shape: "assignment-repo-private"
+repo_url: "https://github.com/orgs/hertie-maths-data-science-f2026/repositories?q=assignment-7-"
 repo_name: "assignment-7-<your-handle>"
 repo_name_is_shape: true
 cutoff_sentence: "What is on main at the late cutoff is what is marked."
 late_rule: "10% per day, up to 10 days"
+shape_note: "NB: this repo is private - only you and the instructors can read it."
 due_event:
     kind: due
     date: 2026-10-19T08:00:00
@@ -20,7 +21,16 @@ due_event:
     title: "Assignment 7"
     subtitle: "Quiz 3"
     submit_shape: "assignment-repo-private"
+    repo_url: "https://github.com/orgs/hertie-maths-data-science-f2026/repositories?q=assignment-7-"
     repo_name: "assignment-7-<your-handle>"
     repo_name_is_shape: true
 ---
-_**Assignment 7 is not yet released** - your private `assignment-7-<your-handle>` repo appears when it is._
+{% raw %}
+## Task
+
+_Write the assignment here (dsl-stub: replace this whole file)._
+
+## What to submit
+
+_Say where and how students hand in - nothing is collected from this repo. `submit_url:` in the semester's `assignments.yml` puts that address on the semester site as a button._
+{% endraw %}
