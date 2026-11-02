@@ -3,16 +3,17 @@
 # rewrites this whole collection on every run. Edit the source instead: the semester's
 # semester-config/schedule.yml (dates, titles) or its org structure (what released).
 kind: assignment
-date: 2026-12-10T10:00:00
-sort_at: 2026-12-10T10:00:00
+date: 2026-11-02T18:37:00
+sort_at: 2026-11-02T18:37:00
 title: "Assignment 10"
 subtitle: "Final Exam"
-handout_pending: true
 submit_shape: "assignment-repo-private"
+repo_url: "https://github.com/orgs/hertie-maths-data-science-f2026/repositories?q=assignment-10-"
 repo_name: "assignment-10-<your-handle>"
 repo_name_is_shape: true
 cutoff_sentence: "What is on main at the late cutoff is what is marked."
 late_rule: "10% per day, up to 10 days"
+shape_note: "NB: this repo is private - only you and the instructors can read it."
 due_event:
     kind: due
     date: 2026-12-10T10:00:00
@@ -20,7 +21,16 @@ due_event:
     title: "Assignment 10"
     subtitle: "Final Exam"
     submit_shape: "assignment-repo-private"
+    repo_url: "https://github.com/orgs/hertie-maths-data-science-f2026/repositories?q=assignment-10-"
     repo_name: "assignment-10-<your-handle>"
     repo_name_is_shape: true
 ---
-_**Assignment 10 is not yet released** - your private `assignment-10-<your-handle>` repo appears when it is._
+{% raw %}
+## Task
+
+_Write the assignment here (dsl-stub: replace this whole file)._
+
+## What to submit
+
+_Say where and how students hand in - nothing is collected from this repo. `submit_url:` in the semester's `assignments.yml` puts that address on the semester site as a button._
+{% endraw %}
