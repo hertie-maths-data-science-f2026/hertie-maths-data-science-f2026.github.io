@@ -621,7 +621,7 @@ sections:
       - name: "__init__.py"
         url: https://github.com/hertie-maths-data-science-f2026/materials/blob/main/m4ds/__init__.py
   - name: "quiz"
-    files: 3
+    files: 4
     entries:
       - name: "quiz_01.pdf"
         url: https://github.com/hertie-maths-data-science-f2026/materials/blob/main/quiz/quiz_01.pdf
@@ -629,6 +629,8 @@ sections:
         url: https://github.com/hertie-maths-data-science-f2026/materials/blob/main/quiz/quiz_02.pdf
       - name: "quiz_03.pdf"
         url: https://github.com/hertie-maths-data-science-f2026/materials/blob/main/quiz/quiz_03.pdf
+      - name: "quiz_04.pdf"
+        url: https://github.com/hertie-maths-data-science-f2026/materials/blob/main/quiz/quiz_04.pdf
   - name: "readings"
     files: 10
     entries:
