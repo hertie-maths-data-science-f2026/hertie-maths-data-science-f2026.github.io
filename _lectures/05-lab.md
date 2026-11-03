@@ -6,6 +6,7 @@ kind: lab
 number: 5
 date: 2026-09-30T09:00:00
 sort_at: 2026-09-30T09:00:00
+released_at: 2026-11-04T00:21:00
 title: "Lab 5"
 tabs: [lab]
 readings_chip: true
