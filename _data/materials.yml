@@ -91,7 +91,7 @@ sections:
           - name: "lab8_student.py"
             url: https://github.com/hertie-maths-data-science-f2026/materials/blob/main/labs/08_lab/lab8_student.py
   - name: "lectures"
-    files: 164
+    files: 165
     entries:
       - name: "01_lecture/"
         url: https://github.com/hertie-maths-data-science-f2026/materials/tree/main/lectures/01_lecture
@@ -581,6 +581,12 @@ sections:
         entries:
           - name: "08_linear_algebra_eigendecomposition_svd.pdf"
             url: https://github.com/hertie-maths-data-science-f2026/materials/blob/main/lectures/08_lecture/08_linear_algebra_eigendecomposition_svd.pdf
+      - name: "09_lecture/"
+        url: https://github.com/hertie-maths-data-science-f2026/materials/tree/main/lectures/09_lecture
+        files: 1
+        entries:
+          - name: "09_constrained_optimization_and_pca.pdf"
+            url: https://github.com/hertie-maths-data-science-f2026/materials/blob/main/lectures/09_lecture/09_constrained_optimization_and_pca.pdf
   - name: "m4ds"
     files: 9
     entries:

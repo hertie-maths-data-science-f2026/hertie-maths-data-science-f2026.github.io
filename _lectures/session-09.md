@@ -35,6 +35,9 @@ reading_list: |2
   - [Budgetary constraints (video)](https://www.khanacademy.org/math/multivariable-calculus/applications-of-multivariable-derivatives/lagrange-multipliers-and-constrained-optimization/v/lagrange-multiplier-example-part-1)
   - [Lagrange multipliers, examples](https://www.khanacademy.org/math/multivariable-calculus/applications-of-multivariable-derivatives/constrained-optimization/a/lagrange-multipliers-examples)
   - [Interpretation of Lagrange multipliers](https://www.khanacademy.org/math/multivariable-calculus/applications-of-multivariable-derivatives/constrained-optimization/a/interpretation-of-lagrange-multipliers)
-links: []
+links:
+    - url: https://github.com/hertie-maths-data-science-f2026/materials/blob/main/lectures/09_lecture/09_constrained_optimization_and_pca.pdf
+      name: "09_constrained_optimization_and_pca.pdf"
+      section: "lecture"
 ---
 
