@@ -8,8 +8,20 @@ date: 2026-11-10T08:00:00
 sort_at: 2026-11-10T08:00:00
 title: "Lecture 10"
 tabs: [lecture, readings]
-unreleased: true
-readings_pending: true
+reading_list: |2
+  ### Session 10 readings
+
+  #### Required Readings
+
+  James et al., An Introduction to Statistical Learning
+
+  - Chapter 3.1 - 3.2 (p. 59 - 83)
+
+  #### Additional Readings
+
+  James et al., An Introduction to Statistical Learning
+
+  - Chapter 6.2 (p. 237 - 251)
 links: []
 ---
-_**Materials for lecture 10 are not yet released** - they will appear in [`materials/lectures/10_lecture`](https://github.com/hertie-maths-data-science-f2026/materials/tree/main/lectures), [`materials/readings/10_week-10`](https://github.com/hertie-maths-data-science-f2026/materials/tree/main/readings) when they are._
+
