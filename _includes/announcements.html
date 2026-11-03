@@ -26,14 +26,14 @@ would leave the box showing one real update out of seven, or none at all. A `dat
 landed: the generator writes that moment as its `date:` and flags it `announce: true`. One
 without the flag stays out - unreleased, or GitHub could not say when it landed - since
 Jekyll dates a row with no `date:` at build time, which would put it at the top. A
-`no_materials` row is never news: it ships nothing (an `events:` session, a release with an
-empty `deploy:`).
+`no_materials` row is never news: it ships nothing (an entry with no `files`); nor is an
+entry's second slot (`repeat`): its files shipped once, with the first.
 {%- endcomment -%}
 {%- comment -%}
 Two chains joined, not one `or` inside `where_exp`: live sites built with the github-pages
 gem run Jekyll 3.10 / Liquid 4.0.4, whose `where_exp` cannot parse a boolean operator.
 {%- endcomment -%}
-{%- assign shipped = site.lectures | where_exp: "entry", "entry.unreleased != true" | where_exp: "entry", "entry.no_materials != true" | where_exp: "entry", "entry.off_schedule != true" | where_exp: "entry", "entry.undated != true" -%}
+{%- assign shipped = site.lectures | where_exp: "entry", "entry.unreleased != true" | where_exp: "entry", "entry.no_materials != true" | where_exp: "entry", "entry.off_schedule != true" | where_exp: "entry", "entry.repeat != true" -%}
 {%- assign dated_sessions = shipped | where_exp: "entry", "entry.dateless != true" -%}
 {%- assign announced_tbc = shipped | where_exp: "entry", "entry.dateless == true" | where_exp: "entry", "entry.announce == true" -%}
 {%- assign released_sessions = dated_sessions | concat: announced_tbc -%}

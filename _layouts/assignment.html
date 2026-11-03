@@ -27,7 +27,9 @@ title: page.title
     The brief itself is withheld upstream - the body says so - so this layout only has to
     stop announcing a past release, and files and a repo that do not exist yet.
     {%- endcomment -%}
-    {% if page.handout_pending %}
+    {% if page.dateless %}
+    <p class="post-meta">Dates to be confirmed (TBC)</p>
+    {% elsif page.handout_pending %}
     <p class="post-meta">Hands out on {{ page.date | date: "%A" }} {{ page.date | date: site.dateformat }}</p>
     {% else %}
     <p class="post-meta">Released on {{ page.date | date: "%A" }} {{ page.date | date: site.dateformat }}</p>
@@ -38,7 +40,7 @@ title: page.title
     where site.py writes it and what the schedule's own due row reads - `page.due` has
     never existed, so the block that read it printed a bare time.
     {%- endcomment -%}
-    {% if page.due_event %}
+    {% if page.due_event and page.dateless != true %}
     <p class="post-meta post-due"><strong>Due {{ page.due_event.date | date: "%A" }} {{ page.due_event.date | date: site.dateformat }} {{ page.due_event.date | date: "%H:%M" }}</strong></p>
     {% endif %}
     {%- comment -%}
@@ -92,7 +94,7 @@ title: page.title
     a team has formed, so the day the window opens there is no empty table, just the line
     saying so. This page is the ONE list of
     teams: the mail, the Join-team form and its refusals all link here, and a push to
-    teams.csv re-syncs it within minutes. Names are spelt as teams.csv spells them, which
+    students.csv re-syncs it within minutes. Names are spelt as its team cells spell them, which
     is how the Join-team form insists they be typed.
 
     The READER's own team is recognised in the browser, off the handle Your Profile saved

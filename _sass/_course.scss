@@ -34,7 +34,7 @@
     }
 
     // Schedule row colours - one hue per event category, matching the bold label
-    // colour set inline in each _includes/schedule_row_<type>.html:
+    // colour _includes/schedule_row.html sets from _data/kinds.yml (the policy's kinds):
     //
     //   lecture        #f2dede  label #a94442   red
     //   lab            #dff0d8  label #3c763d   green
@@ -45,7 +45,7 @@
     //                                           the "Assignment due" label)
     //   exam           #e6e8ec  label #2b2f36   grey
     //   special_event  #fbf2d5  label #7d6230   amber
-    //   term_date      #ead9f6  label #7b3fb8   violet
+    //   semester       #ead9f6  label #7b3fb8   violet
     //
     // All backgrounds sit at the same pale tonal level, so body text (#111) and
     // links keep >5:1 contrast on every row; each label clears 4.5:1 on its own
@@ -76,8 +76,15 @@
         background-color: #fbf2d5;
     }
 
-    .table-row-term_date {
+    .table-row-semester {
         background-color: #ead9f6;
+    }
+
+    // A break (a `semester:` entry of `type: break`): a grey band, quieter than any row
+    // that happens.
+    .table-row-break {
+        background-color: #ececec;
+        color: #555;
     }
 
     .col-1 {
@@ -773,7 +780,7 @@ hr.session-rule {
     margin-bottom: 12px;
 }
 
-// Optional `title` from a course's instructors.yml / dsl-course.yml (e.g. "Assistant
+// Optional `title` from a semester's semester.yml / a course's course.yml (e.g. "Assistant
 // Professor of ..."). Secondary to the name, which stays the card's headline.
 .profile-title {
     font-size: 0.75rem;
@@ -799,4 +806,19 @@ hr.session-rule {
     border-radius: 4px;
     background-color: #fcf8e3;
     border-color: #faebcc;
+}
+
+// Where a session happens (schedule.yml `location:`), under its date.
+.session-location {
+    opacity: 0.8;
+}
+
+// A row whose teaching unit has readings links the Readings tab (decision 0038 rule 5).
+.readings-chip {
+    display: inline-block;
+    padding: 0 6px;
+    border-radius: 8px;
+    font-size: 0.85em;
+    background-color: #dcefec;
+    color: #2b6a60;
 }

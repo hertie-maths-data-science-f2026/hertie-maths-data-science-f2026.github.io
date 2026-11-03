@@ -35,7 +35,7 @@
   background: "#d6e6f7"
   system: true
   tab: ""
-- key: term
+- key: semester
   label: "Semester"
   plural: "Semesters"
   colour: "#7b3fb8"
@@ -58,15 +58,15 @@
   tab: "/drop-ins/"
 - key: assets
   label: "Supporting files"
-  plural: "Supporting files"
+  plural: "Assets"
   colour: "#4a5560"
   background: "#eceff1"
   system: false
   tab: "/assets/"
 - key: other
   label: "Event"
-  plural: "Other"
+  plural: "Events"
   colour: "#7d6230"
   background: "#fbf2d5"
   system: false
-  tab: "/other/"
+  tab: "/events/"

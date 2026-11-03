@@ -19,7 +19,7 @@ where the row goes or why it is off:
   Edit in VS Code   your clone             | the reason it is greyed
 
 `View here` is listed only for a file with a hosted copy (`view_url`, which only
-publish.yml produces), so most menus are the last three rows. `View on GitHub` is the file
+student_site.host selects), so most menus are the last three rows. `View on GitHub` is the file
 page, which itself renders a pdf or a notebook, and is always live. The two Edit rows are
 always listed, greyed where unavailable (`li.file-menu-off`: a label with
 `aria-disabled="true"` and no href) with the reason as the status, so a reader learns
@@ -42,7 +42,7 @@ always had there - a middle dot and the word `GitHub`, and only where there is a
 to tell apart from the name.
 
 `url` is the file on GitHub. `view_url` is the semester site's own hosted copy, written by the
-sync only for a file the course published (publish.yml) that a browser renders - so the NAME
+sync only for a file `student_site.host` selects that a browser renders - so the NAME
 opens the copy that renders, and `View on GitHub` in the menu keeps the file's own home one click
 away.
 

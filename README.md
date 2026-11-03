@@ -4,7 +4,7 @@
 
 **Do not edit this repository.** It is machine-written: every sync rewrites the generated files below and pushing redeploys the site, so an edit here is overwritten and lost.
 
-Its content comes from the semester's `semester-config/` files (`schedule.yml`, `instructors.yml`) and what the course org actually releases.
+Its content comes from the semester's `semester-config/` files (`schedule.yml`, `semester.yml`) and what the course org actually releases.
 
 ## What the sync owns
 

@@ -28,7 +28,7 @@ layout: default
     </p>
     {% endif %}
 
-    {%- comment -%}Blank (the public site writes "" when dsl-course.yml has none): no heading.{%- endcomment -%}
+    {%- comment -%}Blank (the public site writes "" when course.yml has none): no heading.{%- endcomment -%}
     {% if site.course_description and site.course_description != "" %}
     <h2>Course Description</h2>
     <p>{{ site.course_description }}</p>

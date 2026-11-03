@@ -20,7 +20,9 @@ the title shown is the plan-side name, never the one the template's README gives
 {% else %}
 {{ content }}
 
-{% assign entries = site.assignments | sort: 'date' %}
+{%- comment -%}`sort_at`, which every entry carries: a `dateless` one (no due date yet) has
+no `date:`, only its place at the end of term.{%- endcomment -%}
+{% assign entries = site.assignments | sort: 'sort_at' %}
 {% for entry in entries %}
 <section class="session">
 {%- comment -%}

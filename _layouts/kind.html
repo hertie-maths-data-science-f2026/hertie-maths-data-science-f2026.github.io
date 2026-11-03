@@ -12,19 +12,16 @@ layout: page
 
 {% comment %}
 One tab per row kind the semester has (Lectures, Labs, Readings, Drop-ins, ...). The page's
-own `kind` selects every row whose `tabs` name it: a lecture carrying its week's readings
-is on the Readings tab too, under the same name, showing only its reading links; its own
-tab skips those links and the citations (decision 0013: attached readings show on the
-Schedule and the Readings tab only). Dated
-rows come in date order (`sort_at`, which also places a `dateless` row after its kind's
-last dated one), then the rows of folders released outside the plan (`undated`). An
-`events:` row of the same kind (an exam) is listed after them; a `dateless` one has no
-`date:` and reads TBC.
+own `kind` selects every row whose `tabs` name it: a row carrying its unit's readings is
+on the Readings tab too, under the same name, showing only its reading links and the
+reading list; its own tab skips those links and the list (decision 0013 rule 3: attached
+readings show on the Readings tab only; the row's readings chip links there, 0038 rule 5). Rows come in date order
+(`sort_at`, which also places a `dateless` row after its kind's last dated one). A display
+row of the same kind (an exam) is listed after them; a `dateless` one has no `date:` and
+reads TBC.
 {% endcomment %}
 {% assign rows = site.lectures | where_exp: "entry", "entry.tabs contains page.kind" %}
-{% assign dated = rows | where_exp: "entry", "entry.undated != true" | sort: 'sort_at' %}
-{% assign undated = rows | where: "undated", true | sort: 'order' %}
-{% assign entries = dated | concat: undated %}
+{% assign entries = rows | sort: 'sort_at' %}
 {% for entry in entries %}
 {% assign only = nil %}
 {% assign skip = "reading" %}
@@ -40,7 +37,7 @@ last dated one), then the rows of folders released outside the plan (`undated`).
 {% if entries.size > 0 or forloop.index > 1 %}<hr class="session-rule"/>{% endif %}
 <section class="session">
 <h2 class="session-title">{{ event.title }}</h2>
-<p>{% if event.dateless %}<b>TBC</b>{% else %}{{ event.date | date: site.dateformat }}{% if event.tbc %} <b>(TBC)</b>{% endif %}{% endif %}</p>
+<p>{% if event.dateless %}<b>TBC</b>{% else %}{{ event.date | date: site.dateformat }}{% if event.tbc %} <b>(TBC)</b>{% endif %}{% endif %}{% if event.location %}<br/><span class="session-location">{{ event.location }}</span>{% endif %}</p>
 {%- include schedule_details.html details=event.details -%}
 </section>
 {% endfor %}

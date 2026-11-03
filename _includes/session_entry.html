@@ -35,6 +35,9 @@ on the Schedule.{%- endcomment -%}
 {%- if entry.dateless %}
 <p class="session-when"><b>TBC</b></p>
 {%- endif %}
+{%- if entry.location %}
+<p class="session-location">{{ entry.location }}</p>
+{%- endif %}
 
 {%- comment -%}
 `details` is the schedule.yml entry's `details:` - the same sentence the session's schedule

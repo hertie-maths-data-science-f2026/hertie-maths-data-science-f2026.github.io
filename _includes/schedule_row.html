@@ -1,0 +1,103 @@
+{%- comment -%}
+SYSTEM-OWNED - do not edit. Written by the DSL course sync from templates/site/ in the
+toolkit; every sync rewrites it.
+{%- endcomment -%}
+{%- comment -%}
+THE schedule row, whatever its kind. `label` and `colour` are the row's kind's in
+`_data/kinds.yml` (the institution policy's kinds), which the schedule layout looks up; they
+fill the Event column. The engine's own rows keep their wording: an assignment's two rows read
+"<label> out" and "<label> due". A row whose kind the policy does not know (a row kind
+added on the toolkit side before its policy entry) is a plain row named by its kind, so the
+schedule keeps rendering.
+
+Date: a break prints its first and last day (`until`). A `dateless` row (`event_datetime:
+tbc`) prints "TBC" (a released one carries a `date:` - when it landed, for the Updates box
+- never shown here); a `hide_time` row (a whole-day row) prints its day and no clock time; `tbc` marks a
+provisional date "(TBC)"; `location`, when the schedule names one, goes under it.
+
+Title: `title` is the row's IDENTIFIER - a session's kind and number, an assignment's name -
+and `subtitle` its NAME, under it. The identifier stays, because it is what ties the row to
+its material and must read the same before and after that material ships.
+
+Details: the declared `details:` first, outside every branch (`schedule_details.html`), then
+what the row generates:
+- an assignment's due row: where to submit. `repo_url`/`repo_name`/`submit_*` ride the
+  `due_event` sub-hash, because the schedule reaches this row through `map: "due_event"`
+  and cannot see the parent's fields. `submit_shape` is the shape in one word: `external`
+  is handed in off GitHub and no repo exists, so there is no name to print; `submit_url` is
+  written once the brief is out. `shared_dropbox_repo` names one repo for the semester and
+  `submit_path` the reader's folder in it. `escape`, because `<your-handle>` would read as
+  a tag and vanish.
+- an assignment's hand-out row: its page once out; until then (`handout_pending`) the
+  generated sentence in the body, the same one the Assignments tab shows. `team_join_url`
+  is a group assignment whose teams students pick: one line naming the day teams close.
+- a release row: its files once they exist (`lecture_links.html`), the "not released yet"
+  sentence until then; `readings_chip` (its unit has readings) links the Readings tab.
+- any other row: its body.
+{%- endcomment -%}
+{%- if include.colour -%}
+{%- if include.event.kind == "due" -%}{%- assign label = include.label | append: " due" -%}
+{%- elsif include.event.collection == "assignments" -%}{%- assign label = include.label | append: " out" -%}
+{%- else -%}{%- assign label = include.label -%}{%- endif -%}
+<div class="col col-1" style="color: {{ include.colour }} ;font-weight: bold;" data-label="Event">{{ label }}</div>
+{%- else -%}
+<div class="col col-1" data-label="Event">{{ include.event.kind | default: "Event" }}</div>
+{%- endif %}
+<div class="col col-1-2" data-label="Date">
+    {% if include.event.dateless %}
+    TBC
+    {% else %}
+    {{ include.event.date | date: site.dateformat }}
+    {% if include.event.until %}- {{ include.event.until | date: site.dateformat }}{% endif %}
+    {% unless include.event.hide_time %}
+    {{ include.event.date | date: "%H:%M" }}
+    {% endunless %}
+    {% if include.event.tbc %}<b>(TBC)</b>{% endif %}
+    <br class="date-spliter"/>{{ include.event.date | date: "%A" }}
+    {% endif %}
+    {% if include.event.location %}<br/><span class="session-location">{{ include.event.location }}</span>{% endif %}
+</div>
+<div class="col col-2" data-label="Title">
+    <b>{{ include.event.title }}</b>
+    {%- if include.event.subtitle %}<br/>{{ include.event.subtitle }}{%- endif -%}
+</div>
+<div class="col col-4 markdown-content" data-label="Details">
+    {%- include schedule_details.html details=include.event.details -%}
+    {%- if include.event.kind == "due" -%}
+    {%- if include.event.submit_shape == "external" -%}
+    Handed in outside GitHub
+    {%- if include.event.submit_url %} - <a href="{{ include.event.submit_url }}">{{ include.event.submit_host }}</a>
+    {%- else %} - see the brief
+    {%- endif -%}
+    {%- elsif include.event.repo_name -%}
+    Submit via
+    {%- if include.event.repo_url %} <a href="{{ include.event.repo_url }}"><code>{{ include.event.repo_name | escape }}</code></a>
+    {%- else %} <code>{{ include.event.repo_name | escape }}</code>
+    {%- endif -%}
+    {%- if include.event.submit_shape == "assignment-repo-public" %} (public)
+    {%- elsif include.event.submit_shape == "assignment-repo-student-choice" %} (yours to publish)
+    {%- elsif include.event.submit_shape == "shared-dropbox-repo" %} ({{ include.event.submit_path | escape }} folder)
+    {%- endif -%}
+    {%- endif -%}
+    {%- elsif include.event.collection == "assignments" -%}
+    {%- if include.event.handout_pending -%}
+    {{ include.event.content }}
+    {%- else -%}
+    [<a href="{{ include.event.url | prepend: site.baseurl}}">{{ include.event.title }}</a>]
+    {% if include.event.solutions %}
+    [<a href="{{ include.event.solutions | prepend: site.baseurl}}">Solutions</a>]
+    {% endif %}
+    {%- endif -%}
+    {%- if include.event.team_join_url -%}
+    <br/>[<a target="_blank" rel="noopener" href="{{ include.event.team_join_url }}">Form your team</a>] by {{ include.event.team_join_closes }}
+    {%- endif -%}
+    {%- elsif include.event.links and include.event.links.size > 0 -%}
+    {% include lecture_links.html lecture=include.event %}
+    {%- else -%}
+    {{ include.event.content }}
+    {%- endif -%}
+    {%- if include.event.readings_chip -%}
+    {%- assign readings_kind = site.data.kinds | where: "key", "readings" | first -%}
+    {{ " " }}<a class="readings-chip" href="{{ readings_kind.tab | prepend: site.baseurl }}">{{ readings_kind.plural }}</a>
+    {%- endif -%}
+</div>
