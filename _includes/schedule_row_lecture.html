@@ -5,7 +5,8 @@ toolkit; every sync rewrites it.
 {%- comment -%}
 THE row of every release entry, whatever its kind: the schedule layout passes the kind's
 label and colour from `_data/kinds.yml`. Both defaults spell the lecture row.
-A `dateless` row (`event_datetime: tbc`) has no `date:` and prints "TBC"; a `hide_time` row
+A `dateless` row (`event_datetime: tbc`) prints "TBC" (a released one carries a `date:` -
+when it landed, for the Updates box - never shown here); a `hide_time` row
 (a session dated without a time) prints its day and no clock time.
 {%- endcomment -%}
 <div class="col col-1" style="color: {{ include.colour | default: '#a94442' }} ;font-weight: bold;" data-label="Event">{{ include.kind | default: 'Lecture' }}</div>
