@@ -6,10 +6,20 @@ kind: lab
 number: 9
 date: 2026-11-04T09:00:00
 sort_at: 2026-11-04T09:00:00
+released_at: 2026-11-04T08:00:27
 title: "Lab 9"
 tabs: [lab]
-unreleased: true
 readings_chip: true
-links: []
+links:
+    - url: https://github.com/hertie-maths-data-science-f2026/materials/blob/main/labs/09_lab/lab9_handout.pdf
+      view_url: https://hertie-maths-data-science-f2026.github.io/files/materials/labs/09_lab/lab9_handout.pdf
+      name: "lab9_handout.pdf"
+      section: "lab"
+    - url: https://github.com/hertie-maths-data-science-f2026/materials/blob/main/labs/09_lab/lab9_student.py
+      name: "lab9_student.py"
+      section: "lab"
+    - url: https://github.com/hertie-maths-data-science-f2026/materials/blob/main/labs/09_lab/laszlo.jpg
+      name: "laszlo.jpg"
+      section: "lab"
 ---
-_**Materials for lab 9 are not yet released** - they will appear in [`materials/labs/09_lab`](https://github.com/hertie-maths-data-science-f2026/materials/tree/main/labs) when they are._
+
