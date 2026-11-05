@@ -37,8 +37,5 @@ links:
       view_url: https://hertie-maths-data-science-f2026.github.io/files/materials/lectures/06_lecture/06_maximum_likelihood_estimation.pdf
       name: "06_maximum_likelihood_estimation.pdf"
       section: "lecture"
-    - url: https://github.com/hertie-maths-data-science-f2026/materials/blob/main/readings/06_week-6/READINGS.md
-      name: "READINGS.md"
-      section: "reading"
 ---
 

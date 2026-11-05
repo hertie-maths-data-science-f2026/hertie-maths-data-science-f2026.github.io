@@ -11,18 +11,6 @@ tabs: [lecture, readings]
 unreleased: true
 readings_pending: true
 readings_chip: true
-reading_list: |2
-  ### Session 12 readings
-
-  #### Required Readings
-
-  James et al., An Introduction to Statistical Learning
-
-  - Chapter 12.4 (p. 514 - 519)
-
-  Murphy, Probabilistic Machine Learning
-
-  - Chapter 11 (p. 337 - 365)
 links: []
 ---
 _**Materials for lecture 12 are not yet released** - they will appear in [`materials/lectures/12_lecture`](https://github.com/hertie-maths-data-science-f2026/materials/tree/main/lectures), [`materials/readings/12_week-12`](https://github.com/hertie-maths-data-science-f2026/materials/tree/main/readings) when they are._

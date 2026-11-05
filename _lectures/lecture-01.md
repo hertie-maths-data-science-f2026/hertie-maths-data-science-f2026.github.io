@@ -35,8 +35,5 @@ links:
     - url: https://github.com/hertie-maths-data-science-f2026/materials/tree/main/lectures/01_lecture/media
       name: "media/ (14 files)"
       section: "lecture"
-    - url: https://github.com/hertie-maths-data-science-f2026/materials/blob/main/readings/01_week-1/READINGS.md
-      name: "READINGS.md"
-      section: "reading"
 ---
 

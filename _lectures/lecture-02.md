@@ -32,8 +32,5 @@ links:
       view_url: https://hertie-maths-data-science-f2026.github.io/files/materials/lectures/02_lecture/02_random_variables_and_their_distributions.pdf
       name: "02_random_variables_and_their_distributions.pdf"
       section: "lecture"
-    - url: https://github.com/hertie-maths-data-science-f2026/materials/blob/main/readings/02_week-2/READINGS.md
-      name: "READINGS.md"
-      section: "reading"
 ---
 

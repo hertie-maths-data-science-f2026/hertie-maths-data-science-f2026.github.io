@@ -33,8 +33,5 @@ links:
       view_url: https://hertie-maths-data-science-f2026.github.io/files/materials/lectures/04_lecture/04_calculus_for_data_science.pdf
       name: "04_calculus_for_data_science.pdf"
       section: "lecture"
-    - url: https://github.com/hertie-maths-data-science-f2026/materials/blob/main/readings/04_week-4/READINGS.md
-      name: "READINGS.md"
-      section: "reading"
 ---
 

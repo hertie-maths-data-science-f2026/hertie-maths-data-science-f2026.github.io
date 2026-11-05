@@ -38,8 +38,5 @@ links:
       view_url: https://hertie-maths-data-science-f2026.github.io/files/materials/lectures/08_lecture/08_linear_algebra_eigendecomposition_svd.pdf
       name: "08_linear_algebra_eigendecomposition_svd.pdf"
       section: "lecture"
-    - url: https://github.com/hertie-maths-data-science-f2026/materials/blob/main/readings/08_week-8/READINGS.md
-      name: "READINGS.md"
-      section: "reading"
 ---
 

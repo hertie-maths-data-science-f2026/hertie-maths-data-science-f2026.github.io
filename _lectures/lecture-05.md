@@ -29,8 +29,5 @@ links:
       view_url: https://hertie-maths-data-science-f2026.github.io/files/materials/lectures/05_lecture/05_continuous_random_variables_and_limit_theorems.pdf
       name: "05_continuous_random_variables_and_limit_theorems.pdf"
       section: "lecture"
-    - url: https://github.com/hertie-maths-data-science-f2026/materials/blob/main/readings/05_week-5/READINGS.md
-      name: "READINGS.md"
-      section: "reading"
 ---
 
