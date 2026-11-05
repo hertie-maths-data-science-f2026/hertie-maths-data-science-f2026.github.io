@@ -11,22 +11,24 @@ title: "Lecture 10"
 tabs: [lecture, readings]
 readings_chip: true
 reading_list: |2
-  ### Session 10 readings
+  ##### Recommended Readings
+  **James, Witten, Hastie & Tibshirani, *An Introduction to Statistical Learning***
 
-  #### Required Readings
+  - Ch. 3.1, p. 61 - 71 - simple linear regression, its coefficients, and their accuracy
+  - Ch. 3.2, p. 71 - 75 - multiple linear regression until 3.2.2
 
-  James et al., An Introduction to Statistical Learning
+  ##### Additional Resources
 
-  - Chapter 3.1 - 3.2 (p. 59 - 83)
+  **James, Witten, Hastie & Tibshirani, *An Introduction to Statistical Learning***
+  - Ch. 3.2, p. 75 - 83 - remainder of Ch. 3.2
+  - Ch. 6.2,  p. 237 - 251 - ridge regression and the lasso
 
-  #### Additional Readings
+  **Richard McElrath, *Statistical Retinking***
 
-  James et al., An Introduction to Statistical Learning
+  - Ch.4 p.71 -122
+  - see also video lecture A03 from [Statistical Retinking 2026](https://www.youtube.com/playlist?list=PLDcUM9US4XdNOlqSyhe38US8mFgmqzI14)
 
-  - Chapter 6.2 (p. 237 - 251)
-links:
-    - url: https://github.com/hertie-maths-data-science-f2026/materials/blob/main/readings/10_week-10/READINGS.md
-      name: "READINGS.md"
-      section: "reading"
+  [3Blue1Brown - Taylor series | Chapter 11, Essence of calculus](https://www.youtube.com/watch?v=3d6DsjIBzJ4)
+links: []
 ---
 

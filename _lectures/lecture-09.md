@@ -11,9 +11,7 @@ details: "in-class quiz 4"
 tabs: [lecture, readings]
 readings_chip: true
 reading_list: |2
-  ### Session 9 readings
-
-  #### Required Readings
+  ###### Recommended Readings
 
   [Kolter and Do, Linear Algebra Review and Reference](https://www.cs.cmu.edu/~zkolter/course/15-884/linalg-review.pdf)
 
@@ -29,7 +27,7 @@ reading_list: |2
   - Chapter 12.2 (p. 496 - 508)
   - Chapter 12.5.1
 
-  #### Additional Resources
+  ###### Additional Resources
 
   Khan Academy on Lagrange multipliers
 
@@ -41,8 +39,5 @@ links:
       view_url: https://hertie-maths-data-science-f2026.github.io/files/materials/lectures/09_lecture/09_constrained_optimization_and_pca.pdf
       name: "09_constrained_optimization_and_pca.pdf"
       section: "lecture"
-    - url: https://github.com/hertie-maths-data-science-f2026/materials/blob/main/readings/09_week-9/READINGS.md
-      name: "READINGS.md"
-      section: "reading"
 ---
 
