@@ -7,6 +7,7 @@ number: 8
 date: 2026-10-27T08:00:00
 sort_at: 2026-10-27T08:00:00
 title: "Lecture 8"
+subtitle: "Linear Algebra"
 tabs: [lecture, readings]
 readings_chip: true
 reading_list: |2

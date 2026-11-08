@@ -7,6 +7,7 @@ number: 7
 date: 2026-10-13T08:00:00
 sort_at: 2026-10-13T08:00:00
 title: "Lecture 7"
+subtitle: "Baysian Analysis"
 details: "in-class quiz 3"
 tabs: [lecture, readings]
 readings_chip: true

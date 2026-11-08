@@ -7,6 +7,7 @@ number: 9
 date: 2026-11-03T08:00:00
 sort_at: 2026-11-03T08:00:00
 title: "Lecture 9"
+subtitle: "Constrained Optimization"
 details: "in-class quiz 4"
 tabs: [lecture, readings]
 readings_chip: true
