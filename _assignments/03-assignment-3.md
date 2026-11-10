@@ -19,10 +19,15 @@ team_join_cap: "4"
 team_join_closes: "18th Nov"
 team_salt: "hertie-maths-data-science-f2026"
 teams:
-  - name: "bayes-baes3"
-    members: 3
+  - name: "bayes-baes"
+    members: 1
     cap: 4
-    members_sha256: ["241f35f19e352c61f8a807d82c04e5165cb533ce74a0f589732c7ef3c8c09018", "34ab38e3b01da369b22c9fbe785126b12c067c63c682372e27619ec21f29987c", "60d7f22dfc166e03a06ac11794fd2695045900f2754eacb89f45d8e04fe8aef7"]
+    members_sha256: ["60d7f22dfc166e03a06ac11794fd2695045900f2754eacb89f45d8e04fe8aef7"]
+    repo_url: "https://github.com/hertie-maths-data-science-f2026/assignment-3-bayes-baes"
+  - name: "bayes-baes3"
+    members: 2
+    cap: 4
+    members_sha256: ["241f35f19e352c61f8a807d82c04e5165cb533ce74a0f589732c7ef3c8c09018", "34ab38e3b01da369b22c9fbe785126b12c067c63c682372e27619ec21f29987c"]
     repo_url: "https://github.com/hertie-maths-data-science-f2026/assignment-3-bayes-baes3"
   - name: "best-team"
     members: 4

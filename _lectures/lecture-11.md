@@ -6,6 +6,7 @@ kind: lecture
 number: 11
 date: 2026-11-17T08:00:00
 sort_at: 2026-11-17T08:00:00
+released_at: 2026-11-10T11:48:10
 title: "Lecture 11"
 subtitle: "Modeling Latent Data Structures"
 details: "in-class quiz 5"
