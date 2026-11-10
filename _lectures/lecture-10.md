@@ -6,7 +6,7 @@ kind: lecture
 number: 10
 date: 2026-11-10T08:00:00
 sort_at: 2026-11-10T08:00:00
-released_at: 2026-11-05T10:41:26
+released_at: 2026-11-10T10:15:29
 title: "Lecture 10"
 subtitle: "Linear Regression"
 tabs: [lecture, readings]
@@ -30,6 +30,10 @@ reading_list: |2
   - see also video lecture A03 from [Statistical Retinking 2026](https://www.youtube.com/playlist?list=PLDcUM9US4XdNOlqSyhe38US8mFgmqzI14)
 
   [3Blue1Brown - Taylor series | Chapter 11, Essence of calculus](https://www.youtube.com/watch?v=3d6DsjIBzJ4)
-links: []
+links:
+    - url: https://github.com/hertie-maths-data-science-f2026/materials/blob/main/lectures/10_lecture/10_linear_regression.pdf
+      view_url: https://hertie-maths-data-science-f2026.github.io/files/materials/lectures/10_lecture/10_linear_regression.pdf
+      name: "10_linear_regression.pdf"
+      section: "lecture"
 ---
 

@@ -110,7 +110,7 @@ sections:
           - name: "laszlo.jpg"
             url: https://github.com/hertie-maths-data-science-f2026/materials/blob/main/labs/09_lab/laszlo.jpg
   - name: "lectures"
-    files: 165
+    files: 166
     entries:
       - name: "01_lecture/"
         url: https://github.com/hertie-maths-data-science-f2026/materials/tree/main/lectures/01_lecture
@@ -617,6 +617,13 @@ sections:
           - name: "09_constrained_optimization_and_pca.pdf"
             url: https://github.com/hertie-maths-data-science-f2026/materials/blob/main/lectures/09_lecture/09_constrained_optimization_and_pca.pdf
             view_url: https://hertie-maths-data-science-f2026.github.io/files/materials/lectures/09_lecture/09_constrained_optimization_and_pca.pdf
+      - name: "10_lecture/"
+        url: https://github.com/hertie-maths-data-science-f2026/materials/tree/main/lectures/10_lecture
+        files: 1
+        entries:
+          - name: "10_linear_regression.pdf"
+            url: https://github.com/hertie-maths-data-science-f2026/materials/blob/main/lectures/10_lecture/10_linear_regression.pdf
+            view_url: https://hertie-maths-data-science-f2026.github.io/files/materials/lectures/10_lecture/10_linear_regression.pdf
   - name: "m4ds"
     files: 9
     entries:
