@@ -6,19 +6,46 @@ kind: assignment
 date: 2026-11-10T07:00:00
 sort_at: 2026-11-10T07:00:00
 title: "Assignment 4"
-handout_pending: true
+subtitle: "Principal Components Analysis and Penalized Regression"
 submit_shape: "assignment-repo-private"
+repo_url: "https://github.com/orgs/hertie-maths-data-science-f2026/repositories?q=assignment-4-"
 repo_name: "assignment-4-<your-team>"
 repo_name_is_shape: true
 cutoff_sentence: "What is on main at the late cutoff is what is marked."
 late_rule: "10% per day, up to 10 days"
+shape_note: "NB: this repo is private - only you and the instructors can read it."
+team_join_url: "https://github.com/hertie-maths-data-science-f2026/join/issues/new/choose"
+team_join_cap: "4"
+team_join_closes: "9th Dec"
+team_salt: "hertie-maths-data-science-f2026"
 due_event:
     kind: due
     date: 2026-11-29T23:59:00
     sort_at: 2026-11-29T23:59:00
     title: "Assignment 4"
+    subtitle: "Principal Components Analysis and Penalized Regression"
     submit_shape: "assignment-repo-private"
+    repo_url: "https://github.com/orgs/hertie-maths-data-science-f2026/repositories?q=assignment-4-"
     repo_name: "assignment-4-<your-team>"
     repo_name_is_shape: true
 ---
-_**Assignment 4 is not yet released** - your private `assignment-4-<your-team>` repo appears when it is._
+{% raw %}
+## Getting started
+
+This folder is a self-contained [uv](https://docs.astral.sh/uv/) project - it
+carries its own Python version and dependencies, so nothing else needs
+installing. From this folder, run:
+
+```bash
+uv sync              # build the environment (first time only)
+uv run jupyter lab   # start the notebook server
+```
+
+Jupyter Lab opens in your browser. Open `assignment4_student.ipynb` and work through it; your
+answers go wherever a cell says `# here your code`.
+
+## Submission
+- Commit the jupyter notebook and any other files that hold your solution
+- Make sure that the solution is readable and has one clear answer to each question
+- Write you individual contributions to CONTRIBUTIONS.md and commit it
+{% endraw %}
