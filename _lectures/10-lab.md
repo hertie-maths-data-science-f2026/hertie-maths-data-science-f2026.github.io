@@ -6,10 +6,20 @@ kind: lab
 number: 10
 date: 2026-11-11T09:00:00
 sort_at: 2026-11-11T09:00:00
+released_at: 2026-11-11T08:00:20
 title: "Lab 10"
 tabs: [lab]
-unreleased: true
 readings_chip: true
-links: []
+links:
+    - url: https://github.com/hertie-maths-data-science-f2026/materials/blob/main/labs/10_lab/boston_housing.csv
+      name: "boston_housing.csv"
+      section: "lab"
+    - url: https://github.com/hertie-maths-data-science-f2026/materials/blob/main/labs/10_lab/lab10_handout.pdf
+      view_url: https://hertie-maths-data-science-f2026.github.io/files/materials/labs/10_lab/lab10_handout.pdf
+      name: "lab10_handout.pdf"
+      section: "lab"
+    - url: https://github.com/hertie-maths-data-science-f2026/materials/blob/main/labs/10_lab/lab10_student.py
+      name: "lab10_student.py"
+      section: "lab"
 ---
-_**Materials for lab 10 are not yet released** - they will appear in [`materials/labs/10_lab`](https://github.com/hertie-maths-data-science-f2026/materials/tree/main/labs) when they are._
+
