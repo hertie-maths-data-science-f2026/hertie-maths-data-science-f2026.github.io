@@ -6,19 +6,29 @@ kind: lecture
 number: 11
 date: 2026-11-17T08:00:00
 sort_at: 2026-11-17T08:00:00
+released_at: 2026-11-14T16:35:21
 title: "Lecture 11"
 subtitle: "Modeling Latent Data Structures"
 details: "in-class quiz 5"
 tabs: [lecture, readings]
 readings_chip: true
 reading_list: |2
-  ### Session 11 readings
+  ##### Recommended Readings
 
-  #### Required Readings
+  **Christopher M. Bishop, *Pattern Recognition and Maschine Learning***
 
-  Murphy, Probabilistic Machine Learning
+  - Ch. 9.1 (p. 423 - 428)
+  - Ch. 9.2-9.3 (p. 430 - 443)
 
-  - Chapter 2.8 (p. 56 - 61)
+  ##### Additional recources
+
+  **James, Witten, Hastie & Tibshirani, *An Introduction to Statistical Learning***
+
+  - Ch. 12.4 - Clustering Methods (p. 514–519)
+
+  **Murphy, Probabilistic Machine Learning**
+
+  - Chapter 11.4 The EM algorithm (p. 348 - 365)
 links: []
 ---
 
