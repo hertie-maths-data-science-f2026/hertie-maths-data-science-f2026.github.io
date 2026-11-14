@@ -9,6 +9,16 @@ documents:
   - name: "uv.lock"
     url: https://github.com/hertie-maths-data-science-f2026/materials/blob/main/uv.lock
 sections:
+  - name: "byoq"
+    files: 1
+    entries:
+      - name: "byoq1_handout.pdf"
+        url: https://github.com/hertie-maths-data-science-f2026/materials/blob/main/byoq/byoq1_handout.pdf
+  - name: "exam"
+    files: 1
+    entries:
+      - name: "review_handout.pdf"
+        url: https://github.com/hertie-maths-data-science-f2026/materials/blob/main/exam/review_handout.pdf
   - name: "labs"
     files: 29
     entries:
