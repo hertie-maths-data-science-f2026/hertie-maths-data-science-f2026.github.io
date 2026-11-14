@@ -6,15 +6,19 @@ kind: lecture
 number: 11
 date: 2026-11-17T08:00:00
 sort_at: 2026-11-17T08:00:00
-released_at: 2026-11-10T11:48:10
 title: "Lecture 11"
 subtitle: "Modeling Latent Data Structures"
 details: "in-class quiz 5"
 tabs: [lecture, readings]
 readings_chip: true
-links:
-    - url: https://github.com/hertie-maths-data-science-f2026/materials/blob/main/readings/11_week-11/READINGS.md
-      name: "READINGS.md"
-      section: "reading"
+reading_list: |2
+  ### Session 11 readings
+
+  #### Required Readings
+
+  Murphy, Probabilistic Machine Learning
+
+  - Chapter 2.8 (p. 56 - 61)
+links: []
 ---
 
