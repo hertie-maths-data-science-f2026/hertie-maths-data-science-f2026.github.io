@@ -13,4 +13,4 @@ readings_pending: true
 readings_chip: true
 links: []
 ---
-_**Materials for lecture 12 are not yet released** - they will appear in [`materials/lectures/12_lecture`](https://github.com/hertie-maths-data-science-f2026/materials/tree/main/lectures), [`materials/readings/12_week-12`](https://github.com/hertie-maths-data-science-f2026/materials/tree/main/readings) when they are._
+_**Materials for lecture 12 are not yet released** - they will appear in [`materials/lectures/12_lecture`](https://github.com/hertie-maths-data-science-f2026/materials/tree/main/lectures) when they are._
