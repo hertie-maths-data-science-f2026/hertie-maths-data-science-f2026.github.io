@@ -131,7 +131,7 @@ sections:
           - name: "lab10_student.py"
             url: https://github.com/hertie-maths-data-science-f2026/materials/blob/main/labs/10_lab/lab10_student.py
   - name: "lectures"
-    files: 166
+    files: 167
     entries:
       - name: "01_lecture/"
         url: https://github.com/hertie-maths-data-science-f2026/materials/tree/main/lectures/01_lecture
@@ -645,6 +645,13 @@ sections:
           - name: "10_linear_regression.pdf"
             url: https://github.com/hertie-maths-data-science-f2026/materials/blob/main/lectures/10_lecture/10_linear_regression.pdf
             view_url: https://hertie-maths-data-science-f2026.github.io/files/materials/lectures/10_lecture/10_linear_regression.pdf
+      - name: "11_lecture/"
+        url: https://github.com/hertie-maths-data-science-f2026/materials/tree/main/lectures/11_lecture
+        files: 1
+        entries:
+          - name: "11_modeling_latent_data_structures.pdf"
+            url: https://github.com/hertie-maths-data-science-f2026/materials/blob/main/lectures/11_lecture/11_modeling_latent_data_structures.pdf
+            view_url: https://hertie-maths-data-science-f2026.github.io/files/materials/lectures/11_lecture/11_modeling_latent_data_structures.pdf
   - name: "m4ds"
     files: 9
     entries:
