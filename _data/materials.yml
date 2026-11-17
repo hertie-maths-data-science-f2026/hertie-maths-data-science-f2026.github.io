@@ -697,7 +697,7 @@ sections:
       - name: "quiz_04.pdf"
         url: https://github.com/hertie-maths-data-science-f2026/materials/blob/main/quiz/quiz_04.pdf
   - name: "readings"
-    files: 11
+    files: 12
     entries:
       - name: "01_week-1/"
         url: https://github.com/hertie-maths-data-science-f2026/materials/tree/main/readings/01_week-1
@@ -765,3 +765,9 @@ sections:
         entries:
           - name: "READINGS.md"
             url: https://github.com/hertie-maths-data-science-f2026/materials/blob/main/readings/11_week-11/READINGS.md
+      - name: "12_week-12/"
+        url: https://github.com/hertie-maths-data-science-f2026/materials/tree/main/readings/12_week-12
+        files: 1
+        entries:
+          - name: "READINGS.md"
+            url: https://github.com/hertie-maths-data-science-f2026/materials/blob/main/readings/12_week-12/READINGS.md

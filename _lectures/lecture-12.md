@@ -6,11 +6,16 @@ kind: lecture
 number: 12
 date: 2026-11-24T08:00:00
 sort_at: 2026-11-24T08:00:00
+released_at: 2026-11-17T08:00:19
 title: "Lecture 12"
 tabs: [lecture, readings]
-unreleased: true
-readings_pending: true
 readings_chip: true
+reading_list: |2
+  ##### Recommended Readings
+
+  **Murphy, *Probabilistic Machine Learning: An Introduction***
+
+  - Ch. 2.8 (p. 56 - 59)
 links: []
 ---
-_**Materials for lecture 12 are not yet released** - they will appear in [`materials/lectures/12_lecture`](https://github.com/hertie-maths-data-science-f2026/materials/tree/main/lectures) when they are._
+
