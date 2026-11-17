@@ -25,9 +25,9 @@ teams:
     members_sha256: ["60d7f22dfc166e03a06ac11794fd2695045900f2754eacb89f45d8e04fe8aef7"]
     repo_url: "https://github.com/hertie-maths-data-science-f2026/assignment-4-bayes-baes"
   - name: "math_crusaders"
-    members: 1
+    members: 2
     cap: 4
-    members_sha256: ["d02563d8de88275d480b8ec23387ea6c25b757bf186ff56785dccae35c721931"]
+    members_sha256: ["d02563d8de88275d480b8ec23387ea6c25b757bf186ff56785dccae35c721931", "250fcce0687e751c875a454ebf1ecb37205fe1e5160008dd08756166be4e8e3b"]
     repo_url: "https://github.com/hertie-maths-data-science-f2026/assignment-4-math_crusaders"
   - name: "team-optimist"
     members: 2
