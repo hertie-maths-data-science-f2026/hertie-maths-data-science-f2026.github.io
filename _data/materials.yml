@@ -20,7 +20,7 @@ sections:
       - name: "review_handout.pdf"
         url: https://github.com/hertie-maths-data-science-f2026/materials/blob/main/exam/review_handout.pdf
   - name: "labs"
-    files: 29
+    files: 32
     entries:
       - name: "01_lab/"
         url: https://github.com/hertie-maths-data-science-f2026/materials/tree/main/labs/01_lab
@@ -130,6 +130,17 @@ sections:
             view_url: https://hertie-maths-data-science-f2026.github.io/files/materials/labs/10_lab/lab10_handout.pdf
           - name: "lab10_student.py"
             url: https://github.com/hertie-maths-data-science-f2026/materials/blob/main/labs/10_lab/lab10_student.py
+      - name: "11_lab/"
+        url: https://github.com/hertie-maths-data-science-f2026/materials/tree/main/labs/11_lab
+        files: 3
+        entries:
+          - name: "faithful.csv"
+            url: https://github.com/hertie-maths-data-science-f2026/materials/blob/main/labs/11_lab/faithful.csv
+          - name: "lab11_handout.pdf"
+            url: https://github.com/hertie-maths-data-science-f2026/materials/blob/main/labs/11_lab/lab11_handout.pdf
+            view_url: https://hertie-maths-data-science-f2026.github.io/files/materials/labs/11_lab/lab11_handout.pdf
+          - name: "lab11_student.py"
+            url: https://github.com/hertie-maths-data-science-f2026/materials/blob/main/labs/11_lab/lab11_student.py
   - name: "lectures"
     files: 167
     entries:

@@ -6,10 +6,20 @@ kind: lab
 number: 11
 date: 2026-11-18T09:00:00
 sort_at: 2026-11-18T09:00:00
+released_at: 2026-11-18T08:00:16
 title: "Lab 11"
 tabs: [lab]
-unreleased: true
 readings_chip: true
-links: []
+links:
+    - url: https://github.com/hertie-maths-data-science-f2026/materials/blob/main/labs/11_lab/faithful.csv
+      name: "faithful.csv"
+      section: "lab"
+    - url: https://github.com/hertie-maths-data-science-f2026/materials/blob/main/labs/11_lab/lab11_handout.pdf
+      view_url: https://hertie-maths-data-science-f2026.github.io/files/materials/labs/11_lab/lab11_handout.pdf
+      name: "lab11_handout.pdf"
+      section: "lab"
+    - url: https://github.com/hertie-maths-data-science-f2026/materials/blob/main/labs/11_lab/lab11_student.py
+      name: "lab11_student.py"
+      section: "lab"
 ---
-_**Materials for lab 11 are not yet released** - they will appear in [`materials/labs/11_lab`](https://github.com/hertie-maths-data-science-f2026/materials/tree/main/labs) when they are._
+
