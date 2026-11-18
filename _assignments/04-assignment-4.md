@@ -25,9 +25,9 @@ teams:
     members_sha256: ["60d7f22dfc166e03a06ac11794fd2695045900f2754eacb89f45d8e04fe8aef7"]
     repo_url: "https://github.com/hertie-maths-data-science-f2026/assignment-4-bayes-baes"
   - name: "best-team"
-    members: 2
+    members: 3
     cap: 4
-    members_sha256: ["7d5fb4ac03f089f578636f91805120c8bcc94eeed1faedaee88ff8407e3ac8c0", "9afa2ad3446a9a51d599a5f82b014848c1a850f22606e2ed144dee870c446e61"]
+    members_sha256: ["676c65d51ff7e9aa8df4f8bf8b718788bccffdc07a13e7bd78a61dc5cabccb8b", "7d5fb4ac03f089f578636f91805120c8bcc94eeed1faedaee88ff8407e3ac8c0", "9afa2ad3446a9a51d599a5f82b014848c1a850f22606e2ed144dee870c446e61"]
     repo_url: "https://github.com/hertie-maths-data-science-f2026/assignment-4-best-team"
   - name: "math_crusaders"
     members: 3
