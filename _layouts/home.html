@@ -59,6 +59,7 @@ layout: default
 
     <br>
     <div>
+        {% if site.data.people.instructors.size > 0 %}
         <div style="width:35%; float: left">
             <div class="profile-pic-gallary ">
                 <h2>Instructors</h2>
@@ -76,7 +77,9 @@ layout: default
                 {% endfor %}
             </div>
         </div>
+        {% endif %}
 
+        {% if site.data.people.teaching_assistants.size > 0 %}
         <div style="width:65%; float: left">
             <div class="profile-pic-gallary ">
                 <h2>Teaching Assistants</h2>
@@ -94,5 +97,6 @@ layout: default
                 {% endfor %}
             </div>
         </div>
+        {% endif %}
     </div>
 </div>
