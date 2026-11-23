@@ -59,6 +59,11 @@ teams:
     cap: 4
     members_sha256: ["274efe9cd364d79569fec83fb2d5c11712b65c04bd8b29781ef757324fd6c08a", "d7b503295102b84d34815375844a937eb4a4f79f2f6b8efe6081bb8866c983f4", "5f9df52654c4f27df5ec2306b9feb1eb03bbda964069d691b3aef7afabd8ae76"]
     repo_url: "https://github.com/hertie-maths-data-science-f2026/assignment-4-team-svm"
+  - name: "tubin4ever"
+    members: 1
+    cap: 4
+    members_sha256: ["52d6225895b949c28508937b6c520755d5255133d4168e1caade3ed9e4581529"]
+    repo_url: "https://github.com/hertie-maths-data-science-f2026/assignment-4-tubin4ever"
 due_event:
     kind: due
     date: 2026-11-29T23:59:00
