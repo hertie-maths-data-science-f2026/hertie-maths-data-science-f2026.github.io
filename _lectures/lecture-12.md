@@ -6,7 +6,7 @@ kind: lecture
 number: 12
 date: 2026-11-24T08:00:00
 sort_at: 2026-11-24T08:00:00
-released_at: 2026-11-17T08:00:19
+released_at: 2026-11-24T07:15:30
 title: "Lecture 12"
 tabs: [lecture, readings]
 readings_chip: true
@@ -16,6 +16,10 @@ reading_list: |2
   **Murphy, *Probabilistic Machine Learning: An Introduction***
 
   - Ch. 2.8 (p. 56 - 59)
-links: []
+links:
+    - url: https://github.com/hertie-maths-data-science-f2026/materials/blob/main/lectures/12_lecture/12_information_theory.pdf
+      view_url: https://hertie-maths-data-science-f2026.github.io/files/materials/lectures/12_lecture/12_information_theory.pdf
+      name: "12_information_theory.pdf"
+      section: "lecture"
 ---
 
