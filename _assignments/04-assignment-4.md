@@ -30,9 +30,9 @@ teams:
     members_sha256: ["e1e066e97dc79aa22482b9aa764268dc3fc6fe13fa1bee14fe62fb6c026342d4", "676c65d51ff7e9aa8df4f8bf8b718788bccffdc07a13e7bd78a61dc5cabccb8b", "7d5fb4ac03f089f578636f91805120c8bcc94eeed1faedaee88ff8407e3ac8c0", "9afa2ad3446a9a51d599a5f82b014848c1a850f22606e2ed144dee870c446e61"]
     repo_url: "https://github.com/hertie-maths-data-science-f2026/assignment-4-best-team"
   - name: "math_crusaders"
-    members: 3
+    members: 4
     cap: 4
-    members_sha256: ["dd252c16586e994ac0b99abf178fd3d1d1de1779d6a46b28a8234cef8d81452a", "d02563d8de88275d480b8ec23387ea6c25b757bf186ff56785dccae35c721931", "250fcce0687e751c875a454ebf1ecb37205fe1e5160008dd08756166be4e8e3b"]
+    members_sha256: ["dd252c16586e994ac0b99abf178fd3d1d1de1779d6a46b28a8234cef8d81452a", "ddb5593657bc47cb89f9d4999c6c926b1e0ec665ea5d256b212db12d6d7ae53b", "d02563d8de88275d480b8ec23387ea6c25b757bf186ff56785dccae35c721931", "250fcce0687e751c875a454ebf1ecb37205fe1e5160008dd08756166be4e8e3b"]
     repo_url: "https://github.com/hertie-maths-data-science-f2026/assignment-4-math_crusaders"
   - name: "team-lea"
     members: 2
