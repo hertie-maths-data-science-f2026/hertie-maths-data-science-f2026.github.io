@@ -10,10 +10,12 @@ documents:
     url: https://github.com/hertie-maths-data-science-f2026/materials/blob/main/uv.lock
 sections:
   - name: "byoq"
-    files: 1
+    files: 2
     entries:
       - name: "byoq1_handout.pdf"
         url: https://github.com/hertie-maths-data-science-f2026/materials/blob/main/byoq/byoq1_handout.pdf
+      - name: "byoq2_handout.pdf"
+        url: https://github.com/hertie-maths-data-science-f2026/materials/blob/main/byoq/byoq2_handout.pdf
   - name: "exam"
     files: 1
     entries:
